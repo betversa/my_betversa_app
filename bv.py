@@ -487,18 +487,24 @@ table, th, td {{
 }}
 
 /* Responsive adjustments */
-@media only screen and (max-width: 600px) {{
-    .navbar-left a {{
+@media only screen and (max-width: 600px) {
+    .navbar-left a {
         font-size: 0.9rem;
         margin: 0 0.5rem;
-    }}
-    .hero h1 {{
+    }
+    .hero h1 {
         font-size: 2rem;
-    }}
-    .hero p {{
+    }
+    .hero p {
         font-size: 1.2rem;
-    }}
-}}
+    }
+    /* Stack columns vertically */
+    .streamlit-expanderHeader {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
 </style>
 """
 st.markdown(custom_css, unsafe_allow_html=True)
