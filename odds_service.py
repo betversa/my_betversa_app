@@ -140,10 +140,13 @@ def update_line_history(history, unique_key, snapshot_data):
     """Update snapshot list for a unique play key, keeping only the latest MAX_SNAPSHOTS."""
     if unique_key in history:
         history[unique_key].append(snapshot_data)
+        print(f"Appended snapshot for {unique_key}. Total snapshots: {len(history[unique_key])}")
         if len(history[unique_key]) > MAX_SNAPSHOTS:
             history[unique_key] = history[unique_key][-MAX_SNAPSHOTS:]
+            print(f"Trimmed snapshots for {unique_key} to the last {MAX_SNAPSHOTS} entries.")
     else:
         history[unique_key] = [snapshot_data]
+        print(f"Created new snapshot entry for {unique_key}.")
     return history
 
 def compile_aggregated_snapshots(event, sport_label, sport_key, accepted_markets):
@@ -222,6 +225,7 @@ def run_line_movement():
                     print(f"Skipping event {event.get('id')} - already started.")
                 continue
             play_snapshots = compile_aggregated_snapshots(event, sport_label, sport_key, accepted_markets)
+            print(f"Processing event {event.get('id')}, found {len(play_snapshots)} snapshot(s).")
             for unique_key, snap in play_snapshots:
                 line_history = update_line_history(line_history, unique_key, snap)
             time.sleep(1)  # pause to avoid API rate limiting
