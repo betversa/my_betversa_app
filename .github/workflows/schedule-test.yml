@@ -16,6 +16,11 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v3
 
+      - name: Pull latest changes
+        run: |
+          git config pull.rebase false
+          git pull origin main
+
       - name: Set up Python 3.9
         uses: actions/setup-python@v4
         with:
@@ -34,10 +39,10 @@ jobs:
 
       - name: Commit updated positive EV bets and line movement files
         run: |
-            git config --global user.email "github-actions@github.com"
-            git config --global user.name "GitHub Actions"
-            git add data/positive_ev_bets.json data/line_movement.json
-            git commit -m "Update positive EV bets and line movement"
-            git push origin main
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add data/positive_ev_bets.json data/line_movement.json
+          git commit -m "Update positive EV bets and line movement"
+          git push origin main
         env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
