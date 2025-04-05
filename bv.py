@@ -17,7 +17,7 @@ st.set_page_config(
     page_title="BetVersa.app",
     layout="wide",
     initial_sidebar_state="expanded",
-    page_icon=page_icon=f"data:image/png;base64,{get_base64_image('assets/favicon.png')}"
+    page_icon=f"data:image/png;base64,{get_base64_image('assets/favicon.png')}"
 )
 
 def get_base64_image(file_path):
