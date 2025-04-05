@@ -28,3 +28,13 @@ jobs:
           API_KEY: ${{ secrets.API_KEY }}
         run: |
           python odds_service.py
+
+      - name: Commit updated positive EV bets and line movement files
+        run: |
+            git config --global user.email "github-actions@github.com"
+            git config --global user.name "GitHub Actions"
+            git add positive_ev_bets.json line_movement.json
+            git commit -m "Update positive EV bets and line movement"
+            git push origin main
+        env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
