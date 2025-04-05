@@ -1,4 +1,4 @@
-from module.mlb_data import get_baseball_data
+from modules.mlb_data import get_baseball_data
 import pandas as pd
 import json
 
