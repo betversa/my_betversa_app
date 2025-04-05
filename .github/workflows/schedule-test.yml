@@ -30,35 +30,3 @@ jobs:
           # SECRET_KEY: ${{ secrets.SECRET_KEY }}
         run: |
           python odds_service.py
-=======
-name: APScheduler Test
-
-on:
-  schedule:
-    - cron: '*/5 * * * *'  # Runs every 5 minutes
-  workflow_dispatch: {}    # Allows manual triggering
-
-jobs:
-  run-odds-service:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up Python 3.9
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Run odds_service.py
-        env:
-          API_KEY: ${{ secrets.API_KEY }}  # Uses the GitHub Actions secret
-        run: |
-          python odds_service.py
->>>>>>> b77c3ee (Add odds_service.py and scheduled workflow for APScheduler testing)
