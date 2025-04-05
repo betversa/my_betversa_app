@@ -2,21 +2,25 @@ import os
 import requests
 import json
 import time
+import cProfile
+import pstats
+import streamlit as st
 from datetime import datetime, timezone
 from apscheduler.schedulers.blocking import BlockingScheduler
 
 # ===== Common Configuration =====
 DEBUG = True
 # Retrieve the API key from the environment variable
-if os.getenv("GITHUB_ACTIONS") == "true":
-    API_KEY = os.getenv("API_KEY")
-    print("Running in GitHub Actions: API key loaded from environment variable.")
-else:
+try:
     API_KEY = st.secrets["API_KEY"]
-    print("Running locally/Streamlit Cloud: API key loaded from st.secrets.")
+    print("API key loaded from st.secrets.")
+except KeyError:
+    API_KEY = os.getenv("API_KEY")
+    print("st.secrets does not have 'API_KEY'. Falling back to environment variable.")
 
 if not API_KEY:
-    raise ValueError("API_KEY not set!")
+    raise ValueError("API_KEY is not set! Please add it to your secrets or set the API_KEY environment variable.")
+
     
 SPORTS_CONFIG = {
     "NBA": {
@@ -69,7 +73,7 @@ EVENT_ODDS_FLAG = 'true'
 
 # ===== Configuration for Line Movement (Historical Snapshots) =====
 ODDS_FORMAT_LINE = 'american'
-LINE_MOVEMENT_FILE = "line_movement.json"
+LINE_MOVEMENT_FILE = "data/line_movement.json"
 MAX_SNAPSHOTS = 6
 
 # ===== Configuration for Positive EV Bets =====
@@ -80,7 +84,7 @@ MAX_EV = 0.10
 AVERAGE_SPORTBOOKS = {'fanduel', 'draftkings', 'betmgm', 'espnbet', 'williamhill_us',
                       'betonlinag', 'lowvig', 'betrivers', 'hardrockbet'}
 FINAL_SPORTBOOKS = {'fanduel', 'draftkings', 'betmgm'}
-OUTPUT_FILE = "positive_ev_bets.json"
+OUTPUT_FILE = "data/positive_ev_bets.json"
 
 # ===== Functions for Line Movement =====
 
@@ -984,6 +988,7 @@ def run_all_tasks():
     print("Finished run_line_movement(), starting run_positive_ev_script()")
     run_positive_ev_script()
     print("Finished run_positive_ev_script()")
+
 
 if __name__ == "__main__":
     # If running in GitHub Actions, run tasks once and exit.
