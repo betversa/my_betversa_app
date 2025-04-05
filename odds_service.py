@@ -8,11 +8,15 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 # ===== Common Configuration =====
 DEBUG = True
 # Retrieve the API key from the environment variable
-API_KEY = os.getenv("API_KEY")
-if API_KEY is None:
-    print("API_KEY is not set!")
+if os.getenv("GITHUB_ACTIONS") == "true":
+    API_KEY = os.getenv("API_KEY")
+    print("Running in GitHub Actions: API key loaded from environment variable.")
 else:
-    print("API key loaded successfully!")
+    API_KEY = st.secrets["API_KEY"]
+    print("Running locally/Streamlit Cloud: API key loaded from st.secrets.")
+
+if not API_KEY:
+    raise ValueError("API_KEY not set!")
     
 SPORTS_CONFIG = {
     "NBA": {
