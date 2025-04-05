@@ -225,6 +225,7 @@ def run_line_movement():
                     print(f"Skipping event {event.get('id')} - already started.")
                 continue
             play_snapshots = compile_aggregated_snapshots(event, sport_label, sport_key, accepted_markets)
+            print(f"Processing event {event.get('id')}, found {len(play_snapshots)} snapshot(s).")
             for unique_key, snap in play_snapshots:
                 current_snapshots = line_history.get(unique_key, [])
                 if DEBUG:
