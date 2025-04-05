@@ -1,0 +1,58 @@
+name: Daily Player Stats Update
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs once a day at midnight UTC
+  workflow_dispatch: {}  # Allows manual triggering
+
+jobs:
+  update-player-stats:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run MLB Pitcher Stats Script
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          python mlbpitcherstats.py
+
+      - name: Run MLB Batter Stats Script
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          python mlbbatterstats.py
+
+      - name: Run NBA Player Stats Script
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          python nbaplayerstats.py
+
+      - name: Run NHL Skater Stats Script
+        env:
+          API_KEY: ${{ secrets.API_KEY }}
+        run: |
+          python nhlskatestats.py
+
+      - name: Commit updated JSON files
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add mlb_batter_stats_2025_pretty.json mlb_pitcher_stats_2025_pretty.json nba_stats_2025_pretty.json nhl_skater_stats_2025_pretty.json
+          git commit -m "Daily update: Update player stats JSON files"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
