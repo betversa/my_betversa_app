@@ -10,5 +10,5 @@ print(stats_df.head())
 # Also write a pretty-printed JSON file
 json_str = stats_df.to_json(orient='records')
 data = json.loads(json_str)
-with open('nhl_skater_stats_2025_pretty.json', 'w') as f:
+with open('data/nhl_skater_stats_2025_pretty.json', 'w') as f:
     json.dump(data, f, indent=4)
