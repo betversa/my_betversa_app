@@ -7,7 +7,11 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 
 # ===== Common Configuration =====
 DEBUG = True
-API_KEY = st.secrets["general"]["API_KEY"]
+# Retrieve the API key from the environment variable
+API_KEY = os.getenv("API_KEY")
+if API_KEY is None:
+    raise ValueError("API_KEY not set in environment variables.")
+    
 SPORTS_CONFIG = {
     "NBA": {
         "sport_key": "basketball_nba",
