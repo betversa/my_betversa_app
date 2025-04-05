@@ -975,8 +975,11 @@ def run_positive_ev_script():
 from apscheduler.schedulers.blocking import BlockingScheduler
 
 def run_all_tasks():
+    print("Starting run_all_tasks()")
     run_line_movement()
+    print("Finished run_line_movement(), starting run_positive_ev_script()")
     run_positive_ev_script()
+    print("Finished run_positive_ev_script()")
 
 if __name__ == "__main__":
     # If running in GitHub Actions, run tasks once and exit.
