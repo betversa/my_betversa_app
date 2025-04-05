@@ -225,10 +225,16 @@ def run_line_movement():
                     print(f"Skipping event {event.get('id')} - already started.")
                 continue
             play_snapshots = compile_aggregated_snapshots(event, sport_label, sport_key, accepted_markets)
-            print(f"Processing event {event.get('id')}, found {len(play_snapshots)} snapshot(s).")
             for unique_key, snap in play_snapshots:
+                current_snapshots = line_history.get(unique_key, [])
+                if DEBUG:
+                    print(f"DEBUG: Before update - {unique_key} has {len(current_snapshots)} snapshot(s).")
                 line_history = update_line_history(line_history, unique_key, snap)
+                updated_snapshots = line_history.get(unique_key, [])
+                if DEBUG:
+                    print(f"DEBUG: After update - {unique_key} now has {len(updated_snapshots)} snapshot(s).")
             time.sleep(1)  # pause to avoid API rate limiting
+
 
     with open(LINE_MOVEMENT_FILE, "w") as f:
         json.dump(line_history, f, indent=4)
