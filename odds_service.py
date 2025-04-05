@@ -137,17 +137,18 @@ def get_event_odds(event, sport_key, accepted_markets, odds_format):
         return None
 
 def update_line_history(history, unique_key, snapshot_data):
-    """Update snapshot list for a unique play key, keeping only the latest MAX_SNAPSHOTS."""
     if unique_key in history:
+        print(f"DEBUG: Before update - {unique_key} has {len(history[unique_key])} snapshot(s).")
         history[unique_key].append(snapshot_data)
-        print(f"Appended snapshot for {unique_key}. Total snapshots: {len(history[unique_key])}")
-        if len(history[unique_key]) > MAX_SNAPSHOTS:
-            history[unique_key] = history[unique_key][-MAX_SNAPSHOTS:]
-            print(f"Trimmed snapshots for {unique_key} to the last {MAX_SNAPSHOTS} entries.")
+        # If you want to keep all snapshots without trimming:
+        # if len(history[unique_key]) > MAX_SNAPSHOTS:
+        #     history[unique_key] = history[unique_key][-MAX_SNAPSHOTS:]
     else:
+        print(f"DEBUG: No snapshots for {unique_key} yet. Creating new entry.")
         history[unique_key] = [snapshot_data]
-        print(f"Created new snapshot entry for {unique_key}.")
+    print(f"DEBUG: After update - {unique_key} now has {len(history[unique_key])} snapshot(s).")
     return history
+
 
 def compile_aggregated_snapshots(event, sport_label, sport_key, accepted_markets):
     """Aggregate bookmaker odds into snapshots per unique bet for line movement tracking."""
