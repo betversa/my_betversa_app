@@ -10,7 +10,9 @@ DEBUG = True
 # Retrieve the API key from the environment variable
 API_KEY = os.getenv("API_KEY")
 if API_KEY is None:
-    raise ValueError("API_KEY not set in environment variables.")
+    print("API_KEY is not set!")
+else:
+    print("API key loaded successfully!")
     
 SPORTS_CONFIG = {
     "NBA": {
