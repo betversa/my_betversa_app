@@ -979,10 +979,16 @@ def run_all_tasks():
     run_positive_ev_script()
 
 if __name__ == "__main__":
-    scheduler = BlockingScheduler()
-    scheduler.add_job(run_all_tasks, 'interval', minutes=5)
-    print("Starting scheduler to run both tasks every 5 minutes...")
-    try:
-        scheduler.start()
-    except (KeyboardInterrupt, SystemExit):
-        pass
+    # If running in GitHub Actions, run tasks once and exit.
+    if os.getenv("GITHUB_ACTIONS") == "true":
+        print("Running tasks once (detected GitHub Actions environment)...")
+        run_all_tasks()
+    else:
+        # Otherwise, use the BlockingScheduler to run tasks every 5 minutes.
+        scheduler = BlockingScheduler()
+        scheduler.add_job(run_all_tasks, 'interval', minutes=5)
+        print("Starting scheduler to run both tasks every 5 minutes...")
+        try:
+            scheduler.start()
+        except (KeyboardInterrupt, SystemExit):
+            pass
