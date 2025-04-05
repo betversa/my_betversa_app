@@ -509,7 +509,7 @@ st.markdown(custom_css, unsafe_allow_html=True)
 navbar_html = f"""
 <div class="navbar">
   <div class="navbar-left">
-    <img src="data:image/png;base64,{get_base64_image('/home/betversapicks/bvlogo2.png')}" alt="BetVersa Logo">
+    <img src="data:image/png;base64,{get_base64_image('assets/bvlogo2.png')}" alt="BetVersa Logo">
     <a href="?page=overview" target="_self" title="View top EV plays">Home</a>
     <a href="?page=ev" target="_self" title="Filter and inspect EV data">EV Data</a>
     <a href="?page=parlay" target="_self" title="Build your custom parlay">Parlay</a>
@@ -744,15 +744,15 @@ def show_ev_page():
                 if "Line" in odds_df.columns:
                     odds_df["Line"] = odds_df["Line"].apply(lambda x: f"{float(x):.1f}" if pd.notnull(x) else x)
                 logo_dict = {
-                    "DraftKings": get_base64_image("/home/betversapicks/draftkings.png"),
-                    "BetMGM": get_base64_image("/home/betversapicks/betmgm.png"),
-                    "Hard Rock Bet": get_base64_image("/home/betversapicks/hardrockbet.png"),
-                    "ESPN BET": get_base64_image("/home/betversapicks/espnbet.png"),
-                    "Caesars": get_base64_image("/home/betversapicks/williamhill_us.png"),
-                    "BetRivers": get_base64_image("/home/betversapicks/betrivers.png"),
-                    "Bet Online": get_base64_image("/home/betversapicks/betonlineag.png"),
-                    "Low Vig": get_base64_image("/home/betversapicks/lowvig.png"),
-                    "FanDuel": get_base64_image("/home/betversapicks/fanduel.png")
+                    "DraftKings": get_base64_image("assets/draftkings.png"),
+                    "BetMGM": get_base64_image("assets/betmgm.png"),
+                    "Hard Rock Bet": get_base64_image("assets/hardrockbet.png"),
+                    "ESPN BET": get_base64_image("assets/espnbet.png"),
+                    "Caesars": get_base64_image("assets/williamhill_us.png"),
+                    "BetRivers": get_base64_image("assets/betrivers.png"),
+                    "Bet Online": get_base64_image("assets/betonlineag.png"),
+                    "Low Vig": get_base64_image("assets/lowvig.png"),
+                    "FanDuel": get_base64_image("assets/fanduel.png")
                 }
                 odds_df["Logo"] = odds_df["Book"].map(lambda book: f'<img src="data:image/png;base64,{logo_dict.get(book, "")}" width="30" style="border-radius:4px; border:1px solid #ddd;">' if logo_dict.get(book, "") else "")
                 display_cols = ["Book", "Odds"]
