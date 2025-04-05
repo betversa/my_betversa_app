@@ -8,6 +8,7 @@ from operator import mul
 from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode
 from datetime import datetime
 import plotly.express as px  # For interactive charts
+import ijson
 
 ###############################################################################
 # Page Config & Basic Functions
@@ -219,16 +220,22 @@ def load_nhl_skater_stats_2025():
         return pd.DataFrame()
 
 @st.cache_data(ttl=60)
-def load_history_odds():
+def load_history_odds_for_ev(ev_key_tails, file_path="data/line_movement.json"):
+    history_data = {}
     try:
-        # Load history odds from line_movement.json.
-        # We assume the JSON is a dict with keys as unique ids (including event id) and values as lists of snapshots.
-        with open("data/line_movement.json", "r") as f:
-            history_data = json.load(f)
+        with open(file_path, "r") as f:
+            # Use ijson to iterate over key-value pairs from the top-level JSON object
+            parser = ijson.kvitems(f, "")
+            for key, value in parser:
+                # Use your tail_key logic here (or inline) to check if this key is relevant
+                key_tail = key.split("_", 1)[-1].lower()
+                if key_tail in ev_key_tails:
+                    history_data[key] = value
         return history_data
     except Exception as e:
-        st.error("Error loading history odds: " + str(e))
+        st.error("Error lazy loading history odds for EV bets: " + str(e))
         return {}
+
 
 df_full = load_data()
 df_unique = df_full.drop_duplicates(subset=["unique_key"])
@@ -688,7 +695,10 @@ def show_ev_page():
             if debug_chart:
                 st.write("Debug: Bet unique_key tail:", bet_tail)
             trends_data = []
-            history_records = load_history_odds()  # Dict with keys as unique ids.
+            # Create a set of EV keys (and tails) from your EV bets data
+            ev_keys = set(df_full["unique_key"].tolist())
+            ev_key_tails = {key.split("_", 1)[-1].lower() for key in ev_keys}
+            history_records = load_history_odds_for_ev(ev_key_tails)# Dict with keys as unique ids.
             matching_count = 0
             for hist_key, rec_list in history_records.items():
                 hist_tail = tail_key(hist_key)
