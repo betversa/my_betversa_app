@@ -1,5 +1,8 @@
 name: APScheduler Test
 
+permissions:
+  contents: write
+  
 on:
   schedule:
     - cron: '*/5 * * * *'  # Runs every 5 minutes
@@ -33,7 +36,7 @@ jobs:
         run: |
             git config --global user.email "github-actions@github.com"
             git config --global user.name "GitHub Actions"
-            git add positive_ev_bets.json line_movement.json
+            git add data/positive_ev_bets.json data/line_movement.json
             git commit -m "Update positive EV bets and line movement"
             git push origin main
         env:
