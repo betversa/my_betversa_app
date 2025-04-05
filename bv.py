@@ -13,19 +13,19 @@ import ijson
 ###############################################################################
 # Page Config & Basic Functions
 ###############################################################################
-st.set_page_config(
-    page_title="BetVersa.app",
-    layout="wide",
-    initial_sidebar_state="expanded",
-    page_icon=f"data:image/png;base64,{get_base64_image('assets/favicon.png')}"
-)
-
 def get_base64_image(file_path):
     try:
         with open(file_path, "rb") as image_file:
             return base64.b64encode(image_file.read()).decode("utf-8")
     except Exception:
         return ""
+
+st.set_page_config(
+    page_title="BetVersa.app",
+    layout="wide",
+    initial_sidebar_state="expanded",
+    page_icon=f"data:image/png;base64,{get_base64_image('assets/favicon.png')}"
+)
 
 def parse_query_params():
     query_params = st.query_params
