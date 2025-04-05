@@ -7,7 +7,7 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 
 # ===== Common Configuration =====
 DEBUG = True
-API_KEY = '99a50c93601ebfe1fa0970f01838ae3d'
+API_KEY = st.secrets["general"]["API_KEY"]
 SPORTS_CONFIG = {
     "NBA": {
         "sport_key": "basketball_nba",
