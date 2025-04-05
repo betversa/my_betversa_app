@@ -1,4 +1,4 @@
-from basketball_data import get_data
+from module.basketball_data import get_data
 import pandas as pd
 import json
 

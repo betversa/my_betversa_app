@@ -1,4 +1,4 @@
-from nhl_data import get_hockey_data
+from module.nhl_data import get_hockey_data
 import pandas as pd
 import json
 
