@@ -5,12 +5,14 @@ import time
 import cProfile
 import pstats
 import streamlit as st
+import sqlite3
 from datetime import datetime, timezone
 from apscheduler.schedulers.blocking import BlockingScheduler
 
 # ===== Common Configuration =====
 DEBUG = True
-# Retrieve the API key from the environment variable
+
+# Retrieve the API key from the environment variable or st.secrets
 try:
     API_KEY = st.secrets["API_KEY"]
     print("API key loaded from st.secrets.")
@@ -21,7 +23,7 @@ except KeyError:
 if not API_KEY:
     raise ValueError("API_KEY is not set! Please add it to your secrets or set the API_KEY environment variable.")
 
-    
+# ===== Sports Configuration =====
 SPORTS_CONFIG = {
     "NBA": {
         "sport_key": "basketball_nba",
@@ -73,7 +75,6 @@ EVENT_ODDS_FLAG = 'true'
 
 # ===== Configuration for Line Movement (Historical Snapshots) =====
 ODDS_FORMAT_LINE = 'american'
-LINE_MOVEMENT_FILE = "data/line_movement.json"
 MAX_SNAPSHOTS = 6
 
 # ===== Configuration for Positive EV Bets =====
@@ -86,8 +87,66 @@ AVERAGE_SPORTBOOKS = {'fanduel', 'draftkings', 'betmgm', 'espnbet', 'williamhill
 FINAL_SPORTBOOKS = {'fanduel', 'draftkings', 'betmgm'}
 OUTPUT_FILE = "data/positive_ev_bets.json"
 
-# ===== Functions for Line Movement =====
+# ===== SQLite Setup for Line Movement Snapshots =====
+# Create (or open) an SQLite database file for storing snapshots.
+conn = sqlite3.connect("line_movement.db")
+cursor = conn.cursor()
 
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS snapshots (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    unique_key TEXT NOT NULL,
+    snapshot_time TEXT NOT NULL,
+    snapshot_data TEXT NOT NULL
+)
+''')
+conn.commit()
+
+def insert_snapshot(unique_key, snapshot):
+    """Insert a new snapshot record into the database."""
+    snapshot_time = datetime.now(timezone.utc).isoformat() + "Z"
+    snapshot_json = json.dumps(snapshot)
+    cursor.execute('''
+        INSERT INTO snapshots (unique_key, snapshot_time, snapshot_data)
+        VALUES (?, ?, ?)
+    ''', (unique_key, snapshot_time, snapshot_json))
+    conn.commit()
+
+def get_snapshot_count(unique_key):
+    """Return the number of snapshots stored for the given unique_key."""
+    cursor.execute('''
+        SELECT COUNT(*) FROM snapshots WHERE unique_key = ?
+    ''', (unique_key,))
+    return cursor.fetchone()[0]
+
+def delete_oldest_snapshots(unique_key, keep=MAX_SNAPSHOTS):
+    """Delete the oldest snapshots so that only the most recent 'keep' remain."""
+    count = get_snapshot_count(unique_key)
+    if count > keep:
+        cursor.execute('''
+            DELETE FROM snapshots 
+            WHERE id IN (
+                SELECT id FROM snapshots
+                WHERE unique_key = ?
+                ORDER BY snapshot_time ASC
+                LIMIT ?
+            )
+        ''', (unique_key, count - keep))
+        conn.commit()
+
+def get_last_n_snapshots(unique_key, n=6):
+    """Retrieve the last n snapshots for a given unique key, newest first."""
+    cursor.execute('''
+        SELECT snapshot_time, snapshot_data
+        FROM snapshots
+        WHERE unique_key = ?
+        ORDER BY snapshot_time DESC
+        LIMIT ?
+    ''', (unique_key, n))
+    snapshots = [(ts, json.loads(data)) for ts, data in cursor.fetchall()]
+    return snapshots
+
+# ===== Functions for Line Movement =====
 def event_has_not_started(event):
     """Returns True if the event has not yet started (based on 'commence_time')."""
     commence_time_str = event.get("commence_time")
@@ -136,17 +195,6 @@ def get_event_odds(event, sport_key, accepted_markets, odds_format):
             print("Unexpected odds data format")
         return None
 
-def update_line_history(history, unique_key, snapshot_data):
-    """Append snapshot_data for unique_key while keeping only the last MAX_SNAPSHOTS."""
-    if unique_key in history:
-        history[unique_key].append(snapshot_data)
-        # Keep only the most recent MAX_SNAPSHOTS
-        if len(history[unique_key]) > MAX_SNAPSHOTS:
-            history[unique_key] = history[unique_key][-MAX_SNAPSHOTS:]
-    else:
-        history[unique_key] = [snapshot_data]
-    return history
-
 def compile_aggregated_snapshots(event, sport_label, sport_key, accepted_markets):
     """Aggregate bookmaker odds into snapshots per unique bet for line movement tracking."""
     aggregated_snapshots = {}
@@ -188,21 +236,10 @@ def compile_aggregated_snapshots(event, sport_label, sport_key, accepted_markets
                 })
     return list(aggregated_snapshots.items())
 
-
 def run_line_movement():
-    """Processes events for all sports and updates the line movement history file."""
-    if os.path.exists(LINE_MOVEMENT_FILE):
-        with open(LINE_MOVEMENT_FILE, "r") as f:
-            try:
-                line_history = json.load(f)
-                print(f"DEBUG: Loaded line_history with {len(line_history)} keys.")
-            except Exception as e:
-                print(f"DEBUG: Error reading {LINE_MOVEMENT_FILE}: {e}")
-                line_history = {}
-    else:
-        line_history = {}
-        print("DEBUG: No existing line_history file found; starting fresh.")
-
+    """Processes events for all sports and updates the line movement snapshots in SQLite."""
+    print("DEBUG: Using SQLite for snapshot storage.")
+    
     for sport_label, config in SPORTS_CONFIG.items():
         sport_key = config["sport_key"]
         player_prop_markets = config["player_prop_markets"]
@@ -225,28 +262,19 @@ def run_line_movement():
                 continue
             play_snapshots = compile_aggregated_snapshots(event, sport_label, sport_key, accepted_markets)
             for unique_key, snap in play_snapshots:
-                # Debug before updating:
-                count_before = len(line_history.get(unique_key, []))
+                count_before = get_snapshot_count(unique_key)
                 print(f"DEBUG: Before update - {unique_key} has {count_before} snapshot(s).")
-                line_history = update_line_history(line_history, unique_key, snap)
-                count_after = len(line_history.get(unique_key, []))
+                # Insert new snapshot for this unique key
+                insert_snapshot(unique_key, snap)
+                # Delete oldest snapshots if count exceeds MAX_SNAPSHOTS
+                delete_oldest_snapshots(unique_key, keep=MAX_SNAPSHOTS)
+                count_after = get_snapshot_count(unique_key)
                 print(f"DEBUG: After update - {unique_key} now has {count_after} snapshot(s).")
             time.sleep(1)  # Pause to avoid API rate limiting
 
-    with open(LINE_MOVEMENT_FILE, "w") as f:
-        json.dump(line_history, f, indent=4)
-    print(f"DEBUG: Line movement history updated and saved to {LINE_MOVEMENT_FILE}")
-
-
-    # Step 3: Write updated data atomically using a temporary file
-    temp_file = LINE_MOVEMENT_FILE + ".tmp"
-    with open(temp_file, "w", encoding="utf-8") as f:
-        json.dump(line_history, f, indent=4)
-    os.replace(temp_file, LINE_MOVEMENT_FILE)
-    print(f"Line movement history updated and saved to {LINE_MOVEMENT_FILE}")
+    print("DEBUG: Line movement snapshots updated in SQLite.")
 
 # ===== Functions for Positive EV Bets =====
-
 def convert_to_american(decimal_odds):
     if decimal_odds == 1:
         return 0
@@ -995,15 +1023,12 @@ def run_positive_ev_script():
     print(f"\nWrote {len(filtered_best_plays)} positive EV plays to {OUTPUT_FILE}")
 
 # ===== Main Execution =====
-from apscheduler.schedulers.blocking import BlockingScheduler
-
 def run_all_tasks():
     print("Starting run_all_tasks()")
     run_line_movement()
     print("Finished run_line_movement(), starting run_positive_ev_script()")
     run_positive_ev_script()
     print("Finished run_positive_ev_script()")
-
 
 if __name__ == "__main__":
     # If running in GitHub Actions, run tasks once and exit.
@@ -1019,3 +1044,5 @@ if __name__ == "__main__":
             scheduler.start()
         except (KeyboardInterrupt, SystemExit):
             pass
+    # Optionally close the database connection when done
+    conn.close()
