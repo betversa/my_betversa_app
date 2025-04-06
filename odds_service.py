@@ -76,6 +76,7 @@ EVENT_ODDS_FLAG = 'true'
 # ===== Configuration for Line Movement (Historical Snapshots) =====
 ODDS_FORMAT_LINE = 'american'
 MAX_SNAPSHOTS = 6
+DB_FILENAME = "line_movement.db"
 
 # ===== Configuration for Positive EV Bets =====
 ODDS_FORMAT_EV = 'decimal'
