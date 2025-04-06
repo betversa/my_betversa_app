@@ -137,18 +137,15 @@ def get_event_odds(event, sport_key, accepted_markets, odds_format):
         return None
 
 def update_line_history(history, unique_key, snapshot_data):
+    """Append snapshot_data for unique_key while keeping only the last MAX_SNAPSHOTS."""
     if unique_key in history:
-        print(f"DEBUG: Before update - {unique_key} has {len(history[unique_key])} snapshot(s).")
         history[unique_key].append(snapshot_data)
-        # If you want to keep all snapshots without trimming:
-        # if len(history[unique_key]) > MAX_SNAPSHOTS:
-        #     history[unique_key] = history[unique_key][-MAX_SNAPSHOTS:]
+        # Keep only the most recent MAX_SNAPSHOTS
+        if len(history[unique_key]) > MAX_SNAPSHOTS:
+            history[unique_key] = history[unique_key][-MAX_SNAPSHOTS:]
     else:
-        print(f"DEBUG: No snapshots for {unique_key} yet. Creating new entry.")
         history[unique_key] = [snapshot_data]
-    print(f"DEBUG: After update - {unique_key} now has {len(history[unique_key])} snapshot(s).")
     return history
-
 
 def compile_aggregated_snapshots(event, sport_label, sport_key, accepted_markets):
     """Aggregate bookmaker odds into snapshots per unique bet for line movement tracking."""
@@ -191,10 +188,12 @@ def compile_aggregated_snapshots(event, sport_label, sport_key, accepted_markets
                 })
     return list(aggregated_snapshots.items())
 
+
 def run_line_movement():
-    """Processes events for all sports and updates the line movement history file."""
+    """Processes events and updates the line movement history file without erasing previous data."""
+    # Step 1: Load existing data (if any)
     if os.path.exists(LINE_MOVEMENT_FILE):
-        with open(LINE_MOVEMENT_FILE, "r") as f:
+        with open(LINE_MOVEMENT_FILE, "r", encoding="utf-8") as f:
             try:
                 line_history = json.load(f)
             except Exception as e:
@@ -204,6 +203,7 @@ def run_line_movement():
     else:
         line_history = {}
 
+    # (Your code to process each sport/event here)
     for sport_label, config in SPORTS_CONFIG.items():
         sport_key = config["sport_key"]
         player_prop_markets = config["player_prop_markets"]
@@ -225,21 +225,25 @@ def run_line_movement():
                 if DEBUG:
                     print(f"Skipping event {event.get('id')} - already started.")
                 continue
+            # Compile snapshots for this event (assumes this returns list of (unique_key, snapshot))
             play_snapshots = compile_aggregated_snapshots(event, sport_label, sport_key, accepted_markets)
-            print(f"Processing event {event.get('id')}, found {len(play_snapshots)} snapshot(s).")
             for unique_key, snap in play_snapshots:
-                current_snapshots = line_history.get(unique_key, [])
+                # Debug print: show snapshots count before update
+                current_count = len(line_history.get(unique_key, []))
                 if DEBUG:
-                    print(f"DEBUG: Before update - {unique_key} has {len(current_snapshots)} snapshot(s).")
+                    print(f"DEBUG: Before update - {unique_key} has {current_count} snapshot(s).")
+                # Update history with the new snapshot
                 line_history = update_line_history(line_history, unique_key, snap)
-                updated_snapshots = line_history.get(unique_key, [])
+                # Debug print: show snapshots count after update
                 if DEBUG:
-                    print(f"DEBUG: After update - {unique_key} now has {len(updated_snapshots)} snapshot(s).")
+                    print(f"DEBUG: After update - {unique_key} now has {len(line_history[unique_key])} snapshot(s).")
             time.sleep(1)  # pause to avoid API rate limiting
 
-
-    with open(LINE_MOVEMENT_FILE, "w") as f:
+    # Step 3: Write updated data atomically using a temporary file
+    temp_file = LINE_MOVEMENT_FILE + ".tmp"
+    with open(temp_file, "w", encoding="utf-8") as f:
         json.dump(line_history, f, indent=4)
+    os.replace(temp_file, LINE_MOVEMENT_FILE)
     print(f"Line movement history updated and saved to {LINE_MOVEMENT_FILE}")
 
 # ===== Functions for Positive EV Bets =====
