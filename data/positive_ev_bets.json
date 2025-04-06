@@ -14,7 +14,7 @@
         "pinnacle_point": 7.5,
         "fair_prob": 0.5605263157894738,
         "ev": 0.008947368421052815,
-        "average_ev": -0.036728190935418015,
+        "average_ev": -0.03625927993078604,
         "kelly_dollar": 2.7960526315790046,
         "calc_method": "Pinnacle / Average",
         "player": "Orlando Robinson",
@@ -37,6 +37,13 @@
                 "bookmaker": "Hard Rock Bet",
                 "offered_odds_american": -125,
                 "fair_odds_american": -104,
+                "offered_point": 7.5,
+                "player": "Orlando Robinson"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -137,
+                "fair_odds_american": -116,
                 "offered_point": 7.5,
                 "player": "Orlando Robinson"
             }
@@ -96,11 +103,11 @@
         "sportsbook_american": 118,
         "offered_point": 1.5,
         "pinnacle_fair_american": 107,
-        "no_vig_american": 114,
+        "no_vig_american": 113,
         "pinnacle_point": 1.5,
         "fair_prob": 0.4826666666666667,
         "ev": 0.052213333333333445,
-        "average_ev": 0.02012966939363392,
+        "average_ev": 0.024727391428885803,
         "kelly_dollar": 11.062146892655388,
         "calc_method": "Pinnacle / Average",
         "player": "Jamal Shead",
@@ -132,42 +139,13 @@
                 "fair_odds_american": 106,
                 "offered_point": 1.5,
                 "player": "Jamal Shead"
-            }
-        ]
-    },
-    {
-        "unique_key": "fbedf11bd10d3974c5e59cfbf5be4d75_PLAYER_POINTS_REBOUNDS_ASSISTS_Under_Trendon Watford_25.5",
-        "home_team": "Brooklyn Nets",
-        "away_team": "Toronto Raptors",
-        "sport": "NBA",
-        "market": "PLAYER_POINTS_REBOUNDS_ASSISTS",
-        "bookmaker": "FanDuel",
-        "outcome": "Under",
-        "sportsbook_american": -122,
-        "offered_point": 25.5,
-        "pinnacle_fair_american": -124,
-        "no_vig_american": -105,
-        "pinnacle_point": 25.5,
-        "fair_prob": 0.5529100529100528,
-        "ev": 0.006296296296296133,
-        "average_ev": -0.06692071301247793,
-        "kelly_dollar": 1.919602529358577,
-        "calc_method": "Pinnacle / Average",
-        "player": "Trendon Watford",
-        "odds_breakdown": [
-            {
-                "bookmaker": "FanDuel",
-                "offered_odds_american": -122,
-                "fair_odds_american": -106,
-                "offered_point": 25.5,
-                "player": "Trendon Watford"
             },
             {
-                "bookmaker": "Hard Rock Bet",
-                "offered_odds_american": -120,
-                "fair_odds_american": -104,
-                "offered_point": 25.5,
-                "player": "Trendon Watford"
+                "bookmaker": "Caesars",
+                "offered_odds_american": -106,
+                "fair_odds_american": 109,
+                "offered_point": 1.5,
+                "player": "Jamal Shead"
             }
         ]
     },
@@ -264,7 +242,7 @@
         "pinnacle_point": 214.5,
         "fair_prob": 0.5322997416020672,
         "ev": 0.016692506459948242,
-        "average_ev": -0.030045410794242,
+        "average_ev": -0.032181780680778926,
         "kelly_dollar": 4.585853423062705,
         "calc_method": "Pinnacle / Average",
         "odds_breakdown": [
@@ -300,6 +278,12 @@
             },
             {
                 "bookmaker": "BetMGM",
+                "offered_odds_american": -110,
+                "fair_odds_american": 100,
+                "offered_point": 214.5
+            },
+            {
+                "bookmaker": "Caesars",
                 "offered_odds_american": -110,
                 "fair_odds_american": 100,
                 "offered_point": 214.5
@@ -397,6 +381,63 @@
         ]
     },
     {
+        "unique_key": "ba52e4b4cf9bc5b1e764c62579196887_PLAYER_POINTS_Over_Luka Doncic_27.5",
+        "home_team": "Oklahoma City Thunder",
+        "away_team": "Los Angeles Lakers",
+        "sport": "NBA",
+        "market": "PLAYER_POINTS",
+        "bookmaker": "DraftKings",
+        "outcome": "Over",
+        "sportsbook_american": -105,
+        "offered_point": 27.5,
+        "pinnacle_fair_american": -110,
+        "no_vig_american": 102,
+        "pinnacle_point": 27.5,
+        "fair_prob": 0.5240641711229947,
+        "ev": 0.021925133689839726,
+        "average_ev": -0.034927497585655276,
+        "kelly_dollar": 5.769772023642034,
+        "calc_method": "Pinnacle / Average",
+        "player": "Luka Doncic",
+        "odds_breakdown": [
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": -106,
+                "fair_odds_american": 108,
+                "offered_point": 27.5,
+                "player": "Luka Doncic"
+            },
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": -105,
+                "fair_odds_american": 108,
+                "offered_point": 27.5,
+                "player": "Luka Doncic"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": -115,
+                "fair_odds_american": 100,
+                "offered_point": 27.5,
+                "player": "Luka Doncic"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": -125,
+                "fair_odds_american": -108,
+                "offered_point": 27.5,
+                "player": "Luka Doncic"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -114,
+                "fair_odds_american": 103,
+                "offered_point": 27.5,
+                "player": "Luka Doncic"
+            }
+        ]
+    },
+    {
         "unique_key": "ba52e4b4cf9bc5b1e764c62579196887_PLAYER_REBOUNDS_Over_Isaiah Hartenstein_9.5",
         "home_team": "Oklahoma City Thunder",
         "away_team": "Los Angeles Lakers",
@@ -407,11 +448,11 @@
         "sportsbook_american": 104,
         "offered_point": 9.5,
         "pinnacle_fair_american": -101,
-        "no_vig_american": 103,
+        "no_vig_american": 102,
         "pinnacle_point": 9.5,
         "fair_prob": 0.5026737967914439,
         "ev": 0.025454545454545507,
-        "average_ev": 0.005521660268979156,
+        "average_ev": 0.010567026087342057,
         "kelly_dollar": 6.118881118881131,
         "calc_method": "Pinnacle / Average",
         "player": "Isaiah Hartenstein",
@@ -464,84 +505,20 @@
                 "fair_odds_american": 108,
                 "offered_point": 9.5,
                 "player": "Isaiah Hartenstein"
-            }
-        ]
-    },
-    {
-        "unique_key": "ba52e4b4cf9bc5b1e764c62579196887_PLAYER_ASSISTS_Over_Jalen Williams_4.5",
-        "home_team": "Oklahoma City Thunder",
-        "away_team": "Los Angeles Lakers",
-        "sport": "NBA",
-        "market": "PLAYER_ASSISTS",
-        "bookmaker": "FanDuel",
-        "outcome": "Over",
-        "sportsbook_american": 108,
-        "offered_point": 4.5,
-        "pinnacle_fair_american": 107,
-        "no_vig_american": 111,
-        "pinnacle_point": 4.5,
-        "fair_prob": 0.48395721925133695,
-        "ev": 0.006631016042780935,
-        "average_ev": -0.013002819070339289,
-        "kelly_dollar": 1.5349574173104015,
-        "calc_method": "Pinnacle / Average",
-        "player": "Jalen Williams",
-        "odds_breakdown": [
-            {
-                "bookmaker": "FanDuel",
-                "offered_odds_american": 108,
-                "fair_odds_american": 123,
-                "offered_point": 4.5,
-                "player": "Jalen Williams"
             },
             {
-                "bookmaker": "FanDuel",
-                "offered_odds_american": 108,
-                "fair_odds_american": 123,
-                "offered_point": 4.5,
-                "player": "Jalen Williams"
+                "bookmaker": "Caesars",
+                "offered_odds_american": -133,
+                "fair_odds_american": -113,
+                "offered_point": 9.5,
+                "player": "Isaiah Hartenstein"
             },
             {
-                "bookmaker": "DraftKings",
-                "offered_odds_american": -110,
-                "fair_odds_american": 104,
-                "offered_point": 4.5,
-                "player": "Jalen Williams"
-            },
-            {
-                "bookmaker": "DraftKings",
-                "offered_odds_american": -105,
-                "fair_odds_american": 108,
-                "offered_point": 4.5,
-                "player": "Jalen Williams"
-            },
-            {
-                "bookmaker": "ESPN BET",
-                "offered_odds_american": -110,
-                "fair_odds_american": 104,
-                "offered_point": 4.5,
-                "player": "Jalen Williams"
-            },
-            {
-                "bookmaker": "ESPN BET",
-                "offered_odds_american": -105,
-                "fair_odds_american": 108,
-                "offered_point": 4.5,
-                "player": "Jalen Williams"
-            },
-            {
-                "bookmaker": "Hard Rock Bet",
-                "offered_odds_american": -110,
-                "fair_odds_american": 106,
-                "offered_point": 4.5,
-                "player": "Jalen Williams"
-            },
-            {
-                "bookmaker": "Hard Rock Bet",
-                "offered_odds_american": -105,
-                "fair_odds_american": 110,
-                "offered_point": 4.5,
-                "player": "Jalen Williams"
+                "bookmaker": "Caesars",
+                "offered_odds_american": -106,
+                "fair_odds_american": 109,
+                "offered_point": 9.5,
+                "player": "Isaiah Hartenstein"
             }
         ]
     },
@@ -560,7 +537,7 @@
         "pinnacle_point": 1.5,
         "fair_prob": 0.5146666666666666,
         "ev": 0.02933333333333321,
-        "average_ev": -0.019136003436460547,
+        "average_ev": -0.021760415652394227,
         "kelly_dollar": 7.333333333333303,
         "calc_method": "Pinnacle / Average",
         "player": "Jalen Williams",
@@ -592,6 +569,13 @@
                 "fair_odds_american": -104,
                 "offered_point": 1.5,
                 "player": "Jalen Williams"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -109,
+                "fair_odds_american": 107,
+                "offered_point": 1.5,
+                "player": "Jalen Williams"
             }
         ]
     },
@@ -610,7 +594,7 @@
         "pinnacle_point": 2.5,
         "fair_prob": 0.3974358974358974,
         "ev": 0.0412820512820512,
-        "average_ev": 0.029581221193944462,
+        "average_ev": 0.0321817728207886,
         "kelly_dollar": 6.3706869262424695,
         "calc_method": "Pinnacle / Average",
         "player": "Luguentz Dort",
@@ -642,106 +626,13 @@
                 "fair_odds_american": 149,
                 "offered_point": 2.5,
                 "player": "Luguentz Dort"
-            }
-        ]
-    },
-    {
-        "unique_key": "ba52e4b4cf9bc5b1e764c62579196887_PLAYER_POINTS_Over_Luka Doncic_27.5",
-        "home_team": "Oklahoma City Thunder",
-        "away_team": "Los Angeles Lakers",
-        "sport": "NBA",
-        "market": "PLAYER_POINTS",
-        "bookmaker": "DraftKings",
-        "outcome": "Over",
-        "sportsbook_american": -105,
-        "offered_point": 27.5,
-        "pinnacle_fair_american": -110,
-        "no_vig_american": 102,
-        "pinnacle_point": 27.5,
-        "fair_prob": 0.5240641711229947,
-        "ev": 0.021925133689839726,
-        "average_ev": -0.0341243315508023,
-        "kelly_dollar": 5.769772023642034,
-        "calc_method": "Pinnacle / Average",
-        "player": "Luka Doncic",
-        "odds_breakdown": [
-            {
-                "bookmaker": "FanDuel",
-                "offered_odds_american": -106,
-                "fair_odds_american": 108,
-                "offered_point": 27.5,
-                "player": "Luka Doncic"
             },
             {
-                "bookmaker": "DraftKings",
-                "offered_odds_american": -105,
-                "fair_odds_american": 108,
-                "offered_point": 27.5,
-                "player": "Luka Doncic"
-            },
-            {
-                "bookmaker": "ESPN BET",
-                "offered_odds_american": -115,
-                "fair_odds_american": 100,
-                "offered_point": 27.5,
-                "player": "Luka Doncic"
-            },
-            {
-                "bookmaker": "Hard Rock Bet",
-                "offered_odds_american": -125,
-                "fair_odds_american": -108,
-                "offered_point": 27.5,
-                "player": "Luka Doncic"
-            }
-        ]
-    },
-    {
-        "unique_key": "ba52e4b4cf9bc5b1e764c62579196887_PLAYER_REBOUNDS_Over_LeBron James_6.5",
-        "home_team": "Oklahoma City Thunder",
-        "away_team": "Los Angeles Lakers",
-        "sport": "NBA",
-        "market": "PLAYER_REBOUNDS",
-        "bookmaker": "DraftKings",
-        "outcome": "Over",
-        "sportsbook_american": 110,
-        "offered_point": 6.5,
-        "pinnacle_fair_american": 102,
-        "no_vig_american": 119,
-        "pinnacle_point": 6.5,
-        "fair_prob": 0.4959785522788205,
-        "ev": 0.04155495978552304,
-        "average_ev": -0.04217774860975243,
-        "kelly_dollar": 9.444309042164326,
-        "calc_method": "Pinnacle / Average",
-        "player": "LeBron James",
-        "odds_breakdown": [
-            {
-                "bookmaker": "FanDuel",
-                "offered_odds_american": -108,
-                "fair_odds_american": 106,
-                "offered_point": 6.5,
-                "player": "LeBron James"
-            },
-            {
-                "bookmaker": "DraftKings",
-                "offered_odds_american": 110,
-                "fair_odds_american": 123,
-                "offered_point": 6.5,
-                "player": "LeBron James"
-            },
-            {
-                "bookmaker": "ESPN BET",
-                "offered_odds_american": 105,
-                "fair_odds_american": 120,
-                "offered_point": 6.5,
-                "player": "LeBron James"
-            },
-            {
-                "bookmaker": "Hard Rock Bet",
-                "offered_odds_american": 110,
-                "fair_odds_american": 130,
-                "offered_point": 6.5,
-                "player": "LeBron James"
+                "bookmaker": "Caesars",
+                "offered_odds_american": 133,
+                "fair_odds_american": 151,
+                "offered_point": 2.5,
+                "player": "Luguentz Dort"
             }
         ]
     },
@@ -756,19 +647,19 @@
         "sportsbook_american": -125,
         "offered_point": 7.5,
         "pinnacle_fair_american": -128,
-        "no_vig_american": -118,
+        "no_vig_american": -117,
         "pinnacle_point": 7.5,
         "fair_prob": 0.5605263157894738,
         "ev": 0.008947368421052815,
-        "average_ev": -0.02452682346890539,
+        "average_ev": -0.028506861775523584,
         "kelly_dollar": 2.7960526315790046,
         "calc_method": "Pinnacle / Average",
         "player": "LeBron James",
         "odds_breakdown": [
             {
                 "bookmaker": "FanDuel",
-                "offered_odds_american": -139,
-                "fair_odds_american": -119,
+                "offered_odds_american": -135,
+                "fair_odds_american": -116,
                 "offered_point": 7.5,
                 "player": "LeBron James"
             },
@@ -792,6 +683,13 @@
                 "fair_odds_american": -123,
                 "offered_point": 7.5,
                 "player": "LeBron James"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -137,
+                "fair_odds_american": -116,
+                "offered_point": 7.5,
+                "player": "LeBron James"
             }
         ]
     },
@@ -810,7 +708,7 @@
         "pinnacle_point": 3.5,
         "fair_prob": 0.44063324538258575,
         "ev": 0.013456464379947186,
-        "average_ev": -0.005688399184524684,
+        "average_ev": -0.0032244594006701766,
         "kelly_dollar": 2.5877816115283054,
         "calc_method": "Pinnacle / Average",
         "player": "Isaiah Hartenstein",
@@ -842,6 +740,70 @@
                 "fair_odds_american": 127,
                 "offered_point": 3.5,
                 "player": "Isaiah Hartenstein"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": 112,
+                "fair_odds_american": 128,
+                "offered_point": 3.5,
+                "player": "Isaiah Hartenstein"
+            }
+        ]
+    },
+    {
+        "unique_key": "ba52e4b4cf9bc5b1e764c62579196887_PLAYER_REBOUNDS_Over_LeBron James_6.5",
+        "home_team": "Oklahoma City Thunder",
+        "away_team": "Los Angeles Lakers",
+        "sport": "NBA",
+        "market": "PLAYER_REBOUNDS",
+        "bookmaker": "DraftKings",
+        "outcome": "Over",
+        "sportsbook_american": 110,
+        "offered_point": 6.5,
+        "pinnacle_fair_american": 102,
+        "no_vig_american": 116,
+        "pinnacle_point": 6.5,
+        "fair_prob": 0.4959785522788205,
+        "ev": 0.04155495978552304,
+        "average_ev": -0.026623271273860882,
+        "kelly_dollar": 9.444309042164326,
+        "calc_method": "Pinnacle / Average",
+        "player": "LeBron James",
+        "odds_breakdown": [
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": -122,
+                "fair_odds_american": -106,
+                "offered_point": 6.5,
+                "player": "LeBron James"
+            },
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": 110,
+                "fair_odds_american": 123,
+                "offered_point": 6.5,
+                "player": "LeBron James"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": 105,
+                "fair_odds_american": 120,
+                "offered_point": 6.5,
+                "player": "LeBron James"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": 110,
+                "fair_odds_american": 130,
+                "offered_point": 6.5,
+                "player": "LeBron James"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": 100,
+                "fair_odds_american": 116,
+                "offered_point": 6.5,
+                "player": "LeBron James"
             }
         ]
     },
@@ -879,6 +841,120 @@
         ]
     },
     {
+        "unique_key": "860812e24aec436b9e87056071b17c4c_PLAYER_POINTS_Under_Jaylen Brown_20.5",
+        "home_team": "Boston Celtics",
+        "away_team": "Washington Wizards",
+        "sport": "NBA",
+        "market": "PLAYER_POINTS",
+        "bookmaker": "DraftKings",
+        "outcome": "Under",
+        "sportsbook_american": -115,
+        "offered_point": 20.5,
+        "pinnacle_fair_american": -122,
+        "no_vig_american": -105,
+        "pinnacle_point": 20.5,
+        "fair_prob": 0.5490716180371352,
+        "ev": 0.026763925729442917,
+        "average_ev": -0.04351978436657672,
+        "kelly_dollar": 7.690783255587045,
+        "calc_method": "Pinnacle / Average",
+        "player": "Jaylen Brown",
+        "odds_breakdown": [
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": -115,
+                "fair_odds_american": 100,
+                "offered_point": 20.5,
+                "player": "Jaylen Brown"
+            },
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": -120,
+                "fair_odds_american": -104,
+                "offered_point": 20.5,
+                "player": "Jaylen Brown"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": -125,
+                "fair_odds_american": -108,
+                "offered_point": 20.5,
+                "player": "Jaylen Brown"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": -125,
+                "fair_odds_american": -108,
+                "offered_point": 20.5,
+                "player": "Jaylen Brown"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -120,
+                "fair_odds_american": -103,
+                "offered_point": 20.5,
+                "player": "Jaylen Brown"
+            }
+        ]
+    },
+    {
+        "unique_key": "860812e24aec436b9e87056071b17c4c_PLAYER_POINTS_Over_Jordan Poole_15.5",
+        "home_team": "Boston Celtics",
+        "away_team": "Washington Wizards",
+        "sport": "NBA",
+        "market": "PLAYER_POINTS",
+        "bookmaker": "DraftKings",
+        "outcome": "Over",
+        "sportsbook_american": -120,
+        "offered_point": 15.5,
+        "pinnacle_fair_american": -126,
+        "no_vig_american": -108,
+        "pinnacle_point": 15.5,
+        "fair_prob": 0.5567282321899736,
+        "ev": 0.01881266490765171,
+        "average_ev": -0.049767107124374654,
+        "kelly_dollar": 5.6664653336300335,
+        "calc_method": "Pinnacle / Average",
+        "player": "Jordan Poole",
+        "odds_breakdown": [
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": -120,
+                "fair_odds_american": -104,
+                "offered_point": 15.5,
+                "player": "Jordan Poole"
+            },
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": -128,
+                "fair_odds_american": -110,
+                "offered_point": 15.5,
+                "player": "Jordan Poole"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": -125,
+                "fair_odds_american": -108,
+                "offered_point": 15.5,
+                "player": "Jordan Poole"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": -125,
+                "fair_odds_american": -108,
+                "offered_point": 15.5,
+                "player": "Jordan Poole"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -128,
+                "fair_odds_american": -109,
+                "offered_point": 15.5,
+                "player": "Jordan Poole"
+            }
+        ]
+    },
+    {
         "unique_key": "860812e24aec436b9e87056071b17c4c_PLAYER_REBOUNDS_Under_Jayson Tatum_8.5",
         "home_team": "Boston Celtics",
         "away_team": "Washington Wizards",
@@ -889,11 +965,11 @@
         "sportsbook_american": 100,
         "offered_point": 8.5,
         "pinnacle_fair_american": -107,
-        "no_vig_american": 103,
+        "no_vig_american": 101,
         "pinnacle_point": 8.5,
         "fair_prob": 0.5160427807486632,
         "ev": 0.03208556149732633,
-        "average_ev": -0.01401198189464109,
+        "average_ev": -0.00663897619671644,
         "kelly_dollar": 8.021390374331583,
         "calc_method": "Pinnacle / Average",
         "player": "Jayson Tatum",
@@ -907,8 +983,8 @@
             },
             {
                 "bookmaker": "FanDuel",
-                "offered_odds_american": -130,
-                "fair_odds_american": -112,
+                "offered_odds_american": -147,
+                "fair_odds_american": -125,
                 "offered_point": 8.5,
                 "player": "Jayson Tatum"
             },
@@ -925,6 +1001,13 @@
                 "fair_odds_american": 104,
                 "offered_point": 8.5,
                 "player": "Jayson Tatum"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -109,
+                "fair_odds_american": 107,
+                "offered_point": 8.5,
+                "player": "Jayson Tatum"
             }
         ]
     },
@@ -939,11 +1022,11 @@
         "sportsbook_american": 110,
         "offered_point": 6.5,
         "pinnacle_fair_american": 106,
-        "no_vig_american": 111,
+        "no_vig_american": 112,
         "pinnacle_point": 6.5,
         "fair_prob": 0.48533333333333345,
         "ev": 0.019200000000000217,
-        "average_ev": -0.00703973633171584,
+        "average_ev": -0.010832861451431808,
         "kelly_dollar": 4.363636363636412,
         "calc_method": "Pinnacle / Average",
         "player": "Kristaps Porzingis",
@@ -973,6 +1056,13 @@
                 "bookmaker": "ESPN BET",
                 "offered_odds_american": -110,
                 "fair_odds_american": 104,
+                "offered_point": 6.5,
+                "player": "Kristaps Porzingis"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": 100,
+                "fair_odds_american": 116,
                 "offered_point": 6.5,
                 "player": "Kristaps Porzingis"
             }
@@ -1039,11 +1129,11 @@
         "sportsbook_american": 100,
         "offered_point": 3.5,
         "pinnacle_fair_american": -104,
-        "no_vig_american": -103,
+        "no_vig_american": -101,
         "pinnacle_point": 3.5,
         "fair_prob": 0.5106951871657753,
         "ev": 0.021390374331550666,
-        "average_ev": 0.013481017840135223,
+        "average_ev": 0.004395779461074278,
         "kelly_dollar": 5.347593582887667,
         "calc_method": "Pinnacle / Average",
         "player": "Derrick White",
@@ -1057,8 +1147,8 @@
             },
             {
                 "bookmaker": "FanDuel",
-                "offered_odds_american": -135,
-                "fair_odds_american": -116,
+                "offered_odds_american": -130,
+                "fair_odds_american": -112,
                 "offered_point": 3.5,
                 "player": "Derrick White"
             },
@@ -1075,106 +1165,162 @@
                 "fair_odds_american": -104,
                 "offered_point": 3.5,
                 "player": "Derrick White"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -114,
+                "fair_odds_american": 103,
+                "offered_point": 3.5,
+                "player": "Derrick White"
             }
         ]
     },
     {
-        "unique_key": "860812e24aec436b9e87056071b17c4c_PLAYER_POINTS_Under_Jaylen Brown_20.5",
+        "unique_key": "860812e24aec436b9e87056071b17c4c_PLAYER_ASSISTS_Over_Derrick White_5.5",
         "home_team": "Boston Celtics",
         "away_team": "Washington Wizards",
         "sport": "NBA",
-        "market": "PLAYER_POINTS",
-        "bookmaker": "DraftKings",
-        "outcome": "Under",
-        "sportsbook_american": -115,
-        "offered_point": 20.5,
-        "pinnacle_fair_american": -122,
-        "no_vig_american": -105,
-        "pinnacle_point": 20.5,
-        "fair_prob": 0.5490716180371352,
-        "ev": 0.026763925729442917,
-        "average_ev": -0.043799999999999895,
-        "kelly_dollar": 7.690783255587045,
+        "market": "PLAYER_ASSISTS",
+        "bookmaker": "FanDuel",
+        "outcome": "Over",
+        "sportsbook_american": 108,
+        "offered_point": 5.5,
+        "pinnacle_fair_american": -106,
+        "no_vig_american": 116,
+        "pinnacle_point": 5.5,
+        "fair_prob": 0.5155440414507771,
+        "ev": 0.07233160621761647,
+        "average_ev": -0.035327333759232804,
+        "kelly_dollar": 16.743427365189,
         "calc_method": "Pinnacle / Average",
-        "player": "Jaylen Brown",
+        "player": "Derrick White",
         "odds_breakdown": [
             {
                 "bookmaker": "DraftKings",
+                "offered_odds_american": -120,
+                "fair_odds_american": -104,
+                "offered_point": 5.5,
+                "player": "Derrick White"
+            },
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": 124,
+                "fair_odds_american": 138,
+                "offered_point": 5.5,
+                "player": "Derrick White"
+            },
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": 108,
+                "fair_odds_american": 123,
+                "offered_point": 5.5,
+                "player": "Derrick White"
+            },
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": 128,
+                "fair_odds_american": 144,
+                "offered_point": 5.5,
+                "player": "Derrick White"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": -135,
+                "fair_odds_american": -112,
+                "offered_point": 5.5,
+                "player": "Derrick White"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": 105,
+                "fair_odds_american": 123,
+                "offered_point": 5.5,
+                "player": "Derrick White"
+            },
+            {
+                "bookmaker": "ESPN BET",
                 "offered_odds_american": -115,
                 "fair_odds_american": 100,
-                "offered_point": 20.5,
-                "player": "Jaylen Brown"
-            },
-            {
-                "bookmaker": "FanDuel",
-                "offered_odds_american": -118,
-                "fair_odds_american": -102,
-                "offered_point": 20.5,
-                "player": "Jaylen Brown"
-            },
-            {
-                "bookmaker": "Hard Rock Bet",
-                "offered_odds_american": -125,
-                "fair_odds_american": -108,
-                "offered_point": 20.5,
-                "player": "Jaylen Brown"
+                "offered_point": 5.5,
+                "player": "Derrick White"
             },
             {
                 "bookmaker": "ESPN BET",
-                "offered_odds_american": -125,
-                "fair_odds_american": -108,
-                "offered_point": 20.5,
-                "player": "Jaylen Brown"
+                "offered_odds_american": 115,
+                "fair_odds_american": 129,
+                "offered_point": 5.5,
+                "player": "Derrick White"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -120,
+                "fair_odds_american": -103,
+                "offered_point": 5.5,
+                "player": "Derrick White"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": 116,
+                "fair_odds_american": 133,
+                "offered_point": 5.5,
+                "player": "Derrick White"
             }
         ]
     },
     {
-        "unique_key": "860812e24aec436b9e87056071b17c4c_PLAYER_POINTS_Over_Jordan Poole_15.5",
+        "unique_key": "860812e24aec436b9e87056071b17c4c_PLAYER_REBOUNDS_Over_Jayson Tatum_8.5",
         "home_team": "Boston Celtics",
         "away_team": "Washington Wizards",
         "sport": "NBA",
-        "market": "PLAYER_POINTS",
-        "bookmaker": "DraftKings",
+        "market": "PLAYER_REBOUNDS",
+        "bookmaker": "FanDuel",
         "outcome": "Over",
-        "sportsbook_american": -120,
-        "offered_point": 15.5,
-        "pinnacle_fair_american": -126,
-        "no_vig_american": -108,
-        "pinnacle_point": 15.5,
-        "fair_prob": 0.5567282321899736,
-        "ev": 0.01881266490765171,
-        "average_ev": -0.05079759358288771,
-        "kelly_dollar": 5.6664653336300335,
+        "sportsbook_american": 110,
+        "offered_point": 8.5,
+        "pinnacle_fair_american": 107,
+        "no_vig_american": -101,
+        "pinnacle_point": 8.5,
+        "fair_prob": 0.48395721925133695,
+        "ev": 0.01631016042780764,
+        "average_ev": 0.05697092500655232,
+        "kelly_dollar": 3.7068546426835542,
         "calc_method": "Pinnacle / Average",
-        "player": "Jordan Poole",
+        "player": "Jayson Tatum",
         "odds_breakdown": [
             {
                 "bookmaker": "DraftKings",
-                "offered_odds_american": -120,
-                "fair_odds_american": -104,
-                "offered_point": 15.5,
-                "player": "Jordan Poole"
+                "offered_odds_american": -130,
+                "fair_odds_american": -113,
+                "offered_point": 8.5,
+                "player": "Jayson Tatum"
             },
             {
                 "bookmaker": "FanDuel",
-                "offered_odds_american": -128,
-                "fair_odds_american": -110,
-                "offered_point": 15.5,
-                "player": "Jordan Poole"
+                "offered_odds_american": 110,
+                "fair_odds_american": 125,
+                "offered_point": 8.5,
+                "player": "Jayson Tatum"
             },
             {
                 "bookmaker": "Hard Rock Bet",
                 "offered_odds_american": -125,
-                "fair_odds_american": -108,
-                "offered_point": 15.5,
-                "player": "Jordan Poole"
+                "fair_odds_american": -106,
+                "offered_point": 8.5,
+                "player": "Jayson Tatum"
             },
             {
                 "bookmaker": "ESPN BET",
+                "offered_odds_american": -120,
+                "fair_odds_american": -104,
+                "offered_point": 8.5,
+                "player": "Jayson Tatum"
+            },
+            {
+                "bookmaker": "Caesars",
                 "offered_odds_american": -125,
-                "fair_odds_american": -108,
-                "offered_point": 15.5,
-                "player": "Jordan Poole"
+                "fair_odds_american": -107,
+                "offered_point": 8.5,
+                "player": "Jayson Tatum"
             }
         ]
     },
@@ -1189,11 +1335,11 @@
         "sportsbook_american": -200,
         "offered_point": 1.5,
         "pinnacle_fair_american": -204,
-        "no_vig_american": -182,
+        "no_vig_american": -181,
         "pinnacle_point": 1.5,
         "fair_prob": 0.6713947990543735,
         "ev": 0.007092198581560238,
-        "average_ev": -0.03174604594335212,
+        "average_ev": -0.03362109281952402,
         "kelly_dollar": 3.546099290780119,
         "calc_method": "Pinnacle / Average",
         "player": "Justin Champagnie",
@@ -1201,7 +1347,7 @@
             {
                 "bookmaker": "FanDuel",
                 "offered_odds_american": -200,
-                "fair_odds_american": -168,
+                "fair_odds_american": -165,
                 "offered_point": 1.5,
                 "player": "Justin Champagnie"
             },
@@ -1218,6 +1364,113 @@
                 "fair_odds_american": -187,
                 "offered_point": 1.5,
                 "player": "Justin Champagnie"
+            }
+        ]
+    },
+    {
+        "unique_key": "ef4f52957cad1e367474d3a1493c774b_PLAYER_POINTS_Over_Zach LaVine_18.5",
+        "home_team": "Cleveland Cavaliers",
+        "away_team": "Sacramento Kings",
+        "sport": "NBA",
+        "market": "PLAYER_POINTS",
+        "bookmaker": "DraftKings",
+        "outcome": "Over",
+        "sportsbook_american": -110,
+        "offered_point": 18.5,
+        "pinnacle_fair_american": -120,
+        "no_vig_american": -105,
+        "pinnacle_point": 18.5,
+        "fair_prob": 0.5464190981432361,
+        "ev": 0.04366047745358087,
+        "average_ev": -0.020738134667356745,
+        "kelly_dollar": 11.994636663071669,
+        "calc_method": "Pinnacle / Average",
+        "player": "Zach LaVine",
+        "odds_breakdown": [
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": -110,
+                "fair_odds_american": 104,
+                "offered_point": 18.5,
+                "player": "Zach LaVine"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": -125,
+                "fair_odds_american": -108,
+                "offered_point": 18.5,
+                "player": "Zach LaVine"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": -125,
+                "fair_odds_american": -108,
+                "offered_point": 18.5,
+                "player": "Zach LaVine"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -128,
+                "fair_odds_american": -109,
+                "offered_point": 18.5,
+                "player": "Zach LaVine"
+            }
+        ]
+    },
+    {
+        "unique_key": "ef4f52957cad1e367474d3a1493c774b_PLAYER_THREES_Over_Darius Garland_2.5",
+        "home_team": "Cleveland Cavaliers",
+        "away_team": "Sacramento Kings",
+        "sport": "NBA",
+        "market": "PLAYER_THREES",
+        "bookmaker": "DraftKings",
+        "outcome": "Over",
+        "sportsbook_american": -105,
+        "offered_point": 2.5,
+        "pinnacle_fair_american": -109,
+        "no_vig_american": -101,
+        "pinnacle_point": 2.5,
+        "fair_prob": 0.5226666666666666,
+        "ev": 0.019199999999999884,
+        "average_ev": -0.021752644733782966,
+        "kelly_dollar": 5.052631578947338,
+        "calc_method": "Pinnacle / Average",
+        "player": "Darius Garland",
+        "odds_breakdown": [
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": -105,
+                "fair_odds_american": 108,
+                "offered_point": 2.5,
+                "player": "Darius Garland"
+            },
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": -110,
+                "fair_odds_american": 104,
+                "offered_point": 2.5,
+                "player": "Darius Garland"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": -130,
+                "fair_odds_american": -108,
+                "offered_point": 2.5,
+                "player": "Darius Garland"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": -125,
+                "fair_odds_american": -108,
+                "offered_point": 2.5,
+                "player": "Darius Garland"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -118,
+                "fair_odds_american": 100,
+                "offered_point": 2.5,
+                "player": "Darius Garland"
             }
         ]
     },
@@ -1309,16 +1562,23 @@
         "outcome": "Under",
         "sportsbook_american": 118,
         "offered_point": 4.5,
-        "pinnacle_fair_american": 111,
-        "no_vig_american": 132,
+        "pinnacle_fair_american": 114,
+        "no_vig_american": 129,
         "pinnacle_point": 4.5,
-        "fair_prob": 0.47340425531914887,
-        "ev": 0.03202127659574461,
-        "average_ev": -0.05918283547357561,
-        "kelly_dollar": 6.784168770284873,
+        "fair_prob": 0.4680851063829787,
+        "ev": 0.020425531914893602,
+        "average_ev": -0.04978082739258316,
+        "kelly_dollar": 4.327443202307966,
         "calc_method": "Pinnacle / Average",
         "player": "DeMar DeRozan",
         "odds_breakdown": [
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": 110,
+                "fair_odds_american": 123,
+                "offered_point": 4.5,
+                "player": "DeMar DeRozan"
+            },
             {
                 "bookmaker": "FanDuel",
                 "offered_odds_american": 118,
@@ -1352,13 +1612,13 @@
         "outcome": "Under",
         "sportsbook_american": 110,
         "offered_point": 6.5,
-        "pinnacle_fair_american": 104,
-        "no_vig_american": 101,
+        "pinnacle_fair_american": 105,
+        "no_vig_american": 111,
         "pinnacle_point": 6.5,
-        "fair_prob": 0.48930481283422456,
-        "ev": 0.02754010695187159,
-        "average_ev": 0.04229815862608299,
-        "kelly_dollar": 6.259115216334452,
+        "fair_prob": 0.4880000000000001,
+        "ev": 0.024800000000000266,
+        "average_ev": -0.0030512692237327776,
+        "kelly_dollar": 5.636363636363696,
         "calc_method": "Pinnacle / Average",
         "player": "Darius Garland",
         "odds_breakdown": [
@@ -1378,110 +1638,53 @@
             },
             {
                 "bookmaker": "ESPN BET",
-                "offered_odds_american": -145,
-                "fair_odds_american": -124,
+                "offered_odds_american": -110,
+                "fair_odds_american": 104,
                 "offered_point": 6.5,
                 "player": "Darius Garland"
             }
         ]
     },
     {
-        "unique_key": "ef4f52957cad1e367474d3a1493c774b_PLAYER_THREES_Over_Keegan Murray_2.5",
+        "unique_key": "ef4f52957cad1e367474d3a1493c774b_PLAYER_POINTS_REBOUNDS_ASSISTS_Over_Zach LaVine_26.5",
         "home_team": "Cleveland Cavaliers",
         "away_team": "Sacramento Kings",
         "sport": "NBA",
-        "market": "PLAYER_THREES",
+        "market": "PLAYER_POINTS_REBOUNDS_ASSISTS",
         "bookmaker": "FanDuel",
         "outcome": "Over",
-        "sportsbook_american": 120,
-        "offered_point": 2.5,
-        "pinnacle_fair_american": 107,
-        "no_vig_american": 111,
-        "pinnacle_point": 2.5,
-        "fair_prob": 0.48395721925133695,
-        "ev": 0.06470588235294139,
-        "average_ev": 0.04421008154323669,
-        "kelly_dollar": 13.480392156862788,
+        "sportsbook_american": -122,
+        "offered_point": 26.5,
+        "pinnacle_fair_american": -126,
+        "no_vig_american": -105,
+        "pinnacle_point": 26.5,
+        "fair_prob": 0.5567282321899736,
+        "ev": 0.013245382585751975,
+        "average_ev": -0.06812539512774823,
+        "kelly_dollar": 4.038226398095114,
         "calc_method": "Pinnacle / Average",
-        "player": "Keegan Murray",
+        "player": "Zach LaVine",
         "odds_breakdown": [
             {
-                "bookmaker": "DraftKings",
-                "offered_odds_american": -115,
-                "fair_odds_american": 100,
-                "offered_point": 2.5,
-                "player": "Keegan Murray"
-            },
-            {
                 "bookmaker": "FanDuel",
-                "offered_odds_american": 120,
-                "fair_odds_american": 136,
-                "offered_point": 2.5,
-                "player": "Keegan Murray"
+                "offered_odds_american": -122,
+                "fair_odds_american": -106,
+                "offered_point": 26.5,
+                "player": "Zach LaVine"
             },
             {
                 "bookmaker": "Hard Rock Bet",
-                "offered_odds_american": -110,
-                "fair_odds_american": 106,
-                "offered_point": 2.5,
-                "player": "Keegan Murray"
+                "offered_odds_american": -120,
+                "fair_odds_american": -104,
+                "offered_point": 26.5,
+                "player": "Zach LaVine"
             },
             {
                 "bookmaker": "ESPN BET",
-                "offered_odds_american": -110,
-                "fair_odds_american": 104,
-                "offered_point": 2.5,
-                "player": "Keegan Murray"
-            }
-        ]
-    },
-    {
-        "unique_key": "ef4f52957cad1e367474d3a1493c774b_PLAYER_THREES_Over_DeMar DeRozan_1.5",
-        "home_team": "Cleveland Cavaliers",
-        "away_team": "Sacramento Kings",
-        "sport": "NBA",
-        "market": "PLAYER_THREES",
-        "bookmaker": "FanDuel",
-        "outcome": "Over",
-        "sportsbook_american": 162,
-        "offered_point": 1.5,
-        "pinnacle_fair_american": 155,
-        "no_vig_american": 159,
-        "pinnacle_point": 1.5,
-        "fair_prob": 0.39185750636132316,
-        "ev": 0.026666666666666727,
-        "average_ev": 0.012547608339271044,
-        "kelly_dollar": 4.1152263374485685,
-        "calc_method": "Pinnacle / Average",
-        "player": "DeMar DeRozan",
-        "odds_breakdown": [
-            {
-                "bookmaker": "DraftKings",
-                "offered_odds_american": 145,
-                "fair_odds_american": 160,
-                "offered_point": 1.5,
-                "player": "DeMar DeRozan"
-            },
-            {
-                "bookmaker": "FanDuel",
-                "offered_odds_american": 162,
-                "fair_odds_american": 181,
-                "offered_point": 1.5,
-                "player": "DeMar DeRozan"
-            },
-            {
-                "bookmaker": "Hard Rock Bet",
-                "offered_odds_american": 130,
-                "fair_odds_american": 149,
-                "offered_point": 1.5,
-                "player": "DeMar DeRozan"
-            },
-            {
-                "bookmaker": "ESPN BET",
-                "offered_odds_american": 130,
-                "fair_odds_american": 147,
-                "offered_point": 1.5,
-                "player": "DeMar DeRozan"
+                "offered_odds_american": -120,
+                "fair_odds_american": -104,
+                "offered_point": 26.5,
+                "player": "Zach LaVine"
             }
         ]
     },
@@ -1522,6 +1725,284 @@
         ]
     },
     {
+        "unique_key": "ef4f52957cad1e367474d3a1493c774b_PLAYER_REBOUNDS_Under_Keegan Murray_5.5",
+        "home_team": "Cleveland Cavaliers",
+        "away_team": "Sacramento Kings",
+        "sport": "NBA",
+        "market": "PLAYER_REBOUNDS",
+        "bookmaker": "FanDuel",
+        "outcome": "Under",
+        "sportsbook_american": -112,
+        "offered_point": 5.5,
+        "pinnacle_fair_american": -124,
+        "no_vig_american": -112,
+        "pinnacle_point": 5.5,
+        "fair_prob": 0.5529100529100528,
+        "ev": 0.04499999999999971,
+        "average_ev": 0.0004359142109455205,
+        "kelly_dollar": 12.640449438202166,
+        "calc_method": "Pinnacle / Average",
+        "player": "Keegan Murray",
+        "odds_breakdown": [
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": -112,
+                "fair_odds_american": 102,
+                "offered_point": 5.5,
+                "player": "Keegan Murray"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": -145,
+                "fair_odds_american": -121,
+                "offered_point": 5.5,
+                "player": "Keegan Murray"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": -141,
+                "fair_odds_american": -120,
+                "offered_point": 5.5,
+                "player": "Keegan Murray"
+            }
+        ]
+    },
+    {
+        "unique_key": "ef4f52957cad1e367474d3a1493c774b_PLAYER_THREES_Over_Keegan Murray_2.5",
+        "home_team": "Cleveland Cavaliers",
+        "away_team": "Sacramento Kings",
+        "sport": "NBA",
+        "market": "PLAYER_THREES",
+        "bookmaker": "FanDuel",
+        "outcome": "Over",
+        "sportsbook_american": 122,
+        "offered_point": 2.5,
+        "pinnacle_fair_american": 107,
+        "no_vig_american": 111,
+        "pinnacle_point": 2.5,
+        "fair_prob": 0.48395721925133695,
+        "ev": 0.0743850267379681,
+        "average_ev": 0.05210971290917754,
+        "kelly_dollar": 15.24283334794428,
+        "calc_method": "Pinnacle / Average",
+        "player": "Keegan Murray",
+        "odds_breakdown": [
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": -105,
+                "fair_odds_american": 108,
+                "offered_point": 2.5,
+                "player": "Keegan Murray"
+            },
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": 122,
+                "fair_odds_american": 137,
+                "offered_point": 2.5,
+                "player": "Keegan Murray"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": -110,
+                "fair_odds_american": 106,
+                "offered_point": 2.5,
+                "player": "Keegan Murray"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": -110,
+                "fair_odds_american": 104,
+                "offered_point": 2.5,
+                "player": "Keegan Murray"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -114,
+                "fair_odds_american": 103,
+                "offered_point": 2.5,
+                "player": "Keegan Murray"
+            }
+        ]
+    },
+    {
+        "unique_key": "ef4f52957cad1e367474d3a1493c774b_PLAYER_THREES_Over_Donovan Mitchell_3.5",
+        "home_team": "Cleveland Cavaliers",
+        "away_team": "Sacramento Kings",
+        "sport": "NBA",
+        "market": "PLAYER_THREES",
+        "bookmaker": "FanDuel",
+        "outcome": "Over",
+        "sportsbook_american": 140,
+        "offered_point": 3.5,
+        "pinnacle_fair_american": 122,
+        "no_vig_american": 129,
+        "pinnacle_point": 3.5,
+        "fair_prob": 0.4497354497354497,
+        "ev": 0.0793650793650793,
+        "average_ev": 0.04833614875600167,
+        "kelly_dollar": 14.17233560090702,
+        "calc_method": "Pinnacle / Average",
+        "player": "Donovan Mitchell",
+        "odds_breakdown": [
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": 114,
+                "fair_odds_american": 127,
+                "offered_point": 3.5,
+                "player": "Donovan Mitchell"
+            },
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": 140,
+                "fair_odds_american": 157,
+                "offered_point": 3.5,
+                "player": "Donovan Mitchell"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": 105,
+                "fair_odds_american": 121,
+                "offered_point": 3.5,
+                "player": "Donovan Mitchell"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": 105,
+                "fair_odds_american": 120,
+                "offered_point": 3.5,
+                "player": "Donovan Mitchell"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": 108,
+                "fair_odds_american": 124,
+                "offered_point": 3.5,
+                "player": "Donovan Mitchell"
+            }
+        ]
+    },
+    {
+        "unique_key": "ef4f52957cad1e367474d3a1493c774b_PLAYER_THREES_Under_Keon Ellis_1.5",
+        "home_team": "Cleveland Cavaliers",
+        "away_team": "Sacramento Kings",
+        "sport": "NBA",
+        "market": "PLAYER_THREES",
+        "bookmaker": "FanDuel",
+        "outcome": "Under",
+        "sportsbook_american": 100,
+        "offered_point": 1.5,
+        "pinnacle_fair_american": -101,
+        "no_vig_american": 108,
+        "pinnacle_point": 1.5,
+        "fair_prob": 0.5026737967914439,
+        "ev": 0.005347593582887722,
+        "average_ev": -0.03748232940387197,
+        "kelly_dollar": 1.3368983957219305,
+        "calc_method": "Pinnacle / Average",
+        "player": "Keon Ellis",
+        "odds_breakdown": [
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": -115,
+                "fair_odds_american": 100,
+                "offered_point": 1.5,
+                "player": "Keon Ellis"
+            },
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": 100,
+                "fair_odds_american": 114,
+                "offered_point": 1.5,
+                "player": "Keon Ellis"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": -120,
+                "fair_odds_american": -102,
+                "offered_point": 1.5,
+                "player": "Keon Ellis"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": 125,
+                "fair_odds_american": 142,
+                "offered_point": 1.5,
+                "player": "Keon Ellis"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": -115,
+                "fair_odds_american": 100,
+                "offered_point": 1.5,
+                "player": "Keon Ellis"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -118,
+                "fair_odds_american": 100,
+                "offered_point": 1.5,
+                "player": "Keon Ellis"
+            }
+        ]
+    },
+    {
+        "unique_key": "ef4f52957cad1e367474d3a1493c774b_PLAYER_THREES_Over_DeMar DeRozan_1.5",
+        "home_team": "Cleveland Cavaliers",
+        "away_team": "Sacramento Kings",
+        "sport": "NBA",
+        "market": "PLAYER_THREES",
+        "bookmaker": "FanDuel",
+        "outcome": "Over",
+        "sportsbook_american": 162,
+        "offered_point": 1.5,
+        "pinnacle_fair_american": 158,
+        "no_vig_american": 156,
+        "pinnacle_point": 1.5,
+        "fair_prob": 0.3883248730964467,
+        "ev": 0.01741116751269034,
+        "average_ev": 0.022722476455491192,
+        "kelly_dollar": 2.6869085667732002,
+        "calc_method": "Pinnacle / Average",
+        "player": "DeMar DeRozan",
+        "odds_breakdown": [
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": 140,
+                "fair_odds_american": 154,
+                "offered_point": 1.5,
+                "player": "DeMar DeRozan"
+            },
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": 162,
+                "fair_odds_american": 181,
+                "offered_point": 1.5,
+                "player": "DeMar DeRozan"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": 130,
+                "fair_odds_american": 150,
+                "offered_point": 1.5,
+                "player": "DeMar DeRozan"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": 130,
+                "fair_odds_american": 147,
+                "offered_point": 1.5,
+                "player": "DeMar DeRozan"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": 133,
+                "fair_odds_american": 151,
+                "offered_point": 1.5,
+                "player": "DeMar DeRozan"
+            }
+        ]
+    },
+    {
         "unique_key": "c5f31c84b42ec3ca5f5a26ccbd408420_PLAYER_ASSISTS_Under_Chris Paul_6.5",
         "home_team": "Portland Trail Blazers",
         "away_team": "San Antonio Spurs",
@@ -1532,11 +2013,11 @@
         "sportsbook_american": 110,
         "offered_point": 6.5,
         "pinnacle_fair_american": 107,
-        "no_vig_american": 110,
+        "no_vig_american": 111,
         "pinnacle_point": 6.5,
         "fair_prob": 0.48395721925133695,
         "ev": 0.01631016042780764,
-        "average_ev": -0.0001639784146516554,
+        "average_ev": -0.0025505375704311106,
         "kelly_dollar": 3.7068546426835542,
         "calc_method": "Pinnacle / Average",
         "player": "Chris Paul",
@@ -1566,6 +2047,13 @@
                 "bookmaker": "Hard Rock Bet",
                 "offered_odds_american": -110,
                 "fair_odds_american": 108,
+                "offered_point": 6.5,
+                "player": "Chris Paul"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -103,
+                "fair_odds_american": 113,
                 "offered_point": 6.5,
                 "player": "Chris Paul"
             }
@@ -1622,99 +2110,6 @@
         ]
     },
     {
-        "unique_key": "c5f31c84b42ec3ca5f5a26ccbd408420_PLAYER_ASSISTS_Over_Deni Avdija_5.5",
-        "home_team": "Portland Trail Blazers",
-        "away_team": "San Antonio Spurs",
-        "sport": "NBA",
-        "market": "PLAYER_ASSISTS",
-        "bookmaker": "FanDuel",
-        "outcome": "Over",
-        "sportsbook_american": -132,
-        "offered_point": 5.5,
-        "pinnacle_fair_american": -134,
-        "no_vig_american": -125,
-        "pinnacle_point": 5.5,
-        "fair_prob": 0.5732984293193717,
-        "ev": 0.009005235602094208,
-        "average_ev": -0.02318011438407236,
-        "kelly_dollar": 2.962248553320463,
-        "calc_method": "Pinnacle / Average",
-        "player": "Deni Avdija",
-        "odds_breakdown": [
-            {
-                "bookmaker": "FanDuel",
-                "offered_odds_american": -132,
-                "fair_odds_american": -114,
-                "offered_point": 5.5,
-                "player": "Deni Avdija"
-            },
-            {
-                "bookmaker": "ESPN BET",
-                "offered_odds_american": -149,
-                "fair_odds_american": -129,
-                "offered_point": 5.5,
-                "player": "Deni Avdija"
-            },
-            {
-                "bookmaker": "Hard Rock Bet",
-                "offered_odds_american": -161,
-                "fair_odds_american": -133,
-                "offered_point": 5.5,
-                "player": "Deni Avdija"
-            }
-        ]
-    },
-    {
-        "unique_key": "c5f31c84b42ec3ca5f5a26ccbd408420_PLAYER_ASSISTS_Over_Anfernee Simons_5.5",
-        "home_team": "Portland Trail Blazers",
-        "away_team": "San Antonio Spurs",
-        "sport": "NBA",
-        "market": "PLAYER_ASSISTS",
-        "bookmaker": "FanDuel",
-        "outcome": "Over",
-        "sportsbook_american": 130,
-        "offered_point": 5.5,
-        "pinnacle_fair_american": 127,
-        "no_vig_american": 127,
-        "pinnacle_point": 5.5,
-        "fair_prob": 0.44063324538258575,
-        "ev": 0.013456464379947186,
-        "average_ev": 0.011783040032215641,
-        "kelly_dollar": 2.5877816115283054,
-        "calc_method": "Pinnacle / Average",
-        "player": "Anfernee Simons",
-        "odds_breakdown": [
-            {
-                "bookmaker": "DraftKings",
-                "offered_odds_american": 105,
-                "fair_odds_american": 118,
-                "offered_point": 5.5,
-                "player": "Anfernee Simons"
-            },
-            {
-                "bookmaker": "FanDuel",
-                "offered_odds_american": 130,
-                "fair_odds_american": 146,
-                "offered_point": 5.5,
-                "player": "Anfernee Simons"
-            },
-            {
-                "bookmaker": "ESPN BET",
-                "offered_odds_american": 110,
-                "fair_odds_american": 124,
-                "offered_point": 5.5,
-                "player": "Anfernee Simons"
-            },
-            {
-                "bookmaker": "Hard Rock Bet",
-                "offered_odds_american": 105,
-                "fair_odds_american": 123,
-                "offered_point": 5.5,
-                "player": "Anfernee Simons"
-            }
-        ]
-    },
-    {
         "unique_key": "c5f31c84b42ec3ca5f5a26ccbd408420_PLAYER_POINTS_Over_Harrison Barnes_13.5",
         "home_team": "Portland Trail Blazers",
         "away_team": "San Antonio Spurs",
@@ -1725,11 +2120,11 @@
         "sportsbook_american": 100,
         "offered_point": 13.5,
         "pinnacle_fair_american": -102,
-        "no_vig_american": 104,
+        "no_vig_american": 103,
         "pinnacle_point": 13.5,
         "fair_prob": 0.5040214477211796,
         "ev": 0.008042895442359255,
-        "average_ev": -0.021305040391398355,
+        "average_ev": -0.014348614523361336,
         "kelly_dollar": 2.0107238605898137,
         "calc_method": "Pinnacle / Average",
         "player": "Harrison Barnes",
@@ -1761,6 +2156,13 @@
                 "fair_odds_american": 100,
                 "offered_point": 13.5,
                 "player": "Harrison Barnes"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -120,
+                "fair_odds_american": -103,
+                "offered_point": 13.5,
+                "player": "Harrison Barnes"
             }
         ]
     },
@@ -1775,11 +2177,11 @@
         "sportsbook_american": -104,
         "offered_point": 18.5,
         "pinnacle_fair_american": -113,
-        "no_vig_american": -103,
+        "no_vig_american": -102,
         "pinnacle_point": 18.5,
         "fair_prob": 0.5306666666666666,
         "ev": 0.04010666666666651,
-        "average_ev": -0.007044494248145405,
+        "average_ev": -0.009635595398516328,
         "kelly_dollar": 10.444444444444406,
         "calc_method": "Pinnacle / Average",
         "player": "Chris Paul",
@@ -1811,56 +2213,70 @@
                 "fair_odds_american": -113,
                 "offered_point": 18.5,
                 "player": "Chris Paul"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -118,
+                "fair_odds_american": 100,
+                "offered_point": 18.5,
+                "player": "Chris Paul"
             }
         ]
     },
     {
-        "unique_key": "024a6bcda2332ba2bfcc74eb212de61d_PLAYER_ASSISTS_Under_Nikola Jokic_9.5",
+        "unique_key": "024a6bcda2332ba2bfcc74eb212de61d_PLAYER_POINTS_Under_Tyrese Haliburton_21.5",
         "home_team": "Denver Nuggets",
         "away_team": "Indiana Pacers",
         "sport": "NBA",
-        "market": "PLAYER_ASSISTS",
+        "market": "PLAYER_POINTS",
         "bookmaker": "DraftKings",
         "outcome": "Under",
-        "sportsbook_american": 110,
-        "offered_point": 9.5,
-        "pinnacle_fair_american": 106,
-        "no_vig_american": 106,
-        "pinnacle_point": 9.5,
-        "fair_prob": 0.48533333333333345,
-        "ev": 0.019200000000000217,
-        "average_ev": 0.017484596790988793,
-        "kelly_dollar": 4.363636363636412,
+        "sportsbook_american": -105,
+        "offered_point": 21.5,
+        "pinnacle_fair_american": -119,
+        "no_vig_american": -101,
+        "pinnacle_point": 21.5,
+        "fair_prob": 0.5425531914893618,
+        "ev": 0.05797872340425536,
+        "average_ev": -0.019251967654986546,
+        "kelly_dollar": 15.257558790593517,
         "calc_method": "Pinnacle / Average",
-        "player": "Nikola Jokic",
+        "player": "Tyrese Haliburton",
         "odds_breakdown": [
             {
                 "bookmaker": "DraftKings",
-                "offered_odds_american": 110,
-                "fair_odds_american": 123,
-                "offered_point": 9.5,
-                "player": "Nikola Jokic"
+                "offered_odds_american": -105,
+                "fair_odds_american": 108,
+                "offered_point": 21.5,
+                "player": "Tyrese Haliburton"
             },
             {
                 "bookmaker": "FanDuel",
-                "offered_odds_american": -112,
-                "fair_odds_american": 102,
-                "offered_point": 9.5,
-                "player": "Nikola Jokic"
+                "offered_odds_american": -130,
+                "fair_odds_american": -112,
+                "offered_point": 21.5,
+                "player": "Tyrese Haliburton"
             },
             {
                 "bookmaker": "ESPN BET",
-                "offered_odds_american": -115,
-                "fair_odds_american": 100,
-                "offered_point": 9.5,
-                "player": "Nikola Jokic"
+                "offered_odds_american": -125,
+                "fair_odds_american": -108,
+                "offered_point": 21.5,
+                "player": "Tyrese Haliburton"
             },
             {
                 "bookmaker": "Hard Rock Bet",
-                "offered_odds_american": -115,
-                "fair_odds_american": 102,
-                "offered_point": 9.5,
-                "player": "Nikola Jokic"
+                "offered_odds_american": -105,
+                "fair_odds_american": 108,
+                "offered_point": 21.5,
+                "player": "Tyrese Haliburton"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -120,
+                "fair_odds_american": -103,
+                "offered_point": 21.5,
+                "player": "Tyrese Haliburton"
             }
         ]
     },
@@ -1870,31 +2286,31 @@
         "away_team": "Indiana Pacers",
         "sport": "NBA",
         "market": "PLAYER_ASSISTS",
-        "bookmaker": "DraftKings",
+        "bookmaker": "FanDuel",
         "outcome": "Under",
-        "sportsbook_american": -120,
+        "sportsbook_american": -114,
         "offered_point": 4.5,
         "pinnacle_fair_american": -129,
-        "no_vig_american": -119,
+        "no_vig_american": -117,
         "pinnacle_point": 4.5,
         "fair_prob": 0.5631578947368422,
-        "ev": 0.03057894736842126,
-        "average_ev": -0.006450075698502311,
-        "kelly_dollar": 9.210526315789535,
+        "ev": 0.058736842105263254,
+        "average_ev": 0.015095892415094014,
+        "kelly_dollar": 16.686602870813427,
         "calc_method": "Pinnacle / Average",
         "player": "Andrew Nembhard",
         "odds_breakdown": [
             {
                 "bookmaker": "DraftKings",
-                "offered_odds_american": -120,
-                "fair_odds_american": -104,
+                "offered_odds_american": -130,
+                "fair_odds_american": -113,
                 "offered_point": 4.5,
                 "player": "Andrew Nembhard"
             },
             {
                 "bookmaker": "FanDuel",
-                "offered_odds_american": -135,
-                "fair_odds_american": -116,
+                "offered_odds_american": -114,
+                "fair_odds_american": 100,
                 "offered_point": 4.5,
                 "player": "Andrew Nembhard"
             },
@@ -1911,134 +2327,13 @@
                 "fair_odds_american": -143,
                 "offered_point": 4.5,
                 "player": "Andrew Nembhard"
-            }
-        ]
-    },
-    {
-        "unique_key": "024a6bcda2332ba2bfcc74eb212de61d_PLAYER_THREES_Over_Tyrese Haliburton_3.5",
-        "home_team": "Denver Nuggets",
-        "away_team": "Indiana Pacers",
-        "sport": "NBA",
-        "market": "PLAYER_THREES",
-        "bookmaker": "DraftKings",
-        "outcome": "Over",
-        "sportsbook_american": 135,
-        "offered_point": 3.5,
-        "pinnacle_fair_american": 132,
-        "no_vig_american": 133,
-        "pinnacle_point": 3.5,
-        "fair_prob": 0.43044619422572183,
-        "ev": 0.011548556430446388,
-        "average_ev": 0.010438406823386037,
-        "kelly_dollar": 2.138621561193775,
-        "calc_method": "Pinnacle / Average",
-        "player": "Tyrese Haliburton",
-        "odds_breakdown": [
-            {
-                "bookmaker": "DraftKings",
-                "offered_odds_american": 130,
-                "fair_odds_american": 144,
-                "offered_point": 3.5,
-                "player": "Tyrese Haliburton"
             },
             {
-                "bookmaker": "DraftKings",
-                "offered_odds_american": 135,
-                "fair_odds_american": 150,
-                "offered_point": 3.5,
-                "player": "Tyrese Haliburton"
-            },
-            {
-                "bookmaker": "FanDuel",
-                "offered_odds_american": 128,
-                "fair_odds_american": 144,
-                "offered_point": 3.5,
-                "player": "Tyrese Haliburton"
-            },
-            {
-                "bookmaker": "FanDuel",
-                "offered_odds_american": 128,
-                "fair_odds_american": 144,
-                "offered_point": 3.5,
-                "player": "Tyrese Haliburton"
-            },
-            {
-                "bookmaker": "ESPN BET",
-                "offered_odds_american": 105,
-                "fair_odds_american": 120,
-                "offered_point": 3.5,
-                "player": "Tyrese Haliburton"
-            },
-            {
-                "bookmaker": "ESPN BET",
-                "offered_odds_american": 105,
-                "fair_odds_american": 120,
-                "offered_point": 3.5,
-                "player": "Tyrese Haliburton"
-            },
-            {
-                "bookmaker": "Hard Rock Bet",
-                "offered_odds_american": 105,
-                "fair_odds_american": 121,
-                "offered_point": 3.5,
-                "player": "Tyrese Haliburton"
-            },
-            {
-                "bookmaker": "Hard Rock Bet",
-                "offered_odds_american": 105,
-                "fair_odds_american": 123,
-                "offered_point": 3.5,
-                "player": "Tyrese Haliburton"
-            }
-        ]
-    },
-    {
-        "unique_key": "024a6bcda2332ba2bfcc74eb212de61d_PLAYER_REBOUNDS_Over_Christian Braun_5.5",
-        "home_team": "Denver Nuggets",
-        "away_team": "Indiana Pacers",
-        "sport": "NBA",
-        "market": "PLAYER_REBOUNDS",
-        "bookmaker": "FanDuel",
-        "outcome": "Over",
-        "sportsbook_american": 108,
-        "offered_point": 5.5,
-        "pinnacle_fair_american": 106,
-        "no_vig_american": 108,
-        "pinnacle_point": 5.5,
-        "fair_prob": 0.48533333333333345,
-        "ev": 0.009493333333333576,
-        "average_ev": -0.00016694392904736954,
-        "kelly_dollar": 2.197530864197587,
-        "calc_method": "Pinnacle / Average",
-        "player": "Christian Braun",
-        "odds_breakdown": [
-            {
-                "bookmaker": "DraftKings",
-                "offered_odds_american": -115,
-                "fair_odds_american": 100,
-                "offered_point": 5.5,
-                "player": "Christian Braun"
-            },
-            {
-                "bookmaker": "FanDuel",
-                "offered_odds_american": 108,
-                "fair_odds_american": 123,
-                "offered_point": 5.5,
-                "player": "Christian Braun"
-            },
-            {
-                "bookmaker": "ESPN BET",
-                "offered_odds_american": -110,
-                "fair_odds_american": 104,
-                "offered_point": 5.5,
-                "player": "Christian Braun"
-            },
-            {
-                "bookmaker": "Hard Rock Bet",
-                "offered_odds_american": -110,
-                "fair_odds_american": 106,
-                "offered_point": 5.5,
-                "player": "Christian Braun"
+                "bookmaker": "Caesars",
+                "offered_odds_american": -143,
+                "fair_odds_american": -120,
+                "offered_point": 4.5,
+                "player": "Andrew Nembhard"
             }
         ]
     },
@@ -2053,19 +2348,19 @@
         "sportsbook_american": -102,
         "offered_point": 10.5,
         "pinnacle_fair_american": -111,
-        "no_vig_american": -109,
+        "no_vig_american": -108,
         "pinnacle_point": 10.5,
         "fair_prob": 0.5253333333333333,
         "ev": 0.040159999999999973,
-        "average_ev": 0.030829894006543235,
+        "average_ev": 0.027064369174679137,
         "kelly_dollar": 10.244897959183668,
         "calc_method": "Pinnacle / Average",
         "player": "Tyrese Haliburton",
         "odds_breakdown": [
             {
                 "bookmaker": "DraftKings",
-                "offered_odds_american": -135,
-                "fair_odds_american": -118,
+                "offered_odds_american": -130,
+                "fair_odds_american": -113,
                 "offered_point": 10.5,
                 "player": "Tyrese Haliburton"
             },
@@ -2089,6 +2384,127 @@
                 "fair_odds_american": -117,
                 "offered_point": 10.5,
                 "player": "Tyrese Haliburton"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -128,
+                "fair_odds_american": -109,
+                "offered_point": 10.5,
+                "player": "Tyrese Haliburton"
+            }
+        ]
+    },
+    {
+        "unique_key": "024a6bcda2332ba2bfcc74eb212de61d_PLAYER_REBOUNDS_Over_Michael Porter Jr_7.5",
+        "home_team": "Denver Nuggets",
+        "away_team": "Indiana Pacers",
+        "sport": "NBA",
+        "market": "PLAYER_REBOUNDS",
+        "bookmaker": "FanDuel",
+        "outcome": "Over",
+        "sportsbook_american": 100,
+        "offered_point": 7.5,
+        "pinnacle_fair_american": -107,
+        "no_vig_american": -108,
+        "pinnacle_point": 7.5,
+        "fair_prob": 0.5173333333333333,
+        "ev": 0.03466666666666662,
+        "average_ev": 0.03650108148056108,
+        "kelly_dollar": 8.666666666666655,
+        "calc_method": "Pinnacle / Average",
+        "player": "Michael Porter Jr",
+        "odds_breakdown": [
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": -135,
+                "fair_odds_american": -118,
+                "offered_point": 7.5,
+                "player": "Michael Porter Jr"
+            },
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": 100,
+                "fair_odds_american": 114,
+                "offered_point": 7.5,
+                "player": "Michael Porter Jr"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": -120,
+                "fair_odds_american": -104,
+                "offered_point": 7.5,
+                "player": "Michael Porter Jr"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": -145,
+                "fair_odds_american": -118,
+                "offered_point": 7.5,
+                "player": "Michael Porter Jr"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -133,
+                "fair_odds_american": -113,
+                "offered_point": 7.5,
+                "player": "Michael Porter Jr"
+            }
+        ]
+    },
+    {
+        "unique_key": "024a6bcda2332ba2bfcc74eb212de61d_PLAYER_REBOUNDS_Over_Christian Braun_5.5",
+        "home_team": "Denver Nuggets",
+        "away_team": "Indiana Pacers",
+        "sport": "NBA",
+        "market": "PLAYER_REBOUNDS",
+        "bookmaker": "FanDuel",
+        "outcome": "Over",
+        "sportsbook_american": 110,
+        "offered_point": 5.5,
+        "pinnacle_fair_american": 106,
+        "no_vig_american": 110,
+        "pinnacle_point": 5.5,
+        "fair_prob": 0.48533333333333345,
+        "ev": 0.019200000000000217,
+        "average_ev": -0.0014839851018145778,
+        "kelly_dollar": 4.363636363636412,
+        "calc_method": "Pinnacle / Average",
+        "player": "Christian Braun",
+        "odds_breakdown": [
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": -105,
+                "fair_odds_american": 108,
+                "offered_point": 5.5,
+                "player": "Christian Braun"
+            },
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": 110,
+                "fair_odds_american": 125,
+                "offered_point": 5.5,
+                "player": "Christian Braun"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": -110,
+                "fair_odds_american": 104,
+                "offered_point": 5.5,
+                "player": "Christian Braun"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": -110,
+                "fair_odds_american": 106,
+                "offered_point": 5.5,
+                "player": "Christian Braun"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -106,
+                "fair_odds_american": 109,
+                "offered_point": 5.5,
+                "player": "Christian Braun"
             }
         ]
     },
@@ -2213,13 +2629,13 @@
         "outcome": "Over",
         "sportsbook_american": -105,
         "offered_point": 5.5,
-        "pinnacle_fair_american": -115,
-        "no_vig_american": -109,
+        "pinnacle_fair_american": -117,
+        "no_vig_american": -107,
         "pinnacle_point": 5.5,
-        "fair_prob": 0.5345744680851062,
-        "ev": 0.04242021276595709,
-        "average_ev": 0.018025638261169596,
-        "kelly_dollar": 11.163213885778182,
+        "fair_prob": 0.5384615384615384,
+        "ev": 0.04999999999999993,
+        "average_ev": 0.009962981456622999,
+        "kelly_dollar": 13.157894736842088,
         "calc_method": "Pinnacle / Average",
         "player": "Stephen Curry",
         "odds_breakdown": [
@@ -2232,8 +2648,8 @@
             },
             {
                 "bookmaker": "FanDuel",
-                "offered_odds_american": -128,
-                "fair_odds_american": -110,
+                "offered_odds_american": -125,
+                "fair_odds_american": -108,
                 "offered_point": 5.5,
                 "player": "Stephen Curry"
             },
@@ -2250,56 +2666,13 @@
                 "fair_odds_american": -127,
                 "offered_point": 5.5,
                 "player": "Stephen Curry"
-            }
-        ]
-    },
-    {
-        "unique_key": "39be07cec5bc30ecd00297327976cef1_PLAYER_ASSISTS_Over_Fred VanVleet_4.5",
-        "home_team": "Golden State Warriors",
-        "away_team": "Houston Rockets",
-        "sport": "NBA",
-        "market": "PLAYER_ASSISTS",
-        "bookmaker": "DraftKings",
-        "outcome": "Over",
-        "sportsbook_american": -135,
-        "offered_point": 4.5,
-        "pinnacle_fair_american": -139,
-        "no_vig_american": -126,
-        "pinnacle_point": 4.5,
-        "fair_prob": 0.5818181818181818,
-        "ev": 0.012363636363636299,
-        "average_ev": -0.03013632985745457,
-        "kelly_dollar": 4.176904176904155,
-        "calc_method": "Pinnacle / Average",
-        "player": "Fred VanVleet",
-        "odds_breakdown": [
-            {
-                "bookmaker": "DraftKings",
-                "offered_odds_american": -135,
-                "fair_odds_american": -118,
-                "offered_point": 4.5,
-                "player": "Fred VanVleet"
             },
             {
-                "bookmaker": "FanDuel",
-                "offered_odds_american": -147,
-                "fair_odds_american": -125,
-                "offered_point": 4.5,
-                "player": "Fred VanVleet"
-            },
-            {
-                "bookmaker": "ESPN BET",
-                "offered_odds_american": -149,
-                "fair_odds_american": -129,
-                "offered_point": 4.5,
-                "player": "Fred VanVleet"
-            },
-            {
-                "bookmaker": "Hard Rock Bet",
-                "offered_odds_american": -161,
-                "fair_odds_american": -133,
-                "offered_point": 4.5,
-                "player": "Fred VanVleet"
+                "bookmaker": "Caesars",
+                "offered_odds_american": -120,
+                "fair_odds_american": -103,
+                "offered_point": 5.5,
+                "player": "Stephen Curry"
             }
         ]
     },
@@ -2313,13 +2686,13 @@
         "outcome": "Over",
         "sportsbook_american": 114,
         "offered_point": 3.5,
-        "pinnacle_fair_american": 107,
+        "pinnacle_fair_american": 111,
         "no_vig_american": 115,
         "pinnacle_point": 3.5,
-        "fair_prob": 0.48395721925133695,
-        "ev": 0.03566844919786116,
-        "average_ev": -0.005072091798040135,
-        "kelly_dollar": 7.82202833286429,
+        "fair_prob": 0.4746666666666666,
+        "ev": 0.015786666666666616,
+        "average_ev": -0.005548290060416017,
+        "kelly_dollar": 3.4619883040935555,
         "calc_method": "Pinnacle / Average",
         "player": "Jalen Green",
         "odds_breakdown": [
@@ -2350,6 +2723,70 @@
                 "fair_odds_american": 108,
                 "offered_point": 3.5,
                 "player": "Jalen Green"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": 100,
+                "fair_odds_american": 116,
+                "offered_point": 3.5,
+                "player": "Jalen Green"
+            }
+        ]
+    },
+    {
+        "unique_key": "39be07cec5bc30ecd00297327976cef1_PLAYER_POINTS_Under_Amen Thompson_14.5",
+        "home_team": "Golden State Warriors",
+        "away_team": "Houston Rockets",
+        "sport": "NBA",
+        "market": "PLAYER_POINTS",
+        "bookmaker": "DraftKings",
+        "outcome": "Under",
+        "sportsbook_american": -105,
+        "offered_point": 14.5,
+        "pinnacle_fair_american": -109,
+        "no_vig_american": 102,
+        "pinnacle_point": 14.5,
+        "fair_prob": 0.5226666666666666,
+        "ev": 0.019199999999999884,
+        "average_ev": -0.03542803234501346,
+        "kelly_dollar": 5.052631578947338,
+        "calc_method": "Pinnacle / Average",
+        "player": "Amen Thompson",
+        "odds_breakdown": [
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": -105,
+                "fair_odds_american": 108,
+                "offered_point": 14.5,
+                "player": "Amen Thompson"
+            },
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": -114,
+                "fair_odds_american": 100,
+                "offered_point": 14.5,
+                "player": "Amen Thompson"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": -115,
+                "fair_odds_american": 100,
+                "offered_point": 14.5,
+                "player": "Amen Thompson"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": -115,
+                "fair_odds_american": 100,
+                "offered_point": 14.5,
+                "player": "Amen Thompson"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -114,
+                "fair_odds_american": 103,
+                "offered_point": 14.5,
+                "player": "Amen Thompson"
             }
         ]
     },
@@ -2363,13 +2800,13 @@
         "outcome": "Under",
         "sportsbook_american": -110,
         "offered_point": 13.5,
-        "pinnacle_fair_american": -113,
-        "no_vig_american": -101,
+        "pinnacle_fair_american": -116,
+        "no_vig_american": -100,
         "pinnacle_point": 13.5,
-        "fair_prob": 0.5306666666666666,
-        "ev": 0.013573333333333215,
-        "average_ev": -0.040648253875941676,
-        "kelly_dollar": 3.728937728937697,
+        "fair_prob": 0.5372340425531915,
+        "ev": 0.026117021276595764,
+        "average_ev": -0.04356138384941627,
+        "kelly_dollar": 7.175005845218617,
         "calc_method": "Pinnacle / Average",
         "player": "Fred VanVleet",
         "odds_breakdown": [
@@ -2382,8 +2819,8 @@
             },
             {
                 "bookmaker": "FanDuel",
-                "offered_odds_american": -114,
-                "fair_odds_american": 100,
+                "offered_odds_american": -112,
+                "fair_odds_american": 102,
                 "offered_point": 13.5,
                 "player": "Fred VanVleet"
             },
@@ -2400,56 +2837,106 @@
                 "fair_odds_american": 104,
                 "offered_point": 13.5,
                 "player": "Fred VanVleet"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -118,
+                "fair_odds_american": 100,
+                "offered_point": 13.5,
+                "player": "Fred VanVleet"
             }
         ]
     },
     {
-        "unique_key": "39be07cec5bc30ecd00297327976cef1_PLAYER_THREES_Over_Fred VanVleet_2.5",
+        "unique_key": "39be07cec5bc30ecd00297327976cef1_PLAYER_POINTS_Under_Draymond Green_10.5",
         "home_team": "Golden State Warriors",
         "away_team": "Houston Rockets",
         "sport": "NBA",
-        "market": "PLAYER_THREES",
-        "bookmaker": "FanDuel",
-        "outcome": "Over",
-        "sportsbook_american": -120,
-        "offered_point": 2.5,
-        "pinnacle_fair_american": -124,
-        "no_vig_american": -115,
-        "pinnacle_point": 2.5,
-        "fair_prob": 0.5529100529100528,
-        "ev": 0.011825396825396683,
-        "average_ev": -0.021571711449040132,
-        "kelly_dollar": 3.5618665136736993,
+        "market": "PLAYER_POINTS",
+        "bookmaker": "DraftKings",
+        "outcome": "Under",
+        "sportsbook_american": -125,
+        "offered_point": 10.5,
+        "pinnacle_fair_american": -129,
+        "no_vig_american": -108,
+        "pinnacle_point": 10.5,
+        "fair_prob": 0.5631578947368422,
+        "ev": 0.013684210526315965,
+        "average_ev": -0.06400000000000017,
+        "kelly_dollar": 4.276315789473739,
         "calc_method": "Pinnacle / Average",
-        "player": "Fred VanVleet",
+        "player": "Draymond Green",
         "odds_breakdown": [
             {
                 "bookmaker": "DraftKings",
-                "offered_odds_american": -141,
-                "fair_odds_american": -123,
-                "offered_point": 2.5,
-                "player": "Fred VanVleet"
-            },
-            {
-                "bookmaker": "FanDuel",
-                "offered_odds_american": -120,
-                "fair_odds_american": -104,
-                "offered_point": 2.5,
-                "player": "Fred VanVleet"
-            },
-            {
-                "bookmaker": "ESPN BET",
-                "offered_odds_american": -135,
-                "fair_odds_american": -115,
-                "offered_point": 2.5,
-                "player": "Fred VanVleet"
+                "offered_odds_american": -125,
+                "fair_odds_american": -108,
+                "offered_point": 10.5,
+                "player": "Draymond Green"
             },
             {
                 "bookmaker": "Hard Rock Bet",
-                "offered_odds_american": -145,
-                "fair_odds_american": -118,
-                "offered_point": 2.5,
-                "player": "Fred VanVleet"
+                "offered_odds_american": -125,
+                "fair_odds_american": -108,
+                "offered_point": 10.5,
+                "player": "Draymond Green"
+            }
+        ]
+    },
+    {
+        "unique_key": "39be07cec5bc30ecd00297327976cef1_PLAYER_ASSISTS_Over_Amen Thompson_4.5",
+        "home_team": "Golden State Warriors",
+        "away_team": "Houston Rockets",
+        "sport": "NBA",
+        "market": "PLAYER_ASSISTS",
+        "bookmaker": "FanDuel",
+        "outcome": "Over",
+        "sportsbook_american": 122,
+        "offered_point": 4.5,
+        "pinnacle_fair_american": 114,
+        "no_vig_american": 116,
+        "pinnacle_point": 4.5,
+        "fair_prob": 0.4666666666666667,
+        "ev": 0.03600000000000014,
+        "average_ev": 0.026247057392971507,
+        "kelly_dollar": 7.377049180327897,
+        "calc_method": "Pinnacle / Average",
+        "player": "Amen Thompson",
+        "odds_breakdown": [
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": 105,
+                "fair_odds_american": 118,
+                "offered_point": 4.5,
+                "player": "Amen Thompson"
+            },
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": 122,
+                "fair_odds_american": 137,
+                "offered_point": 4.5,
+                "player": "Amen Thompson"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": 100,
+                "fair_odds_american": 113,
+                "offered_point": 4.5,
+                "player": "Amen Thompson"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": -115,
+                "fair_odds_american": 104,
+                "offered_point": 4.5,
+                "player": "Amen Thompson"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -103,
+                "fair_odds_american": 113,
+                "offered_point": 4.5,
+                "player": "Amen Thompson"
             }
         ]
     },
@@ -2507,7 +2994,7 @@
         "pinnacle_point": 225.5,
         "fair_prob": 0.5271317829457364,
         "ev": 0.006821705426356406,
-        "average_ev": -0.04656660104986882,
+        "average_ev": -0.046392534266550045,
         "kelly_dollar": 1.8740948973506613,
         "calc_method": "Pinnacle / Average",
         "odds_breakdown": [
@@ -2555,6 +3042,12 @@
             },
             {
                 "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": -110,
+                "fair_odds_american": 100,
+                "offered_point": 225.5
+            },
+            {
+                "bookmaker": "Caesars",
                 "offered_odds_american": -110,
                 "fair_odds_american": 100,
                 "offered_point": 225.5
@@ -2626,15 +3119,15 @@
         "market": "ALTERNATE_TOTALS",
         "bookmaker": "BetMGM",
         "outcome": "Under",
-        "sportsbook_american": -105,
+        "sportsbook_american": -110,
         "offered_point": 9.0,
         "pinnacle_fair_american": -114,
-        "no_vig_american": 103,
+        "no_vig_american": 102,
         "pinnacle_point": 9.0,
         "fair_prob": 0.5333333333333333,
-        "ev": 0.039999999999999925,
-        "average_ev": -0.03725130890052342,
-        "kelly_dollar": 10.526315789473665,
+        "ev": 0.01866666666666661,
+        "average_ev": -0.05299999999999999,
+        "kelly_dollar": 5.128205128205113,
         "calc_method": "Pinnacle / Average",
         "odds_breakdown": [
             {
@@ -2651,8 +3144,8 @@
             },
             {
                 "bookmaker": "BetMGM",
-                "offered_odds_american": -105,
-                "fair_odds_american": 104,
+                "offered_odds_american": -110,
+                "fair_odds_american": 100,
                 "offered_point": 9.0
             },
             {
@@ -2680,11 +3173,11 @@
         "sportsbook_american": 164,
         "offered_point": 7.5,
         "pinnacle_fair_american": 149,
-        "no_vig_american": 167,
+        "no_vig_american": 165,
         "pinnacle_point": 7.5,
         "fair_prob": 0.400990099009901,
         "ev": 0.05861386138613878,
-        "average_ev": -0.012702733205978811,
+        "average_ev": -0.004758615889352225,
         "kelly_dollar": 8.935039845447983,
         "calc_method": "Pinnacle / Average",
         "odds_breakdown": [
@@ -2696,8 +3189,8 @@
             },
             {
                 "bookmaker": "Caesars",
-                "offered_odds_american": 145,
-                "fair_odds_american": 168,
+                "offered_odds_american": 139,
+                "fair_odds_american": 161,
                 "offered_point": 7.5
             },
             {
@@ -2857,25 +3350,25 @@
         "pinnacle_point": -1.5,
         "fair_prob": 0.44529262086514,
         "ev": 0.024173027989821905,
-        "average_ev": 0.16066175701761964,
+        "average_ev": 0.16012836184136758,
         "kelly_dollar": 9.297318457623811,
         "calc_method": "Pinnacle / Average",
         "odds_breakdown": [
             {
                 "bookmaker": "FanDuel",
-                "offered_odds_american": 125,
-                "fair_odds_american": 135,
+                "offered_odds_american": 126,
+                "fair_odds_american": 136,
                 "offered_point": -1.5
             },
             {
                 "bookmaker": "FanDuel",
-                "offered_odds_american": -294,
+                "offered_odds_american": -312,
                 "fair_odds_american": null,
                 "offered_point": -1.5
             },
             {
                 "bookmaker": "FanDuel",
-                "offered_odds_american": 122,
+                "offered_odds_american": 124,
                 "fair_odds_american": null,
                 "offered_point": -1.5
             },
@@ -3703,7 +4196,7 @@
         "away_team": "Seattle Mariners",
         "sport": "MLB",
         "market": "ALTERNATE_TOTALS",
-        "bookmaker": "BetMGM",
+        "bookmaker": "FanDuel",
         "outcome": "Over",
         "sportsbook_american": 130,
         "offered_point": 8.5,
@@ -3712,14 +4205,14 @@
         "pinnacle_point": 8.5,
         "fair_prob": 0.4416243654822335,
         "ev": 0.015736040609136914,
-        "average_ev": -0.028831169588073635,
+        "average_ev": -0.03049882498323553,
         "kelly_dollar": 3.026161655603253,
         "calc_method": "Pinnacle / Average",
         "odds_breakdown": [
             {
                 "bookmaker": "FanDuel",
-                "offered_odds_american": 128,
-                "fair_odds_american": 142,
+                "offered_odds_american": 130,
+                "fair_odds_american": 144,
                 "offered_point": 8.5
             },
             {
@@ -3916,6 +4409,261 @@
                 "offered_odds_american": 151,
                 "fair_odds_american": 174,
                 "offered_point": 9.0
+            }
+        ]
+    },
+    {
+        "unique_key": "03e46b539ef63b9bac00f959d280cb6e_PITCHER_STRIKEOUTS_Under_Tyler Anderson_4.5",
+        "home_team": "Los Angeles Angels",
+        "away_team": "Cleveland Guardians",
+        "sport": "MLB",
+        "market": "PITCHER_STRIKEOUTS",
+        "bookmaker": "FanDuel",
+        "outcome": "Under",
+        "sportsbook_american": -132,
+        "offered_point": 4.5,
+        "pinnacle_fair_american": -136,
+        "no_vig_american": -128,
+        "pinnacle_point": 4.5,
+        "fair_prob": 0.5759162303664922,
+        "ev": 0.013612565445026259,
+        "average_ev": -0.010461666101593547,
+        "kelly_dollar": 4.477817580600743,
+        "calc_method": "Pinnacle / Average",
+        "player": "Tyler Anderson",
+        "odds_breakdown": [
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": -132,
+                "fair_odds_american": -116,
+                "offered_point": 4.5,
+                "player": "Tyler Anderson"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": -161,
+                "fair_odds_american": -133,
+                "offered_point": 4.5,
+                "player": "Tyler Anderson"
+            },
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": -154,
+                "fair_odds_american": -133,
+                "offered_point": 4.5,
+                "player": "Tyler Anderson"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": -161,
+                "fair_odds_american": -133,
+                "offered_point": 4.5,
+                "player": "Tyler Anderson"
+            },
+            {
+                "bookmaker": "Caesars",
+                "offered_odds_american": -154,
+                "fair_odds_american": -128,
+                "offered_point": 4.5,
+                "player": "Tyler Anderson"
+            }
+        ]
+    },
+    {
+        "unique_key": "f5864f6defa54289ad3a481eaed1ac62_PLAYER_POINTS_Over_Aliaksei Protas_0.5",
+        "home_team": "New York Islanders",
+        "away_team": "Washington Capitals",
+        "sport": "NHL",
+        "market": "PLAYER_POINTS",
+        "bookmaker": "FanDuel",
+        "outcome": "Over",
+        "sportsbook_american": 136,
+        "offered_point": 0.5,
+        "pinnacle_fair_american": 130,
+        "no_vig_american": 177,
+        "pinnacle_point": 0.5,
+        "fair_prob": 0.43421052631578944,
+        "ev": 0.024736842105262946,
+        "average_ev": -0.14885387041753584,
+        "kelly_dollar": 4.547213622290983,
+        "calc_method": "Pinnacle / Average",
+        "player": "Aliaksei Protas",
+        "odds_breakdown": [
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": 210,
+                "fair_odds_american": 230,
+                "offered_point": 0.5,
+                "player": "Aliaksei Protas"
+            },
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": 115,
+                "fair_odds_american": 128,
+                "offered_point": 0.5,
+                "player": "Aliaksei Protas"
+            },
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": 136,
+                "fair_odds_american": 150,
+                "offered_point": 0.5,
+                "player": "Aliaksei Protas"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": 200,
+                "fair_odds_american": 221,
+                "offered_point": 0.5,
+                "player": "Aliaksei Protas"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": 320,
+                "fair_odds_american": 356,
+                "offered_point": 0.5,
+                "player": "Aliaksei Protas"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": 115,
+                "fair_odds_american": 129,
+                "offered_point": 0.5,
+                "player": "Aliaksei Protas"
+            },
+            {
+                "bookmaker": "BetMGM",
+                "offered_odds_american": 200,
+                "fair_odds_american": 222,
+                "offered_point": 0.5,
+                "player": "Aliaksei Protas"
+            },
+            {
+                "bookmaker": "BetMGM",
+                "offered_odds_american": 115,
+                "fair_odds_american": 129,
+                "offered_point": 0.5,
+                "player": "Aliaksei Protas"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": 200,
+                "fair_odds_american": 221,
+                "offered_point": 0.5,
+                "player": "Aliaksei Protas"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": 300,
+                "fair_odds_american": null,
+                "offered_point": 0.5,
+                "player": "Aliaksei Protas"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": 115,
+                "fair_odds_american": 129,
+                "offered_point": 0.5,
+                "player": "Aliaksei Protas"
+            }
+        ]
+    },
+    {
+        "unique_key": "f5864f6defa54289ad3a481eaed1ac62_PLAYER_POINTS_Under_Anders Lee_0.5",
+        "home_team": "New York Islanders",
+        "away_team": "Washington Capitals",
+        "sport": "NHL",
+        "market": "PLAYER_POINTS",
+        "bookmaker": "FanDuel",
+        "outcome": "Under",
+        "sportsbook_american": 106,
+        "offered_point": 0.5,
+        "pinnacle_fair_american": -106,
+        "no_vig_american": -152,
+        "pinnacle_point": 0.5,
+        "fair_prob": 0.5146666666666666,
+        "ev": 0.06021333333333323,
+        "average_ev": 0.2415389109964725,
+        "kelly_dollar": 14.201257861635195,
+        "calc_method": "Pinnacle / Average",
+        "player": "Anders Lee",
+        "odds_breakdown": [
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": -263,
+                "fair_odds_american": -214,
+                "offered_point": 0.5,
+                "player": "Anders Lee"
+            },
+            {
+                "bookmaker": "DraftKings",
+                "offered_odds_american": -120,
+                "fair_odds_american": -104,
+                "offered_point": 0.5,
+                "player": "Anders Lee"
+            },
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": -278,
+                "fair_odds_american": -206,
+                "offered_point": 0.5,
+                "player": "Anders Lee"
+            },
+            {
+                "bookmaker": "FanDuel",
+                "offered_odds_american": 106,
+                "fair_odds_american": 118,
+                "offered_point": 0.5,
+                "player": "Anders Lee"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": -263,
+                "fair_odds_american": -210,
+                "offered_point": 0.5,
+                "player": "Anders Lee"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": -370,
+                "fair_odds_american": -268,
+                "offered_point": 0.5,
+                "player": "Anders Lee"
+            },
+            {
+                "bookmaker": "ESPN BET",
+                "offered_odds_american": -120,
+                "fair_odds_american": -104,
+                "offered_point": 0.5,
+                "player": "Anders Lee"
+            },
+            {
+                "bookmaker": "BetMGM",
+                "offered_odds_american": -278,
+                "fair_odds_american": -217,
+                "offered_point": 0.5,
+                "player": "Anders Lee"
+            },
+            {
+                "bookmaker": "BetMGM",
+                "offered_odds_american": -120,
+                "fair_odds_american": -104,
+                "offered_point": 0.5,
+                "player": "Anders Lee"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": -278,
+                "fair_odds_american": -217,
+                "offered_point": 0.5,
+                "player": "Anders Lee"
+            },
+            {
+                "bookmaker": "Hard Rock Bet",
+                "offered_odds_american": -120,
+                "fair_odds_american": -104,
+                "offered_point": 0.5,
+                "player": "Anders Lee"
             }
         ]
     },
