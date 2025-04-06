@@ -92,6 +92,12 @@ OUTPUT_FILE = "data/positive_ev_bets.json"
 conn = sqlite3.connect("line_movement.db")
 cursor = conn.cursor()
 
+# Debug: Check if the database file exists
+if os.path.exists(DB_FILENAME):
+    print(f"DEBUG: Database {DB_FILENAME} exists.")
+else:
+    print(f"DEBUG: Database {DB_FILENAME} does not exist!")
+
 cursor.execute('''
 CREATE TABLE IF NOT EXISTS snapshots (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -273,6 +279,18 @@ def run_line_movement():
             time.sleep(1)  # Pause to avoid API rate limiting
 
     print("DEBUG: Line movement snapshots updated in SQLite.")
+
+def debug_print_snapshots():
+    cursor.execute("SELECT unique_key, snapshot_time FROM snapshots ORDER BY snapshot_time DESC LIMIT 10")
+    rows = cursor.fetchall()
+    print("DEBUG: Latest snapshot entries:")
+    for row in rows:
+        print(f"   unique_key: {row[0]}, snapshot_time: {row[1]}")
+
+# Call this function at the end of run_line_movement()
+debug_print_snapshots()
+
+
 
 # ===== Functions for Positive EV Bets =====
 def convert_to_american(decimal_odds):
