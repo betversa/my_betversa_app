@@ -190,20 +190,19 @@ def compile_aggregated_snapshots(event, sport_label, sport_key, accepted_markets
 
 
 def run_line_movement():
-    """Processes events and updates the line movement history file without erasing previous data."""
-    # Step 1: Load existing data (if any)
+    """Processes events for all sports and updates the line movement history file."""
     if os.path.exists(LINE_MOVEMENT_FILE):
-        with open(LINE_MOVEMENT_FILE, "r", encoding="utf-8") as f:
+        with open(LINE_MOVEMENT_FILE, "r") as f:
             try:
                 line_history = json.load(f)
+                print(f"DEBUG: Loaded line_history with {len(line_history)} keys.")
             except Exception as e:
-                if DEBUG:
-                    print(f"Error reading {LINE_MOVEMENT_FILE}: {e}")
+                print(f"DEBUG: Error reading {LINE_MOVEMENT_FILE}: {e}")
                 line_history = {}
     else:
         line_history = {}
+        print("DEBUG: No existing line_history file found; starting fresh.")
 
-    # (Your code to process each sport/event here)
     for sport_label, config in SPORTS_CONFIG.items():
         sport_key = config["sport_key"]
         player_prop_markets = config["player_prop_markets"]
@@ -213,31 +212,31 @@ def run_line_movement():
         events_params = {'api_key': API_KEY}
         response = requests.get(events_url, params=events_params)
         if response.status_code != 200:
-            print(f"Failed to get events for {sport_label}: status_code {response.status_code}")
+            print(f"DEBUG: Failed to get events for {sport_label}: status_code {response.status_code}")
             continue
         events = response.json()
         if not events:
-            print(f"No events found for {sport_label}")
+            print(f"DEBUG: No events found for {sport_label}")
             continue
-        print(f"Found {len(events)} events for {sport_label}.")
+        print(f"DEBUG: Found {len(events)} events for {sport_label}.")
         for event in events:
             if not event_has_not_started(event):
-                if DEBUG:
-                    print(f"Skipping event {event.get('id')} - already started.")
+                print(f"DEBUG: Skipping event {event.get('id')} - already started.")
                 continue
-            # Compile snapshots for this event (assumes this returns list of (unique_key, snapshot))
             play_snapshots = compile_aggregated_snapshots(event, sport_label, sport_key, accepted_markets)
             for unique_key, snap in play_snapshots:
-                # Debug print: show snapshots count before update
-                current_count = len(line_history.get(unique_key, []))
-                if DEBUG:
-                    print(f"DEBUG: Before update - {unique_key} has {current_count} snapshot(s).")
-                # Update history with the new snapshot
+                # Debug before updating:
+                count_before = len(line_history.get(unique_key, []))
+                print(f"DEBUG: Before update - {unique_key} has {count_before} snapshot(s).")
                 line_history = update_line_history(line_history, unique_key, snap)
-                # Debug print: show snapshots count after update
-                if DEBUG:
-                    print(f"DEBUG: After update - {unique_key} now has {len(line_history[unique_key])} snapshot(s).")
-            time.sleep(1)  # pause to avoid API rate limiting
+                count_after = len(line_history.get(unique_key, []))
+                print(f"DEBUG: After update - {unique_key} now has {count_after} snapshot(s).")
+            time.sleep(1)  # Pause to avoid API rate limiting
+
+    with open(LINE_MOVEMENT_FILE, "w") as f:
+        json.dump(line_history, f, indent=4)
+    print(f"DEBUG: Line movement history updated and saved to {LINE_MOVEMENT_FILE}")
+
 
     # Step 3: Write updated data atomically using a temporary file
     temp_file = LINE_MOVEMENT_FILE + ".tmp"
