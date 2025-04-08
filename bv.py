@@ -51,53 +51,13 @@ def decimal_to_american(decimal_odds):
     return round((decimal_odds - 1) * 100) if decimal_odds >= 2 else round(-100 / (decimal_odds - 1))
 
 ###############################################################################
-# Function to Add Combo NV Odds and Combo EV Columns (Weighted 65/35)
-###############################################################################
-def add_combo_columns(df):
-    df = df.copy()
-    combo_nv = []
-    combo_ev = []
-    for idx, row in df.iterrows():
-        try:
-            pin = row["Pin NV Odds"]
-            avg = row["Avg NV Odds"]
-            dec_pin = american_to_decimal(pin)
-            dec_avg = american_to_decimal(avg)
-            if dec_pin and dec_avg:
-                prob_pin = 1 / dec_pin
-                prob_avg = 1 / dec_avg
-                weighted_prob = 0.65 * prob_pin + 0.35 * prob_avg
-                combo_decimal = 1 / weighted_prob
-                combo_american = decimal_to_american(combo_decimal)
-            else:
-                combo_american = None
-        except Exception:
-            combo_american = None
-        combo_nv.append(combo_american)
-        try:
-            ev_str = row["EV"]
-            avg_ev_str = row["Avg EV"]
-            ev_val = float(ev_str.replace("%", "")) / 100 if isinstance(ev_str, str) else ev_str
-            avg_ev_val = float(avg_ev_str.replace("%", "")) / 100 if isinstance(avg_ev_str, str) else avg_ev_str
-            weighted_ev = 0.65 * ev_val + 0.35 * avg_ev_val
-            combo_str = f"{weighted_ev * 100:.2f}%"
-        except Exception:
-            combo_str = ""
-        combo_ev.append(combo_str)
-    
-    df["Combo NV Odds"] = combo_nv
-    df["Combo EV"] = combo_ev
-    df = df.drop(columns=["Pin NV Odds", "Avg NV Odds", "EV", "Avg EV"])
-    return df
-
-###############################################################################
 # Data Loading Functions with TTL (60 seconds caching)
 ###############################################################################
 @st.cache_data(ttl=60)
 def load_data():
     with st.spinner("Loading bets data..."):
         try:
-            with open("data/positive_ev_bets.json", "r") as file:
+            with open("data/positive_ev_plays.json", "r") as file:
                 data = json.load(file)
             if isinstance(data, dict):
                 data = [data]
@@ -105,19 +65,15 @@ def load_data():
             df = df.rename(columns={
                 "home_team": "Home Team",
                 "away_team": "Away Team",
-                "sport": "Sport",
                 "market": "Market",
                 "bookmaker": "Book",
-                "outcome": "Outcome",
-                "sportsbook_american": "Odds",
-                "offered_point": "Line",
-                "pinnacle_fair_american": "Pin NV Odds",
-                "no_vig_american": "Avg NV Odds",
-                "ev": "EV",
-                "average_ev": "Avg EV",
-                "kelly_dollar": "Kelly $",
-                "calc_method": "Calculation Method",
-                "player": "Player"
+                "team": "Outcome",                     # "Over" or "Under"
+                "point": "Line",
+                "description": "Player",              # Player name
+                "sportsbook_odds": "Odds",            # American odds from book
+                "fair_american_odds": "Avg NV Odds",  # Combined no-vig odds
+                "ev": "EV",                            # Still EV
+                "market_width": "Market Width"        # New column!
             })
             # We assume unique_key is provided.
             df["Game"] = df["Away Team"] + " @ " + df["Home Team"]
@@ -220,26 +176,32 @@ def load_nhl_skater_stats_2025():
         return pd.DataFrame()
 
 @st.cache_data(ttl=60)
-def load_history_odds_for_ev(ev_key_tails, file_path="data/line_movement.json"):
-    history_data = {}
+def load_history_odds_from_sqlite(ev_key_tails, db_path="data/odds_data.db"):
+    history = {}
     try:
-        with open(file_path, "r") as f:
-            # Use ijson to iterate over key-value pairs from the top-level JSON object
-            parser = ijson.kvitems(f, "")
-            for key, value in parser:
-                # Use your tail_key logic here (or inline) to check if this key is relevant
-                key_tail = key.split("_", 1)[-1].lower()
-                if key_tail in ev_key_tails:
-                    history_data[key] = value
-        return history_data
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+        for tail in ev_key_tails:
+            query = """
+                SELECT unique_id, snapshot_time, snapshot_data FROM odds_snapshots
+                WHERE lower(unique_id) LIKE ?
+                ORDER BY snapshot_time ASC
+            """
+            like_pattern = f"%_{tail}"
+            cursor.execute(query, (like_pattern,))
+            rows = cursor.fetchall()
+            for unique_id, snapshot_time, snapshot_data in rows:
+                record = json.loads(snapshot_data)
+                record["timestamp"] = snapshot_time
+                history.setdefault(unique_id, []).append(record)
+        conn.close()
     except Exception as e:
-        st.error("Error lazy loading history odds for EV bets: " + str(e))
-        return {}
+        st.error("Error loading odds movement data from database: " + str(e))
+    return history
 
 
 df_full = load_data()
 df_unique = df_full.drop_duplicates(subset=["unique_key"])
-df_processed = add_combo_columns(df_unique)
 
 ###############################################################################
 # Helper: Extract tail from unique key (everything after the first underscore)
@@ -874,7 +836,6 @@ def show_parlay():
             parlay_df["EV_float"] = parlay_df["EV"].apply(lambda x: float(x.replace("%", "")) / 100.0 if pd.notnull(x) else 0)
             parlay_df = parlay_df.sort_values("EV_float", ascending=False)
             selected_bets = parlay_df.head(legs)
-            processed_bets = add_combo_columns(selected_bets)
             try:
                 final_combo_decimal = reduce(mul, [american_to_decimal(x) for x in processed_bets["Combo NV Odds"] if x is not None], 1)
                 final_combo_american = decimal_to_american(final_combo_decimal)
