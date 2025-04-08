@@ -2,24 +2,19 @@ name: APScheduler Test
 
 permissions:
   contents: write
-  
+
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Runs every 5 minutes
-  workflow_dispatch: {}    # Allows manual triggering
+    - cron: '*/5 * * * *'  # Every 5 minutes
+  workflow_dispatch: {}     # Manual run enabled
 
 jobs:
-  run-odds-service:
+  update-ev-data:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-
-      - name: Pull latest changes
-        run: |
-          git config pull.rebase false
-          git pull origin main
 
       - name: Set up Python 3.9
         uses: actions/setup-python@v4
@@ -31,19 +26,29 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run odds_service.py
-        env:
-          API_KEY: ${{ secrets.API_KEY }}
-        run: |
-          python odds_service.py
+      - name: Run odds.py (fetch raw odds)
+        run: python odds.py
 
-      - name: Commit updated positive EV bets and line movement files
-        run: |
-          git config --global user.email "github-actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git add data/positive_ev_bets.json data/line_movement.json
-          git commit -m "Update positive EV bets and line movement"
-          git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run positiveev.py (calculate EV)
+        run: python positiveev.py
 
+      - name: Run line_movement.py (track snapshots)
+        run: python line_movement.py
+
+      - name: Upload odds_data.db (SQLite)
+        uses: actions/upload-artifact@v3
+        with:
+          name: odds-db
+          path: data/odds_data.db
+
+      - name: Upload positive_ev_plays.json
+        uses: actions/upload-artifact@v3
+        with:
+          name: ev-plays
+          path: data/positive_ev_plays.json
+
+      - name: Upload all_odds.json
+        uses: actions/upload-artifact@v3
+        with:
+          name: raw-odds
+          path: data/all_odds.json
