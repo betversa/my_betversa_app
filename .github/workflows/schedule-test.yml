@@ -45,9 +45,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Upload odds_data.db as artifact
-        uses: actions/upload-artifact@f63a8e3e5d27cf8dfb8a0c6c5dd24f80bdbf2702
-        with:
-          name: odds-db
-          path: data/odds_data.db
-
