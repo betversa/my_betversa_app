@@ -1,1 +1,11 @@
+# .gitignore
+
+# Ignore large and volatile files
+data/*.db
+data/*.db-journal
+
+# Track these files explicitly
+!data/all_odds.json
+!data/positive_ev_plays.json
+
 test_clone/
