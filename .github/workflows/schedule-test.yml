@@ -36,13 +36,13 @@ jobs:
         run: python line_movement.py
 
       - name: Upload odds_data.db (SQLite)
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3.3.1
         with:
           name: odds-db
           path: data/odds_data.db
 
       - name: Upload positive_ev_plays.json
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3.3.1
         with:
           name: ev-plays
           path: data/positive_ev_plays.json
