@@ -6,7 +6,7 @@ permissions:
 on:
   schedule:
     - cron: '*/5 * * * *'  # Every 5 minutes
-  workflow_dispatch: {}     # Manual run enabled
+  workflow_dispatch: {}     # Allow manual triggering
 
 jobs:
   update-ev-data:
@@ -29,26 +29,25 @@ jobs:
       - name: Run odds.py (fetch raw odds)
         run: python odds.py
 
-      - name: Run positiveev.py (calculate EV)
+      - name: Run positiveev.py (calculate EV plays)
         run: python positiveev.py
 
-      - name: Run line_movement.py (track snapshots)
+      - name: Run line_movement.py (track line movements)
         run: python line_movement.py
 
-      - name: Upload odds_data.db (SQLite)
-        uses: actions/upload-artifact@v2
+      - name: Commit updated JSON files to GitHub
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add data/all_odds.json data/positive_ev_plays.json
+          git commit -m "Update all_odds.json and positive_ev_plays.json [bot]"
+          git push origin main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload odds_data.db as artifact
+        uses: actions/upload-artifact@f63a8e3e5d27cf8dfb8a0c6c5dd24f80bdbf2702
         with:
           name: odds-db
           path: data/odds_data.db
 
-      - name: Upload positive_ev_plays.json
-        uses: actions/upload-artifact@v2
-        with:
-          name: ev-plays
-          path: data/positive_ev_plays.json
-
-      - name: Upload all_odds.json
-        uses: actions/upload-artifact@v3
-        with:
-          name: raw-odds
-          path: data/all_odds.json
