@@ -758,6 +758,9 @@ def show_ev_page():
     from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode
     gb = GridOptionsBuilder.from_dataframe(ev_display)
     gb.configure_default_column(resizable=True, autoWidth=True)
+    # Optional: if you configured specific columns earlier, re-apply autoWidth
+    for col in ev_display.columns:
+        gb.configure_column(col, autoWidth=True)
     gb.configure_selection("single", use_checkbox=False)
 
     gb.configure_grid_options(domLayout='normal')
