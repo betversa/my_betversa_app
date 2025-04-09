@@ -40,8 +40,7 @@ jobs:
           git config --global user.email "github-actions@github.com"
           git config --global user.name "GitHub Actions"
           git add data/all_odds.json data/positive_ev_plays.json
-          git commit -m "Update all_odds.json and positive_ev_plays.json [bot]"
+          git diff --cached --quiet || git commit -m "Update all_odds.json and positive_ev_plays.json [bot]"
           git push origin main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
