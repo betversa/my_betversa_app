@@ -758,6 +758,9 @@ def show_ev_page():
     gb = GridOptionsBuilder.from_dataframe(ev_display)
     gb.configure_default_column(resizable=True, autoSize=True)
     gb.configure_selection("single", use_checkbox=False)
+
+    gb.configure_grid_options(domLayout='normal')
+
     # Hide columns that should not be displayed but are needed in the underlying data.
     gb.configure_column("aggregated_odds", hide=True)
     gb.configure_column("unique_key", hide=True)
@@ -770,7 +773,7 @@ def show_ev_page():
         gridOptions=grid_options,
         update_mode=GridUpdateMode.SELECTION_CHANGED,
         theme="blue",
-        fit_columns_on_grid_load=True
+        fit_columns_on_grid_load=False
     )
     
     # Retrieve the selected row (if any)
