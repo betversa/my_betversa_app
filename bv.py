@@ -758,6 +758,13 @@ def show_ev_page():
     gb = GridOptionsBuilder.from_dataframe(ev_display)
     gb.configure_default_column(resizable=True, autoSize=True)
     gb.configure_selection("single", use_checkbox=False)
+    gb.configure_column(
+        "Kelly Amount",
+        cellStyle=lambda params: {
+            'color': 'green' if params.value > 25 else 'orange' if params.value > 5 else 'red'
+        }
+    )
+
 
     gb.configure_grid_options(domLayout='normal')
 
