@@ -4,8 +4,8 @@ import sqlite3
 from datetime import datetime, timedelta, timezone
 
 # Configuration: Path to the JSON file and the SQLite database file.
-JSON_FILE = "all_odds.json"
-DB_FILE = "odds_data.db"
+JSON_FILE = "data/all_odds.json"
+DB_FILE = "data/odds_data.db"
 
 def create_table(conn):
     """Creates the odds_snapshots table if it does not exist."""
