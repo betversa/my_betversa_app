@@ -612,7 +612,7 @@ def show_overview():
         except Exception:
             return False
         if sport == "nba" and market.startswith("player"):
-            stats_row = nba_stats_df[nba_stats_df["Player/Team"] == row["Player/Team"]]
+            stats_row = nba_stats_df[nba_stats_df["Player"] == row["Player/Team"]]
             if stats_row.empty:
                 return False
             stats_row = stats_row.iloc[0]
