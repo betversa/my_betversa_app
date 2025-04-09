@@ -57,6 +57,6 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: us-east-1
         run: |
-          aws s3 cp data/odds_data.db s3://your-bucket-name/odds_data.db
+          aws s3 cp data/odds_data.db s3://betversa-odds-data/odds_data.db
 
 
