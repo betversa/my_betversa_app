@@ -32,7 +32,7 @@ jobs:
       - name: Run positiveev.py (calculate EV plays)
         run: python positiveev.py
 
-      - name: Run line_movement.py (track line movements)
+      - name: Run line_movement.py (track line movements and generate SQLite DB)
         run: python line_movement.py
 
       - name: Commit updated JSON files to GitHub
@@ -57,3 +57,4 @@ jobs:
         with:
           name: odds-data
           path: data/odds_data.db
+
