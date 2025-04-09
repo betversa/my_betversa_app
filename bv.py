@@ -725,7 +725,7 @@ def show_ev_page():
 
     
     # Update the EV formatting: show as a decimal (e.g., "2.34").
-    merged_ev["EV"] = merged_ev["EV_float"].apply(lambda x: f"{x:.2f}%" if pd.notnull(x) else "")
+    merged_ev["EV"] = merged_ev["EV"].apply(lambda x: x if isinstance(x, str) else f"{x:.2f}%")
 
 
     merged_ev["NV Odds"] = merged_ev["NV Odds"].astype(str)
