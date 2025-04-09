@@ -9,6 +9,11 @@ from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode
 from datetime import datetime
 import plotly.express as px  # For interactive charts
 import ijson
+import sqlite3  # Needed for loading history odds from SQLite
+import threading
+
+
+DEBUG = False  # Set to False to disable debug prints.
 
 ###############################################################################
 # Page Config & Basic Functions
@@ -50,6 +55,23 @@ def decimal_to_american(decimal_odds):
         return None
     return round((decimal_odds - 1) * 100) if decimal_odds >= 2 else round(-100 / (decimal_odds - 1))
 
+def american_to_implied_prob(odds):
+    """
+    Convert American odds to implied probability.
+    For positive odds: probability = 100 / (odds + 100).
+    For negative odds: probability = abs(odds) / (abs(odds) + 100).
+    Returns a decimal value between 0 and 1.
+    """
+    try:
+        odds = float(odds)
+    except Exception as e:
+        return 0.0
+    if odds > 0:
+        return 100 / (odds + 100)
+    else:
+        return abs(odds) / (abs(odds) + 100)
+
+
 ###############################################################################
 # Data Loading Functions with TTL (60 seconds caching)
 ###############################################################################
@@ -74,8 +96,10 @@ def load_data():
                 "description": "Player/Team",
                 "sportsbook_odds": "Odds",
                 "fair_american_odds": "NV Odds",
+                "fair_prob": "fair_prob",
                 "ev": "EV",
-                "market_width": "Market Width"
+                "market_width": "Market Width",
+                "aggregated_odds": "aggregated_odds"  # Retain aggregated odds data
             })
             
             df["Game"] = df["Away Team"] + " @ " + df["Home Team"]
@@ -83,9 +107,10 @@ def load_data():
                 df["Market"] = df["Market"].apply(lambda x: x.replace("_", " ").title() if pd.notnull(x) else x)
             selected_columns = [
                 "Sport", "Game", "unique_key", "Player/Team", "Market", "Book", "Outcome", "Line", "Odds", "NV Odds", "EV", 
-                "Market Width"]
+                "Market Width", "aggregated_odds", "fair_prob"
+            ]
             df = df[selected_columns]
-            df["EV"] = df["EV"].apply(lambda x: f"{x * 100:.2f}%" if pd.notnull(x) else x)
+            df["EV"] = df["EV"].apply(lambda x: f"{x:.2f}%" if pd.notnull(x) else x)
             df["Line"] = df["Line"].apply(lambda x: f"{float(x):.1f}" if pd.notnull(x) else x)
             return df
         except Exception as e:
@@ -172,6 +197,36 @@ def load_nhl_skater_stats_2025():
     except Exception as e:
         st.error("Error loading NHL skater stats 2025: " + str(e))
         return pd.DataFrame()
+def extract_minimal_data(full_record):
+    """
+    Given a full JSON record from the SQLite database, this function
+    extracts only the minimal data needed for the interactive chart.
+    Adjust the code below based on which fields you really need.
+    """
+    minimal = {}
+    # For example, get the event id.
+    minimal['event_id'] = full_record.get("event", {}).get("id")
+    
+    # Extract a minimal version of the bookmakers data.
+    # This example filters for only the "h2h" market from each bookmaker.
+    odds_data = full_record.get("event", {}).get("odds", {})
+    bookmakers = odds_data.get("bookmakers", [])
+    minimal_bookmakers = []
+    for bookmaker in bookmakers:
+        filtered_markets = []
+        for market in bookmaker.get("markets", []):
+            if market.get("key") == "h2h":
+                filtered_markets.append(market)
+        if filtered_markets:
+            minimal_bookmakers.append({
+                "key": bookmaker.get("key"),
+                "title": bookmaker.get("title"),
+                "markets": filtered_markets
+            })
+    minimal["bookmakers"] = minimal_bookmakers
+    return minimal
+
+@st.cache_data(ttl=60)
 
 @st.cache_data(ttl=60)
 def load_history_odds_from_sqlite(ev_key_tails, db_path="data/odds_data.db"):
@@ -181,26 +236,65 @@ def load_history_odds_from_sqlite(ev_key_tails, db_path="data/odds_data.db"):
         cursor = conn.cursor()
         for tail in ev_key_tails:
             query = """
-                SELECT unique_id, snapshot_time, snapshot_data FROM odds_snapshots
-                WHERE lower(unique_id) LIKE ?
+                SELECT snapshot_time, snapshot_data 
+                FROM odds_snapshots
+                WHERE unique_id = ?
                 ORDER BY snapshot_time ASC
             """
             like_pattern = f"%_{tail}"
             cursor.execute(query, (like_pattern,))
             rows = cursor.fetchall()
             for unique_id, snapshot_time, snapshot_data in rows:
-                record = json.loads(snapshot_data)
-                record["timestamp"] = snapshot_time
-                history.setdefault(unique_id, []).append(record)
+                try:
+                    full_record = json.loads(snapshot_data)
+                    minimal_record = extract_minimal_data(full_record)
+                    minimal_record["timestamp"] = snapshot_time
+                    history.setdefault(unique_id, []).append(minimal_record)
+                except Exception as e:
+                    st.error(f"Error processing snapshot for {unique_id}: {e}")
         conn.close()
     except Exception as e:
-        st.error("Error loading odds movement data from database: " + str(e))
+        st.error(f"Error loading data from SQLite: {e}")
     return history
 
+@st.cache_data(ttl=60)
+def compute_interactive_graph(trends_data):
+    # Expect trends_data to be a list of dicts for the interactive graph.
+    trends_df = pd.DataFrame(trends_data)
+    if not pd.api.types.is_datetime64_any_dtype(trends_df["Time"]):
+        trends_df["Time"] = pd.to_datetime(trends_df["Time"], errors='coerce')
+    # Construct and return the Plotly line chart.
+    fig = px.line(trends_df, x="Time", y="Odds", color="Book", markers=True,
+                  title="Line Movement by Sportsbook")
+    return fig
 
+
+# Load our main data
 df_full = load_data()
 df_unique = df_full.drop_duplicates(subset=["unique_key"])
 merged_ev = pd.merge(df_full, df_unique[["unique_key", "NV Odds", "EV"]], on="unique_key", how="left")
+
+def compute_kelly_amount(nv_odds, fair_prob, bankroll, multiplier):
+    """
+    Compute the Kelly amount using the formula: (B * P - (1-P)) / B,
+    where:
+      B = (decimal odds - 1),
+      P = fair_prob (a decimal value between 0 and 1),
+      Q = 1-P.
+    
+    The Kelly Amount is then: bankroll * multiplier * Kelly fraction.
+    If the Kelly fraction is negative, return 0.
+    """
+    # Convert American odds to decimal odds
+    d = american_to_decimal(nv_odds)
+    if d is None or (d - 1) == 0:
+        return 0.0
+    b = d - 1
+    kelly_fraction = (b * fair_prob - (1 - fair_prob)) / b
+    if kelly_fraction < 0:
+        kelly_fraction = 0
+    return bankroll * multiplier * kelly_fraction
+
 
 ###############################################################################
 # Helper: Extract tail from unique key (everything after the first underscore)
@@ -257,13 +351,11 @@ def format_nhl_stat(col, value):
 custom_css = f"""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;600&display=swap');
-
 :root {{
     --bg-color: #1e1e1e;
     --text-color: #ffffff;
     --accent-color: #FDB827;
 }}
-
 html, body, [data-testid="stAppViewContainer"] {{
     height: 100%;
     width: 100%;
@@ -273,20 +365,17 @@ html, body, [data-testid="stAppViewContainer"] {{
     background-color: var(--bg-color);
     color: var(--text-color);
 }}
-
 .stApp {{
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }}
-
 main.block-container {{
     flex: 1 0 auto;
     width: 100%;
     padding: 2rem;
     min-height: calc(100vh - 150px);
 }}
-
 .navbar {{
     position: fixed;
     top: 0;
@@ -300,17 +389,14 @@ main.block-container {{
     align-items: center;
     box-shadow: 0 2px 4px rgba(0,0,0,0.6);
 }}
-
 .navbar-left {{
     display: flex;
     align-items: center;
 }}
-
 .navbar-left img {{
     margin-right: 1rem;
     width: 100px;
 }}
-
 .navbar-left a {{
     position: relative;
     color: #FDB827;
@@ -322,7 +408,6 @@ main.block-container {{
     cursor: pointer;
     transition: color 0.3s ease;
 }}
-
 .navbar-left a::after {{
     content: "";
     position: absolute;
@@ -333,11 +418,9 @@ main.block-container {{
     background: #FDB827;
     transition: width 0.3s ease;
 }}
-
 .navbar-left a:hover::after {{
     width: 100%;
 }}
-
 .hero {{
     text-align: center;
     padding: 3rem 2rem;
@@ -349,20 +432,17 @@ main.block-container {{
     box-shadow: 0 4px 8px rgba(0,0,0,0.5);
     color: #ffffff;
 }}
-
 .hero h1 {{
     color: #000000;
     font-family: 'Oswald', sans-serif;
     font-size: 3rem;
     margin: 0;
 }}
-
 .hero p {{
     color: #ffffff;
     font-family: 'Oswald', sans-serif;
     font-size: 1.5rem;
 }}
-
 .custom-header {{
     text-align: center;
     color: #FDB827;
@@ -371,8 +451,6 @@ main.block-container {{
     margin: 20px 0;
     font-weight: 600;
 }}
-
-/* Custom table styling for improved visuals */
 .custom-table-wrapper table {{
     margin: auto;
     border-collapse: collapse;
@@ -387,7 +465,6 @@ main.block-container {{
 .custom-table-wrapper th {{
     background-color: #2a2a2a;
     color: #FDB827;
-    text-align: center;
 }}
 .custom-table-wrapper tr:nth-child(even) {{
     background-color: #333333;
@@ -395,12 +472,10 @@ main.block-container {{
 .custom-table-wrapper tr:nth-child(odd) {{
     background-color: #2a2a2a;
 }}
-
 table, th, td {{
     text-align: center;
     border: 1px solid #444444;
 }}
-
 .footer {{
     margin-top: auto;
     width: 100%;
@@ -413,7 +488,6 @@ table, th, td {{
     font-weight: 600;
     font-size: 1.1rem;
 }}
-
 .button-primary {{
     background-color: #FDB827;
     color: #2a2a2a;
@@ -424,37 +498,27 @@ table, th, td {{
     cursor: pointer;
     transition: background-color 0.3s ease;
 }}
-
 .button-primary:hover {{
     background-color: #ffcb00;
 }}
-
-/* Fade-in animation */
 .fade-in {{
     animation: fadeInAnimation 1.5s ease-in both;
 }}
-
 @keyframes fadeInAnimation {{
     from {{ opacity: 0; transform: translateY(20px); }}
     to {{ opacity: 1; transform: translateY(0); }}
 }}
-
-/* Enhanced hover effects for images and cards */
 .image-hover:hover {{
     transform: scale(1.05);
     transition: transform 0.3s ease;
 }}
-
 .card {{
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
 }}
-
 .card:hover {{
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
 }}
-
-/* Responsive adjustments */
 @media only screen and (max-width: 600px) {{
     .navbar-left a {{
         font-size: 0.9rem;
@@ -466,13 +530,11 @@ table, th, td {{
     .hero p {{
         font-size: 1.2rem;
     }}
-    /* Stack columns vertically */
     .streamlit-expanderHeader {{
         flex-direction: column;
         align-items: flex-start;
     }}
 }}
-
 </style>
 """
 st.markdown(custom_css, unsafe_allow_html=True)
@@ -527,9 +589,6 @@ def show_overview():
             return False
 
     filtered = df_unique[(df_full["EV"].apply(is_positive)) & (df_full["EV"].apply(is_positive))]
-    # No merge needed if filtered comes from df_unique
-    # You already have 'NV Odds' and 'EV' in filtered from df_unique
-    # Just ensure they're formatted right
     filtered["EV"] = filtered["EV"].apply(lambda x: f"{float(x):.2f}%" if isinstance(x, (float, int)) else x)
     filtered["NV Odds"] = filtered["NV Odds"].astype(str)
 
@@ -539,7 +598,7 @@ def show_overview():
     if search_query:
         filtered = filtered[
             filtered["Game"].str.contains(search_query, case=False, na=False) |
-            filtered["Player"].str.contains(search_query, case=False, na=False) |
+            filtered["Player/Team"].str.contains(search_query, case=False, na=False) |
             filtered["Market"].str.contains(search_query, case=False, na=False)
         ]
     
@@ -575,14 +634,14 @@ def show_overview():
         elif sport == "mlb":
             if market.startswith("batter"):
                 mlb_batter_df = load_mlb_batter_stats_2025()
-                stats_row = mlb_batter_df[mlb_batter_df["Player"] == row["Player"]]
+                stats_row = mlb_batter_df[mlb_batter_df["Player"] == row["Player/Team"]]
                 if stats_row.empty:
                     return False
                 stat_value = stats_row.iloc[0]["H"]
                 return (stat_value > line_value) if outcome.startswith("over") else (stat_value < line_value)
             elif market.startswith("pitcher"):
                 mlb_pitcher_df = load_mlb_pitcher_stats_2025()
-                stats_row = mlb_pitcher_df[mlb_pitcher_df["Player"] == row["Player"]]
+                stats_row = mlb_pitcher_df[mlb_pitcher_df["Player"] == row["Player/Team"]]
                 if stats_row.empty:
                     return False
                 stat_value = stats_row.iloc[0]["SO"]
@@ -591,7 +650,7 @@ def show_overview():
                 return True
         elif sport == "nhl" and market.startswith("player"):
             nhl_df = load_nhl_skater_stats_2025()
-            stats_row = nhl_df[nhl_df["Player"] == row["Player"]]
+            stats_row = nhl_df[nhl_df["Player"] == row["Player/Team"]]
             if stats_row.empty:
                 return False
             stat_value = stats_row.iloc[0]["SOG"]
@@ -602,9 +661,9 @@ def show_overview():
     filtered = filtered[filtered.apply(stat_condition, axis=1)]
     
     st.dataframe(
-        filtered[["Sport", "Game", "Player", "Market", "Book", "Outcome", "Line", "Odds", "NV Odds", "EV", "Market Width"]]
+        filtered[["Sport", "Game", "Player/Team", "Market", "Book", "Outcome", "Line", "Odds", "NV Odds", "EV", "Market Width", "unique_key", "fair_prob"]]
         .reset_index(drop=True),
-        height=400
+        height=500
     )
 
 def show_ev_page():
@@ -612,31 +671,100 @@ def show_ev_page():
     st.markdown("""
         <p style="text-align: center; font-size: 1.1rem;">
             Explore detailed betting metrics and historical trends.
-            Use the filter below to select a sport, and click on a row for a deeper dive into odds breakdowns and player stats.
+            Use the filters below to select a sport, bookmaker, and market.
+            Click on a row for a deeper dive into odds breakdowns and player stats.
         </p>
     """, unsafe_allow_html=True)
+    
+    # Work with a copy of the full data.
     merged_ev = df_full.copy()
+    
+    # Create three columns for the filters.
+    filter_cols = st.columns(3)
 
-    sports_raw = sorted(df_full["Sport"].unique())
-    selected_sport = st.radio("Select Sport:", options=["All"] + sports_raw, index=0, horizontal=True)
-    st.session_state.selected_sport = selected_sport
+    with filter_cols[0]:
+        sports_options = ["All"] + sorted(merged_ev["Sport"].dropna().unique().tolist())
+        selected_sport = st.selectbox("Select Sport:", options=sports_options, index=0)
 
+    with filter_cols[1]:
+        books_options = ["All"] + sorted(merged_ev["Book"].dropna().unique().tolist())
+        selected_book = st.selectbox("Select Bookmaker:", options=books_options, index=0)
+
+    with filter_cols[2]:
+        markets_options = ["All"] + sorted(merged_ev["Market"].dropna().unique().tolist())
+        selected_market = st.selectbox("Select Market:", options=markets_options, index=0)
+
+    # Place additional inputs (bankroll and Kelly multiplier) in another row.
+    input_cols = st.columns(2)
+    with input_cols[0]:
+        bankroll = st.number_input("Enter your bankroll ($):", min_value=0.0, value=1000.0, step=10.0)
+    with input_cols[1]:
+        kelly_multiplier_option = st.selectbox("Select Kelly Multiplier:", options=["1", "1/2", "1/4"], index=0)
+    kelly_multiplier = {"1": 1.0, "1/2": 0.5, "1/4": 0.25}.get(kelly_multiplier_option, 1.0)
+
+    
+    # Filter the DataFrame based on the drop-down selections.
     if selected_sport != "All":
         merged_ev = merged_ev[merged_ev["Sport"] == selected_sport]
+    if selected_book != "All":
+        merged_ev = merged_ev[merged_ev["Book"] == selected_book]
+    if selected_market != "All":
+        merged_ev = merged_ev[merged_ev["Market"] == selected_market]
+    
+    # Load history records (if needed in later interactions).
+    ev_keys = set(df_full["unique_key"].tolist())
+    ev_key_tails = {key.split("_", 1)[-1].lower() for key in ev_keys}
+    history_records = {}
 
-    # Ensure formatting is consistent
-    merged_ev["EV"] = merged_ev["EV"].apply(lambda x: f"{float(x):.2f}%" if isinstance(x, (float, int)) else x)
+    def fetch_history():
+        nonlocal history_records
+        history_records = load_history_odds_from_sqlite(ev_key_tails)
+
+    # Start the background thread
+    threading.Thread(target=fetch_history).start()
+
+    
+    # Update the EV formatting: show as a decimal (e.g., "2.34").
+    merged_ev["EV"] = merged_ev["EV"].apply(lambda x: x if isinstance(x, str) else f"{x:.2f}%")
+
     merged_ev["NV Odds"] = merged_ev["NV Odds"].astype(str)
     
-    ev_display_cols = ["Sport", "Game", "Player/Team", "Market", "Book", "Outcome", "Line", "Odds", "NV Odds", "EV", "Market Width", "unique_key"]
+    # Compute Kelly Amount using fair_prob.
+    merged_ev["Kelly Amount"] = merged_ev.apply(
+        lambda row: compute_kelly_amount(row["NV Odds"], row["fair_prob"], bankroll, kelly_multiplier),
+        axis=1
+    )
+    merged_ev["Kelly Amount"] = merged_ev.apply(
+        lambda row: compute_kelly_amount(
+            row["NV Odds"],
+            row.get("fair_prob", american_to_implied_prob(row["NV Odds"])),
+            bankroll,
+            kelly_multiplier
+        ),
+        axis=1
+    )
+
+    
+    # Prepare the DataFrame for AgGrid.
+    ev_display_cols = [
+        "Sport", "Game", "Player/Team", "Market", "Book", "Outcome", "Line",
+        "Odds", "NV Odds", "EV", "Market Width", "Kelly Amount", "aggregated_odds", "fair_prob", "unique_key"
+    ]
     ev_display = merged_ev[ev_display_cols].reset_index(drop=True)
     ev_display.index = [''] * len(ev_display)
-
+    
+    # Build AgGrid options.
+    from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode
     gb = GridOptionsBuilder.from_dataframe(ev_display)
     gb.configure_default_column(resizable=True, autoSize=True)
     gb.configure_selection("single", use_checkbox=False)
-    gb.configure_column("odds_breakdown", hide=True)
+    # Hide columns that should not be displayed but are needed in the underlying data.
+    gb.configure_column("aggregated_odds", hide=True)
+    gb.configure_column("unique_key", hide=True)
+    gb.configure_column("fair_prob", hide=True)
     grid_options = gb.build()
+    
+    # Display AgGrid.
     grid_response = AgGrid(
         ev_display,
         gridOptions=grid_options,
@@ -644,6 +772,8 @@ def show_ev_page():
         theme="blue",
         fit_columns_on_grid_load=True
     )
+    
+    # Retrieve the selected row (if any)
     selected = grid_response.get("selected_rows")
     selected_row = None
     if selected is not None:
@@ -651,21 +781,32 @@ def show_ev_page():
             selected_row = selected[0]
         elif isinstance(selected, pd.DataFrame) and not selected.empty:
             selected_row = selected.iloc[0].to_dict()
-
-    if selected_row is not None and "odds_breakdown" in selected_row and selected_row["odds_breakdown"]:
-        tabs = st.tabs(["Interactive Chart", "Details"])
-        with tabs[0]:
+    
+    if DEBUG:
+        st.write("DEBUG: Selected row data", selected_row)
+    
+    if selected_row:
+        selected_key = selected_row.get("unique_key")
+        matched_records = history_records.get(selected_key, [])
+        st.write("Matched Records:", matched_records)
+    else:
+        st.write("No row selected.")
+    
+    # Use the aggregated odds for the odds breakdown if available.
+    if selected_row is not None and "aggregated_odds" in selected_row and selected_row["aggregated_odds"]:
+        tabs = st.tabs(["Details", "Line Movement"])
+        with tabs[1]:
             debug_chart = st.checkbox("Show chart debug info", value=False)
-            # INTERACTIVE GRAPH SECTION (UPDATED)
             pos_ev_unique = selected_row.get("unique_key", "")
             bet_tail = tail_key(pos_ev_unique)
             if debug_chart:
                 st.write("Debug: Bet unique_key tail:", bet_tail)
             trends_data = []
-            # Create a set of EV keys (and tails) from your EV bets data
             ev_keys = set(df_full["unique_key"].tolist())
             ev_key_tails = {key.split("_", 1)[-1].lower() for key in ev_keys}
-            history_records = load_history_odds_for_ev(ev_key_tails)# Dict with keys as unique ids.
+            history_records = load_history_odds_from_sqlite(ev_key_tails)
+            # Instead of iterating over everything, get matched records for the selected key.
+            matched_records = history_records.get(selected_key, [])
             matching_count = 0
             for hist_key, rec_list in history_records.items():
                 hist_tail = tail_key(hist_key)
@@ -674,8 +815,9 @@ def show_ev_page():
                     if debug_chart:
                         st.write("Debug: Found matching history key:", hist_key)
                     for rec in rec_list:
+                        if debug_chart:
+                            st.write("DEBUG: Raw record:", rec)
                         ts_str = rec.get("timestamp", "")
-                        # Remove trailing "Z" if present with "+00:00"
                         if ts_str.endswith("Z") and "+00:00" in ts_str:
                             ts_str = ts_str.replace("+00:00Z", "+00:00")
                         try:
@@ -688,6 +830,8 @@ def show_ev_page():
                                 st.write("Debug: Timestamp conversion error:", e)
                             ts = None
                         for entry in rec.get("bookmakers", []):
+                            if debug_chart:
+                                st.write("DEBUG: Bookmakers data from record:", entry)
                             bk = entry.get("bookmaker", {}).get("title", "")
                             offered = entry.get("offered_odds")
                             trends_data.append({"Time": ts, "Odds": offered, "Book": bk})
@@ -701,29 +845,47 @@ def show_ev_page():
                 if not pd.api.types.is_datetime64_any_dtype(trends_df["Time"]):
                     trends_df["Time"] = pd.to_datetime(trends_df["Time"], errors='coerce')
                 fig = px.line(trends_df, x="Time", y="Odds", color="Book", markers=True,
-                              title="Interactive Betting Trends by Sportsbook (US Central Time)")
+                              title="Line Movement by Sportsbook")
                 st.plotly_chart(fig, use_container_width=True)
             else:
                 st.write("No interactive trends available.")
-        with tabs[1]:
-            # ODDS BREAKDOWN SECTION (UNCHANGED)
+        with tabs[0]:
             col_left, col_right = st.columns([1, 1.5])
             with col_left:
-                odds_df = pd.DataFrame(selected_row["odds_breakdown"])
-                if "player" in odds_df.columns and "offered_point" in odds_df.columns and "Line" in selected_row:
+                odds_df = pd.DataFrame(selected_row["aggregated_odds"])
+                if DEBUG:
+                    st.write("DEBUG: Raw aggregated odds", odds_df)
+                if "player" in odds_df.columns and "point" in odds_df.columns and "Line" in selected_row:
                     odds_df = odds_df[
-                        (odds_df["player"] == selected_row["Player/Team"]) & 
-                        (odds_df["offered_point"].astype(str) == selected_row["Line"])
+                        (odds_df["description"].str.lower().str.strip() == selected_row["Player/Team"].lower().strip()) &
+                        (odds_df["point"].astype(str).str.strip() == str(selected_row["Line"]).strip())
                     ]
+                if DEBUG:
+                    st.write("DEBUG: Filtered aggregated odds", odds_df)
                 odds_df = odds_df.drop_duplicates(subset=["bookmaker"])
                 odds_df = odds_df.rename(columns={
                     "bookmaker": "Book",
-                    "offered_odds_american": "Odds",
-                    "offered_point": "Line"
+                    "price": "Odds",
+                    "point": "Line"
                 })
+                book_mapping = {
+                    "draftkings": "DraftKings",
+                    "betmgm": "BetMGM",
+                    "hardrockbet": "Hard Rock Bet",
+                    "espnbet": "ESPN BET",
+                    "williamhill_us": "Caesars",
+                    "betrivers": "BetRivers",
+                    "betonline": "Bet Online",
+                    "lowvig": "Low Vig",
+                    "pinnacle": "Pinnacle",
+                    "fanduel": "FanDuel"
+                }
+                odds_df["Book"] = odds_df["Book"].apply(
+                    lambda x: book_mapping.get(x.lower().strip(), x.title())
+                )
                 for col in ["fair_odds_american", "player"]:
                     if col in odds_df.columns:
-                        odds_df = odds_df.drop(columns=[col])
+                        odds_df.drop(columns=[col], inplace=True)
                 if "Line" in odds_df.columns:
                     odds_df["Line"] = odds_df["Line"].apply(lambda x: f"{float(x):.1f}" if pd.notnull(x) else x)
                 logo_dict = {
@@ -735,6 +897,7 @@ def show_ev_page():
                     "BetRivers": get_base64_image("assets/betrivers.png"),
                     "Bet Online": get_base64_image("assets/betonlineag.png"),
                     "Low Vig": get_base64_image("assets/lowvig.png"),
+                    "Pinnacle": get_base64_image("assets/pinnacle.png"),
                     "FanDuel": get_base64_image("assets/fanduel.png")
                 }
                 odds_df["Logo"] = odds_df["Book"].map(lambda book: f'<img src="data:image/png;base64,{logo_dict.get(book, "")}" width="30" style="border-radius:4px; border:1px solid #ddd;">' if logo_dict.get(book, "") else "")
@@ -744,7 +907,6 @@ def show_ev_page():
                 odds_html = odds_df[["Logo"] + display_cols].to_html(escape=False, index=False)
                 st.markdown("<div class='custom-table-wrapper'>" + odds_html + "</div>", unsafe_allow_html=True)
             with col_right:
-                # PLAYER STATS SECTION (UNCHANGED)
                 sport = selected_row["Sport"].lower()
                 market = selected_row["Market"].lower()
                 selected_player = selected_row["Player/Team"]
@@ -755,8 +917,8 @@ def show_ev_page():
                     canonical_player = name_mapping.get(selected_player, selected_player)
                     nba_last = load_nba_stats_2024()
                     nba_this = load_nba_stats()
-                    stats_last = nba_last[nba_last["Player/Team"] == canonical_player].copy()
-                    stats_this = nba_this[nba_this["Player/Team"] == canonical_player].copy()
+                    stats_last = nba_last[nba_last["Player"] == canonical_player].copy()
+                    stats_this = nba_this[nba_this["Player"] == canonical_player].copy()
                     for df in [stats_last, stats_this]:
                         if not df.empty:
                             for col in df.columns:
@@ -767,8 +929,8 @@ def show_ev_page():
                     if market.startswith("batter"):
                         mlb_last = load_mlb_batter_stats_2024()
                         mlb_this = load_mlb_batter_stats_2025()
-                        stats_last = mlb_last[mlb_last["Player/Team"] == selected_player].copy() if not mlb_last.empty else pd.DataFrame()
-                        stats_this = mlb_this[mlb_this["Player/Team"] == selected_player].copy() if not mlb_this.empty else pd.DataFrame()
+                        stats_last = mlb_last[mlb_last["Player"] == selected_player].copy() if not mlb_last.empty else pd.DataFrame()
+                        stats_this = mlb_this[mlb_this["Player"] == selected_player].copy() if not mlb_this.empty else pd.DataFrame()
                         for df in [stats_last, stats_this]:
                             if not df.empty:
                                 for col in df.columns:
@@ -778,8 +940,8 @@ def show_ev_page():
                     elif market.startswith("pitcher"):
                         mlb_last = load_mlb_pitcher_stats_2024()
                         mlb_this = load_mlb_pitcher_stats_2025()
-                        stats_last = mlb_last[mlb_last["Player/Team"] == selected_player].copy() if not mlb_last.empty else pd.DataFrame()
-                        stats_this = mlb_this[mlb_this["Player/Team"] == selected_player].copy() if not mlb_this.empty else pd.DataFrame()
+                        stats_last = mlb_last[mlb_last["Player"] == selected_player].copy() if not mlb_last.empty else pd.DataFrame()
+                        stats_this = mlb_this[mlb_this["Player"] == selected_player].copy() if not mlb_this.empty else pd.DataFrame()
                         for df in [stats_last, stats_this]:
                             if not df.empty:
                                 for col in df.columns:
@@ -789,8 +951,8 @@ def show_ev_page():
                 elif sport == "nhl" and market.startswith("player"):
                     nhl_last = load_nhl_skater_stats_2024()
                     nhl_this = load_nhl_skater_stats_2025()
-                    stats_last = nhl_last[nhl_last["Player/Team"] == selected_player].copy() if not nhl_last.empty else pd.DataFrame()
-                    stats_this = nhl_this[nhl_this["Player/Team"] == selected_player].copy() if not nhl_this.empty else pd.DataFrame()
+                    stats_last = nhl_last[nhl_last["Player"] == selected_player].copy() if not nhl_last.empty else pd.DataFrame()
+                    stats_this = nhl_this[nhl_this["Player"] == selected_player].copy() if not nhl_this.empty else pd.DataFrame()
                     for df in [stats_last, stats_this]:
                         if not df.empty:
                             for col in df.columns:
@@ -803,7 +965,7 @@ def show_ev_page():
                     stats_this["Season"] = "This Season"
                 combined_stats = pd.concat([stats_last, stats_this], ignore_index=True)
                 if "Player" in combined_stats.columns:
-                    combined_stats.drop(columns=["Player/Team"], inplace=True)
+                    combined_stats.drop(columns=["Player"], inplace=True)
                 if not combined_stats.empty:
                     cols = ["Season"] + [c for c in combined_stats.columns if c != "Season"]
                     combined_stats = combined_stats[cols]
@@ -842,7 +1004,7 @@ def show_parlay():
             parlay_df = parlay_df.sort_values("EV_float", ascending=False)
             selected_bets = parlay_df.head(legs)
             try:
-                final_combo_decimal = reduce(mul, [american_to_decimal(x) for x in processed_bets["NV Odds"] if x is not None], 1)
+                final_combo_decimal = reduce(mul, [american_to_decimal(x) for x in selected_bets["NV Odds"] if x is not None], 1)
                 final_combo_american = decimal_to_american(final_combo_decimal)
             except Exception:
                 final_combo_american = None
@@ -856,7 +1018,7 @@ def show_parlay():
             bet_amount = 250
 
             display_columns = ["Sport", "Game", "Player/Team", "Market", "Book", "Outcome", "Line", "Odds", "NV Odds", "EV", "Market Width"]
-            temp = processed_bets[display_columns].reset_index(drop=True)
+            temp = selected_bets[display_columns].reset_index(drop=True)
             temp.index = [''] * len(temp)
             st.dataframe(temp, height=400)
 
@@ -919,4 +1081,3 @@ footer_html = """
 </div>
 """
 st.markdown(footer_html, unsafe_allow_html=True)
-
