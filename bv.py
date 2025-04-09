@@ -725,7 +725,9 @@ def show_ev_page():
 
     
     # Update the EV formatting: show as a decimal (e.g., "2.34").
-    merged_ev["EV"] = merged_ev["EV"].apply(lambda x: x if isinstance(x, str) else f"{x:.2f}%")
+    merged_ev["EV_float"] = pd.to_numeric(merged_ev["EV"], errors='coerce')
+    merged_ev["EV Display"] = merged_ev["EV_float"].apply(lambda x: f"{x:.2f}%" if pd.notnull(x) else "")
+
 
     merged_ev["NV Odds"] = merged_ev["NV Odds"].astype(str)
     
@@ -748,7 +750,7 @@ def show_ev_page():
     # Prepare the DataFrame for AgGrid.
     ev_display_cols = [
         "Sport", "Game", "Player/Team", "Market", "Book", "Outcome", "Line",
-        "Odds", "NV Odds", "EV", "Market Width", "Kelly Amount", "aggregated_odds", "fair_prob", "unique_key"
+        "Odds", "NV Odds", "EV", "Market Width", "Kelly Amount", "aggregated_odds", "fair_prob", "unique_key", "Kelly Amount", "EV _float"
     ]
     ev_display = merged_ev[ev_display_cols].reset_index(drop=True)
     ev_display.index = [''] * len(ev_display)
@@ -758,6 +760,15 @@ def show_ev_page():
     gb = GridOptionsBuilder.from_dataframe(ev_display)
     gb.configure_default_column(resizable=True, autoSize=True)
     gb.configure_selection("single", use_checkbox=False)
+    gb.configure_column(
+        "EV Display",
+        valueGetter="data.EV_float",
+        cellRenderer="(params) => params.value !== null ? params.value.toFixed(2) + '%' : ''",
+        sortable=True,
+        type=["numericColumn"]
+    )
+    gb.configure_column("EV_float", hide=True)  # Keep this hidden
+
 
 
     gb.configure_grid_options(domLayout='normal')
