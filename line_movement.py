@@ -9,11 +9,7 @@ BUCKET_NAME = "betversa-odds-data"
 SNAPSHOT_PREFIX = "snapshots"
 
 # Initialize S3 client using credentials from environment variables
-s3 = boto3.client(
-    "s3",
-    aws_access_key_id=os.environ["AWS_ACCESS_KEY_ID"],
-    aws_secret_access_key=os.environ["AWS_SECRET_ACCESS_KEY"]
-)
+s3 = boto3.client("s3")
 
 def load_odds_from_json(json_file):
     """Load odds data from the provided JSON file."""
