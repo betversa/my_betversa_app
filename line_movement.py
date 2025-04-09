@@ -70,6 +70,15 @@ def load_odds_from_json(json_file):
         return json.load(f)
 
 def main():
+    # Check if DB is valid; recreate if corrupted
+    if os.path.exists(DB_FILE):
+        try:
+            with sqlite3.connect(DB_FILE) as test_conn:
+                test_conn.execute("SELECT name FROM sqlite_master LIMIT 1")
+        except sqlite3.DatabaseError:
+            print("⚠️ Invalid DB file detected. Recreating odds_data.db...")
+            os.remove(DB_FILE)
+
     conn = sqlite3.connect(DB_FILE)
     create_table(conn)
     
