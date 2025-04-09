@@ -757,7 +757,7 @@ def show_ev_page():
     # Build AgGrid options.
     from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode
     gb = GridOptionsBuilder.from_dataframe(ev_display)
-    gb.configure_default_column(resizable=True, autoSize=True)
+    gb.configure_default_column(resizable=True, autoWidth=True)
     gb.configure_selection("single", use_checkbox=False)
 
     gb.configure_grid_options(domLayout='normal')
