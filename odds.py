@@ -98,7 +98,7 @@ def main():
         else:
             print(f"No events returned for {sport_label}")
     # Save all events (with full odds data) to a single JSON file.
-    with open("all_odds.json", "w") as f:
+    with open("data/all_odds.json", "w") as f:
         json.dump(all_events, f, indent=4)
     print("All odds (with events and bookmakers data) saved to all_odds.json")
 
