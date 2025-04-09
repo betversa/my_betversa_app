@@ -63,32 +63,30 @@ def load_data():
                 data = [data]
             df = pd.DataFrame(data)
             df = df.rename(columns={
+                "unique_id": "unique_key",
+                "sport": "Sport",
                 "home_team": "Home Team",
                 "away_team": "Away Team",
                 "market": "Market",
                 "bookmaker": "Book",
-                "team": "Outcome",                     # "Over" or "Under"
+                "team": "Outcome",
                 "point": "Line",
-                "description": "Player",              # Player name
-                "sportsbook_odds": "Odds",            # American odds from book
-                "fair_american_odds": "Avg NV Odds",  # Combined no-vig odds
-                "ev": "EV",                            # Still EV
-                "market_width": "Market Width"        # New column!
+                "description": "Player/Team",
+                "sportsbook_odds": "Odds",
+                "fair_american_odds": "NV Odds",
+                "ev": "EV",
+                "market_width": "Market Width"
             })
-            # We assume unique_key is provided.
+            
             df["Game"] = df["Away Team"] + " @ " + df["Home Team"]
             if "Market" in df.columns:
                 df["Market"] = df["Market"].apply(lambda x: x.replace("_", " ").title() if pd.notnull(x) else x)
             selected_columns = [
-                "Sport", "Game", "unique_key", "Player", "Market", "Book", "Outcome", "Line", "Odds",
-                "Pin NV Odds", "Avg NV Odds", "EV", "Avg EV", "Kelly $", "odds_breakdown"
-            ]
+                "Sport", "Game", "unique_key", "Player/Team", "Market", "Book", "Outcome", "Line", "Odds", "NV Odds", "EV", 
+                "Market Width"]
             df = df[selected_columns]
             df["EV"] = df["EV"].apply(lambda x: f"{x * 100:.2f}%" if pd.notnull(x) else x)
-            df["Avg EV"] = df["Avg EV"].apply(lambda x: f"{x * 100:.2f}%" if pd.notnull(x) else x)
             df["Line"] = df["Line"].apply(lambda x: f"{float(x):.1f}" if pd.notnull(x) else x)
-            if "Kelly $" in df.columns:
-                df["Kelly $"] = df["Kelly $"].apply(lambda x: f"${float(x):.2f}" if pd.notnull(x) else x)
             return df
         except Exception as e:
             st.error("Error loading data: " + str(e))
@@ -202,6 +200,7 @@ def load_history_odds_from_sqlite(ev_key_tails, db_path="data/odds_data.db"):
 
 df_full = load_data()
 df_unique = df_full.drop_duplicates(subset=["unique_key"])
+merged_ev = pd.merge(df_full, df_unique[["unique_key", "NV Odds", "EV"]], on="unique_key", how="left")
 
 ###############################################################################
 # Helper: Extract tail from unique key (everything after the first underscore)
@@ -527,9 +526,12 @@ def show_overview():
         except:
             return False
 
-    filtered = df_unique[(df_full["EV"].apply(is_positive)) & (df_full["Avg EV"].apply(is_positive))]
-    filtered = pd.merge(filtered, df_processed[["unique_key", "Combo NV Odds", "Combo EV"]], on="unique_key", how="left")
-    filtered = filtered[filtered["Combo EV"].apply(lambda x: float(x.replace("%", "")) > 0)]
+    filtered = df_unique[(df_full["EV"].apply(is_positive)) & (df_full["EV"].apply(is_positive))]
+    # No merge needed if filtered comes from df_unique
+    # You already have 'NV Odds' and 'EV' in filtered from df_unique
+    # Just ensure they're formatted right
+    filtered["EV"] = filtered["EV"].apply(lambda x: f"{float(x):.2f}%" if isinstance(x, (float, int)) else x)
+    filtered["NV Odds"] = filtered["NV Odds"].astype(str)
 
     allowed_markets = ("player", "batter", "pitcher")
     filtered = filtered[filtered["Market"].str.lower().str.startswith(allowed_markets)]
@@ -551,7 +553,7 @@ def show_overview():
         except Exception:
             return False
         if sport == "nba" and market.startswith("player"):
-            stats_row = nba_stats_df[nba_stats_df["Player"] == row["Player"]]
+            stats_row = nba_stats_df[nba_stats_df["Player/Team"] == row["Player/Team"]]
             if stats_row.empty:
                 return False
             stats_row = stats_row.iloc[0]
@@ -600,7 +602,7 @@ def show_overview():
     filtered = filtered[filtered.apply(stat_condition, axis=1)]
     
     st.dataframe(
-        filtered[["Sport", "Game", "Player", "Market", "Book", "Outcome", "Line", "Odds", "Combo NV Odds", "Combo EV", "Kelly $"]]
+        filtered[["Sport", "Game", "Player", "Market", "Book", "Outcome", "Line", "Odds", "NV Odds", "EV", "Market Width"]]
         .reset_index(drop=True),
         height=400
     )
@@ -613,17 +615,20 @@ def show_ev_page():
             Use the filter below to select a sport, and click on a row for a deeper dive into odds breakdowns and player stats.
         </p>
     """, unsafe_allow_html=True)
+    merged_ev = df_full.copy()
+
     sports_raw = sorted(df_full["Sport"].unique())
-    if "selected_sport" not in st.session_state:
-        st.session_state.selected_sport = "All"
     selected_sport = st.radio("Select Sport:", options=["All"] + sports_raw, index=0, horizontal=True)
     st.session_state.selected_sport = selected_sport
 
-    merged_ev = pd.merge(df_full, df_processed[["unique_key", "Combo NV Odds", "Combo EV"]], on="unique_key", how="left")
-    if st.session_state.selected_sport != "All":
-        merged_ev = merged_ev[merged_ev["Sport"] == st.session_state.selected_sport]
+    if selected_sport != "All":
+        merged_ev = merged_ev[merged_ev["Sport"] == selected_sport]
+
+    # Ensure formatting is consistent
+    merged_ev["EV"] = merged_ev["EV"].apply(lambda x: f"{float(x):.2f}%" if isinstance(x, (float, int)) else x)
+    merged_ev["NV Odds"] = merged_ev["NV Odds"].astype(str)
     
-    ev_display_cols = ["Sport", "Game", "Player", "Market", "Book", "Outcome", "Line", "Odds", "Pin NV Odds", "EV", "Kelly $", "odds_breakdown", "unique_key"]
+    ev_display_cols = ["Sport", "Game", "Player/Team", "Market", "Book", "Outcome", "Line", "Odds", "NV Odds", "EV", "Market Width", "unique_key"]
     ev_display = merged_ev[ev_display_cols].reset_index(drop=True)
     ev_display.index = [''] * len(ev_display)
 
@@ -707,7 +712,7 @@ def show_ev_page():
                 odds_df = pd.DataFrame(selected_row["odds_breakdown"])
                 if "player" in odds_df.columns and "offered_point" in odds_df.columns and "Line" in selected_row:
                     odds_df = odds_df[
-                        (odds_df["player"] == selected_row["Player"]) & 
+                        (odds_df["player"] == selected_row["Player/Team"]) & 
                         (odds_df["offered_point"].astype(str) == selected_row["Line"])
                     ]
                 odds_df = odds_df.drop_duplicates(subset=["bookmaker"])
@@ -742,7 +747,7 @@ def show_ev_page():
                 # PLAYER STATS SECTION (UNCHANGED)
                 sport = selected_row["Sport"].lower()
                 market = selected_row["Market"].lower()
-                selected_player = selected_row["Player"]
+                selected_player = selected_row["Player/Team"]
                 stats_last = pd.DataFrame()
                 stats_this = pd.DataFrame()
                 if sport == "nba" and market.startswith("player"):
@@ -750,46 +755,46 @@ def show_ev_page():
                     canonical_player = name_mapping.get(selected_player, selected_player)
                     nba_last = load_nba_stats_2024()
                     nba_this = load_nba_stats()
-                    stats_last = nba_last[nba_last["Player"] == canonical_player].copy()
-                    stats_this = nba_this[nba_this["Player"] == canonical_player].copy()
+                    stats_last = nba_last[nba_last["Player/Team"] == canonical_player].copy()
+                    stats_this = nba_this[nba_this["Player/Team"] == canonical_player].copy()
                     for df in [stats_last, stats_this]:
                         if not df.empty:
                             for col in df.columns:
-                                if col == "Player":
+                                if col == "Player/Team":
                                     continue
                                 df[col] = format_nba_stat(col, df[col].iloc[0])
                 elif sport == "mlb":
                     if market.startswith("batter"):
                         mlb_last = load_mlb_batter_stats_2024()
                         mlb_this = load_mlb_batter_stats_2025()
-                        stats_last = mlb_last[mlb_last["Player"] == selected_player].copy() if not mlb_last.empty else pd.DataFrame()
-                        stats_this = mlb_this[mlb_this["Player"] == selected_player].copy() if not mlb_this.empty else pd.DataFrame()
+                        stats_last = mlb_last[mlb_last["Player/Team"] == selected_player].copy() if not mlb_last.empty else pd.DataFrame()
+                        stats_this = mlb_this[mlb_this["Player/Team"] == selected_player].copy() if not mlb_this.empty else pd.DataFrame()
                         for df in [stats_last, stats_this]:
                             if not df.empty:
                                 for col in df.columns:
-                                    if col == "Player":
+                                    if col == "Player/Team":
                                         continue
                                     df[col] = format_mlb_stat(col, df[col].iloc[0])
                     elif market.startswith("pitcher"):
                         mlb_last = load_mlb_pitcher_stats_2024()
                         mlb_this = load_mlb_pitcher_stats_2025()
-                        stats_last = mlb_last[mlb_last["Player"] == selected_player].copy() if not mlb_last.empty else pd.DataFrame()
-                        stats_this = mlb_this[mlb_this["Player"] == selected_player].copy() if not mlb_this.empty else pd.DataFrame()
+                        stats_last = mlb_last[mlb_last["Player/Team"] == selected_player].copy() if not mlb_last.empty else pd.DataFrame()
+                        stats_this = mlb_this[mlb_this["Player/Team"] == selected_player].copy() if not mlb_this.empty else pd.DataFrame()
                         for df in [stats_last, stats_this]:
                             if not df.empty:
                                 for col in df.columns:
-                                    if col == "Player":
+                                    if col == "Player/Team":
                                         continue
                                     df[col] = format_mlb_stat(col, df[col].iloc[0])
                 elif sport == "nhl" and market.startswith("player"):
                     nhl_last = load_nhl_skater_stats_2024()
                     nhl_this = load_nhl_skater_stats_2025()
-                    stats_last = nhl_last[nhl_last["Player"] == selected_player].copy() if not nhl_last.empty else pd.DataFrame()
-                    stats_this = nhl_this[nhl_this["Player"] == selected_player].copy() if not nhl_this.empty else pd.DataFrame()
+                    stats_last = nhl_last[nhl_last["Player/Team"] == selected_player].copy() if not nhl_last.empty else pd.DataFrame()
+                    stats_this = nhl_this[nhl_this["Player/Team"] == selected_player].copy() if not nhl_this.empty else pd.DataFrame()
                     for df in [stats_last, stats_this]:
                         if not df.empty:
                             for col in df.columns:
-                                if col == "Player":
+                                if col == "Player/Team":
                                     continue
                                 df[col] = format_nhl_stat(col, df[col].iloc[0])
                 if not stats_last.empty:
@@ -798,7 +803,7 @@ def show_ev_page():
                     stats_this["Season"] = "This Season"
                 combined_stats = pd.concat([stats_last, stats_this], ignore_index=True)
                 if "Player" in combined_stats.columns:
-                    combined_stats.drop(columns=["Player"], inplace=True)
+                    combined_stats.drop(columns=["Player/Team"], inplace=True)
                 if not combined_stats.empty:
                     cols = ["Season"] + [c for c in combined_stats.columns if c != "Season"]
                     combined_stats = combined_stats[cols]
@@ -837,12 +842,12 @@ def show_parlay():
             parlay_df = parlay_df.sort_values("EV_float", ascending=False)
             selected_bets = parlay_df.head(legs)
             try:
-                final_combo_decimal = reduce(mul, [american_to_decimal(x) for x in processed_bets["Combo NV Odds"] if x is not None], 1)
+                final_combo_decimal = reduce(mul, [american_to_decimal(x) for x in processed_bets["NV Odds"] if x is not None], 1)
                 final_combo_american = decimal_to_american(final_combo_decimal)
             except Exception:
                 final_combo_american = None
             try:
-                no_vig_decimals = [american_to_decimal(x) for x in selected_bets["Avg NV Odds"] if x is not None]
+                no_vig_decimals = [american_to_decimal(x) for x in selected_bets["NV Odds"] if x is not None]
                 parlay_decimal_no_vig = reduce(mul, no_vig_decimals, 1)
                 parlay_american_no_vig = decimal_to_american(parlay_decimal_no_vig)
             except Exception:
@@ -850,7 +855,7 @@ def show_parlay():
 
             bet_amount = 250
 
-            display_columns = ["Sport", "Game", "Player", "Market", "Book", "Outcome", "Line", "Odds", "Combo NV Odds", "Combo EV", "Kelly $"]
+            display_columns = ["Sport", "Game", "Player/Team", "Market", "Book", "Outcome", "Line", "Odds", "NV Odds", "EV", "Market Width"]
             temp = processed_bets[display_columns].reset_index(drop=True)
             temp.index = [''] * len(temp)
             st.dataframe(temp, height=400)
@@ -914,3 +919,4 @@ footer_html = """
 </div>
 """
 st.markdown(footer_html, unsafe_allow_html=True)
+
