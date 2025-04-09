@@ -661,7 +661,7 @@ def show_overview():
     filtered = filtered[filtered.apply(stat_condition, axis=1)]
     
     st.dataframe(
-        filtered[["Sport", "Game", "Player/Team", "Market", "Book", "Outcome", "Line", "Odds", "NV Odds", "EV", "Market Width", "unique_key", "fair_prob"]]
+        filtered[["Sport", "Game", "Player/Team", "Market", "Book", "Outcome", "Line", "Odds", "NV Odds", "EV", "Market Width"]]
         .reset_index(drop=True),
         height=500
     )
