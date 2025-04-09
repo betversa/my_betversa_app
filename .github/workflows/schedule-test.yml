@@ -51,3 +51,9 @@ jobs:
           fi
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload odds_data.db as artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: odds-data
+          path: data/odds_data.db
