@@ -197,36 +197,17 @@ def load_nhl_skater_stats_2025():
     except Exception as e:
         st.error("Error loading NHL skater stats 2025: " + str(e))
         return pd.DataFrame()
-def extract_minimal_data(full_record):
-    """
-    Given a full JSON record from the SQLite database, this function
-    extracts only the minimal data needed for the interactive chart.
-    Adjust the code below based on which fields you really need.
-    """
-    minimal = {}
-    # For example, get the event id.
-    minimal['event_id'] = full_record.get("event", {}).get("id")
-    
-    # Extract a minimal version of the bookmakers data.
-    # This example filters for only the "h2h" market from each bookmaker.
-    odds_data = full_record.get("event", {}).get("odds", {})
-    bookmakers = odds_data.get("bookmakers", [])
-    minimal_bookmakers = []
-    for bookmaker in bookmakers:
-        filtered_markets = []
-        for market in bookmaker.get("markets", []):
-            if market.get("key") == "h2h":
-                filtered_markets.append(market)
-        if filtered_markets:
-            minimal_bookmakers.append({
-                "key": bookmaker.get("key"),
-                "title": bookmaker.get("title"),
-                "markets": filtered_markets
-            })
-    minimal["bookmakers"] = minimal_bookmakers
-    return minimal
 
-@st.cache_data(ttl=60)
+# Initialize S3 client using credentials from environment variables or from st.secrets.
+aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID") or st.secrets.get("AWS_ACCESS_KEY_ID")
+aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY") or st.secrets.get("AWS_SECRET_ACCESS_KEY")
+aws_default_region = os.getenv("AWS_DEFAULT_REGION") or st.secrets.get("AWS_DEFAULT_REGION", "us-east-1")
+
+s3 = boto3.client("s3",
+    aws_access_key_id=aws_access_key_id,
+    aws_secret_access_key=aws_secret_access_key,
+    region_name=aws_default_region
+)
 
 @st.cache_data(ttl=60)
 def load_history_odds_from_s3():
