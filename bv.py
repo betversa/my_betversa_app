@@ -794,7 +794,7 @@ def show_ev_page():
             trends_data = []
             ev_keys = set(df_full["unique_key"].tolist())
             ev_key_tails = {key.split("_", 1)[-1].lower() for key in ev_keys}
-            history_records = load_history_odds_from_sqlite(ev_key_tails)
+            history_records = load_history_odds_from_s3()
             # Instead of iterating over everything, get matched records for the selected key.
             matched_records = history_records.get(selected_key, [])
             matching_count = 0
