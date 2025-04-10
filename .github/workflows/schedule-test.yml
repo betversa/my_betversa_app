@@ -40,3 +40,18 @@ jobs:
       - name: Run line_movement.py
         run: python line_movement.py
 
+      - name: Commit updated JSON files to GitHub
+        run: |
+          git config --global user.email "github-actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add data/all_odds.json data/positive_ev_plays.json
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            TIMESTAMP=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
+            git commit -m "🔁 Auto-update odds data — ${TIMESTAMP}"
+            git push origin main
+          fi
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
