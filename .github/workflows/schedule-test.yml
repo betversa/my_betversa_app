@@ -50,7 +50,12 @@ jobs:
           else
             TIMESTAMP=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
             git commit -m "🔁 Auto-update odds data — ${TIMESTAMP}"
-            git pull --rebase origin main
+            # Fetch remote changes
+            git fetch origin main
+            # Reset the local branch to match remote (force local to remote state)
+            git reset --hard origin/main
+            # Now, merge your new commit onto that state (if it wasn't already included)
+            git cherry-pick HEAD@{1} || true
             git push origin main
           fi
         env:
