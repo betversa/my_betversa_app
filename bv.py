@@ -199,15 +199,13 @@ def load_nhl_skater_stats_2025():
         return pd.DataFrame()
 
 def get_s3_client():
-    # Retrieve AWS credentials using environment variables or st.secrets.
-    # By wrapping this in a function, st.secrets will be available at runtime.
+    # This function is not called until the app is running, so st.secrets is available.
     aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID") or st.secrets.get("AWS_ACCESS_KEY_ID")
     aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY") or st.secrets.get("AWS_SECRET_ACCESS_KEY")
     aws_default_region = os.getenv("AWS_DEFAULT_REGION") or st.secrets.get("AWS_DEFAULT_REGION", "us-east-1")
     if not aws_access_key_id or not aws_secret_access_key:
-        st.error("AWS credentials are not set. Please add them to your app secrets.")
+        st.error("AWS credentials not found. Please add them to your app secrets.")
         return None
-    # Initialize and return the S3 client.
     return boto3.client("s3",
                         aws_access_key_id=aws_access_key_id,
                         aws_secret_access_key=aws_secret_access_key,
@@ -215,26 +213,21 @@ def get_s3_client():
 
 
 def load_history_odds_from_s3():
-    bucket = "betversa-odds-data"    # Your S3 bucket name
-    prefix = "snapshots/"             # The prefix where snapshots are stored
-    
-    # Get the S3 client (this call happens after the app is running)
     s3 = get_s3_client()
     if s3 is None:
         return {}
-    
+    bucket = "betversa-odds-data"
+    prefix = "snapshots/"
     history = {}
     paginator = s3.get_paginator("list_objects_v2")
     pages = paginator.paginate(Bucket=bucket, Prefix=prefix)
-
     for page in pages:
         for obj in page.get("Contents", []):
             key = obj["Key"]
-            # Expecting a structure like "snapshots/{unique_key}/{timestamp}.json"
             parts = key.split("/")
             if len(parts) < 3:
-                continue  # Skip if key doesn't match the expected pattern
-            unique_key = parts[1]  # Group by the folder name after "snapshots/"
+                continue
+            unique_key = parts[1]
             try:
                 response = s3.get_object(Bucket=bucket, Key=key)
                 content = response["Body"].read().decode("utf-8")
@@ -242,10 +235,10 @@ def load_history_odds_from_s3():
             except Exception as e:
                 st.error(f"Error processing snapshot {key}: {e}")
                 continue
-            # Optionally add the S3 LastModified timestamp to the snapshot.
             snapshot["timestamp"] = obj["LastModified"].isoformat()
             history.setdefault(unique_key, []).append(snapshot)
     return history
+
 
 
 @st.cache_data(ttl=60)
