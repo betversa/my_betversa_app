@@ -5,7 +5,7 @@ permissions:
 
 on:
   schedule:
-    - cron: '*/5 * * * *'  # Every 5 minutes (UTC)
+    - cron: '*/5 * * * *'
   workflow_dispatch:
 
 jobs:
@@ -25,38 +25,18 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          pip install boto3
 
-      - name: Run odds.py (fetch raw odds)
+      - name: Export AWS credentials for boto3
+        run: |
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
+
+      - name: Run odds.py
         run: python odds.py
 
-      - name: Run positiveev.py (calculate EV plays)
+      - name: Run positiveev.py
         run: python positiveev.py
 
-      - name: Run line_movement.py (track line movements)
+      - name: Run line_movement.py
         run: python line_movement.py
-
-      - name: Commit updated JSON files to GitHub
-        run: |
-          git config --global user.email "github-actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git add data/all_odds.json data/positive_ev_plays.json
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-          else
-            TIMESTAMP=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
-            git commit -m "🔁 Auto-update odds data — ${TIMESTAMP}"
-            git push origin main
-          fi
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload odds_data.db to S3
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: us-east-1
-        run: |
-          aws s3 cp data/odds_data.db s3://betversa-odds-data/odds_data.db
-
 
