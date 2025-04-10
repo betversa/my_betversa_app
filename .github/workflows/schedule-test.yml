@@ -50,6 +50,7 @@ jobs:
           else
             TIMESTAMP=$(date -u "+%Y-%m-%d %H:%M:%S UTC")
             git commit -m "🔁 Auto-update odds data — ${TIMESTAMP}"
+            git pull --rebase origin main
             git push origin main
           fi
         env:
