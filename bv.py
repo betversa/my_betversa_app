@@ -705,14 +705,6 @@ def show_ev_page():
     # Load history records (if needed in later interactions).
     history_records = load_history_odds_from_s3()
 
-
-    def fetch_history():
-        nonlocal history_records
-        history_records = load_history_odds_from_sqlite(ev_key_tails)
-
-    # Start the background thread
-    threading.Thread(target=fetch_history).start()
-
     
     # Update the EV formatting: show as a decimal (e.g., "2.34").
     merged_ev["EV"] = merged_ev["EV"].apply(lambda x: x if isinstance(x, str) else f"{x:.2f}%")
