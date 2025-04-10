@@ -213,8 +213,7 @@ def get_s3_client():
                         aws_secret_access_key=aws_secret_access_key,
                         region_name=aws_default_region)
 
-@st.cache_data(ttl=60)
-@st.cache_data(ttl=60)
+
 def load_history_odds_from_s3():
     bucket = "betversa-odds-data"    # Your S3 bucket name
     prefix = "snapshots/"             # The prefix where snapshots are stored
