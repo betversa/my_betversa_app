@@ -198,28 +198,36 @@ def load_nhl_skater_stats_2025():
         st.error("Error loading NHL skater stats 2025: " + str(e))
         return pd.DataFrame()
 
-# Initialize S3 client using credentials from environment variables or from st.secrets.
-aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID") or st.secrets.get("AWS_ACCESS_KEY_ID")
-aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY") or st.secrets.get("AWS_SECRET_ACCESS_KEY")
-aws_default_region = os.getenv("AWS_DEFAULT_REGION") or st.secrets.get("AWS_DEFAULT_REGION", "us-east-1")
+def get_s3_client():
+    # Retrieve AWS credentials using environment variables or st.secrets.
+    # By wrapping this in a function, st.secrets will be available at runtime.
+    aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID") or st.secrets.get("AWS_ACCESS_KEY_ID")
+    aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY") or st.secrets.get("AWS_SECRET_ACCESS_KEY")
+    aws_default_region = os.getenv("AWS_DEFAULT_REGION") or st.secrets.get("AWS_DEFAULT_REGION", "us-east-1")
+    if not aws_access_key_id or not aws_secret_access_key:
+        st.error("AWS credentials are not set. Please add them to your app secrets.")
+        return None
+    # Initialize and return the S3 client.
+    return boto3.client("s3",
+                        aws_access_key_id=aws_access_key_id,
+                        aws_secret_access_key=aws_secret_access_key,
+                        region_name=aws_default_region)
 
-s3 = boto3.client("s3",
-    aws_access_key_id=aws_access_key_id,
-    aws_secret_access_key=aws_secret_access_key,
-    region_name=aws_default_region
-)
-
+@st.cache_data(ttl=60)
 @st.cache_data(ttl=60)
 def load_history_odds_from_s3():
     bucket = "betversa-odds-data"    # Your S3 bucket name
     prefix = "snapshots/"             # The prefix where snapshots are stored
-    s3 = boto3.client("s3")  # boto3 will automatically use AWS credentials from the environment
-
+    
+    # Get the S3 client (this call happens after the app is running)
+    s3 = get_s3_client()
+    if s3 is None:
+        return {}
+    
     history = {}
     paginator = s3.get_paginator("list_objects_v2")
     pages = paginator.paginate(Bucket=bucket, Prefix=prefix)
 
-    # Iterate through each object found under the prefix
     for page in pages:
         for obj in page.get("Contents", []):
             key = obj["Key"]
@@ -235,11 +243,11 @@ def load_history_odds_from_s3():
             except Exception as e:
                 st.error(f"Error processing snapshot {key}: {e}")
                 continue
-
-            # Optionally add the S3 LastModified timestamp to the snapshot
+            # Optionally add the S3 LastModified timestamp to the snapshot.
             snapshot["timestamp"] = obj["LastModified"].isoformat()
             history.setdefault(unique_key, []).append(snapshot)
     return history
+
 
 @st.cache_data(ttl=60)
 def compute_interactive_graph(trends_data):
