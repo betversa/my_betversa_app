@@ -198,13 +198,18 @@ def load_nhl_skater_stats_2025():
         st.error("Error loading NHL skater stats 2025: " + str(e))
         return pd.DataFrame()
 
-def get_s3_client():
-    # This function is not called until the app is running, so st.secrets is available.
+# Define the function to get AWS credentials when needed.
+def get_aws_credentials():
+    # This function is only called during runtime, so st.secrets will be available.
     aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID") or st.secrets.get("AWS_ACCESS_KEY_ID")
     aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY") or st.secrets.get("AWS_SECRET_ACCESS_KEY")
     aws_default_region = os.getenv("AWS_DEFAULT_REGION") or st.secrets.get("AWS_DEFAULT_REGION", "us-east-1")
+    return aws_access_key_id, aws_secret_access_key, aws_default_region
+
+def get_s3_client():
+    aws_access_key_id, aws_secret_access_key, aws_default_region = get_aws_credentials()
     if not aws_access_key_id or not aws_secret_access_key:
-        st.error("AWS credentials not found. Please add them to your app secrets.")
+        st.error("AWS credentials not found. Please set them in your Streamlit secrets.")
         return None
     return boto3.client("s3",
                         aws_access_key_id=aws_access_key_id,
@@ -213,20 +218,23 @@ def get_s3_client():
 
 
 def load_history_odds_from_s3():
-    s3 = get_s3_client()
-    if s3 is None:
-        return {}
     bucket = "betversa-odds-data"
     prefix = "snapshots/"
+    
+    s3 = get_s3_client()  # This call now happens at runtime
+    if s3 is None:
+        return {}
+    
     history = {}
     paginator = s3.get_paginator("list_objects_v2")
     pages = paginator.paginate(Bucket=bucket, Prefix=prefix)
+    
     for page in pages:
         for obj in page.get("Contents", []):
             key = obj["Key"]
             parts = key.split("/")
             if len(parts) < 3:
-                continue
+                continue  # Not the expected structure
             unique_key = parts[1]
             try:
                 response = s3.get_object(Bucket=bucket, Key=key)
@@ -238,7 +246,6 @@ def load_history_odds_from_s3():
             snapshot["timestamp"] = obj["LastModified"].isoformat()
             history.setdefault(unique_key, []).append(snapshot)
     return history
-
 
 
 @st.cache_data(ttl=60)
