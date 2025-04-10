@@ -9,7 +9,7 @@ from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode
 from datetime import datetime
 import plotly.express as px  # For interactive charts
 import ijson
-import sqlite3  # Needed for loading history odds from SQLite
+import boto3  # Needed for loading history odds from S3
 import threading
 
 
@@ -229,32 +229,35 @@ def extract_minimal_data(full_record):
 @st.cache_data(ttl=60)
 
 @st.cache_data(ttl=60)
-def load_history_odds_from_sqlite(ev_key_tails, db_path="data/odds_data.db"):
+def load_history_odds_from_s3():
+    bucket = "betversa-odds-data"    # Your S3 bucket name
+    prefix = "snapshots/"             # The prefix where snapshots are stored
+    s3 = boto3.client("s3")  # boto3 will automatically use AWS credentials from the environment
+
     history = {}
-    try:
-        conn = sqlite3.connect(db_path)
-        cursor = conn.cursor()
-        for tail in ev_key_tails:
-            query = """
-                SELECT snapshot_time, snapshot_data 
-                FROM odds_snapshots
-                WHERE unique_id = ?
-                ORDER BY snapshot_time ASC
-            """
-            like_pattern = f"%_{tail}"
-            cursor.execute(query, (like_pattern,))
-            rows = cursor.fetchall()
-            for unique_id, snapshot_time, snapshot_data in rows:
-                try:
-                    full_record = json.loads(snapshot_data)
-                    minimal_record = extract_minimal_data(full_record)
-                    minimal_record["timestamp"] = snapshot_time
-                    history.setdefault(unique_id, []).append(minimal_record)
-                except Exception as e:
-                    st.error(f"Error processing snapshot for {unique_id}: {e}")
-        conn.close()
-    except Exception as e:
-        st.error(f"Error loading data from SQLite: {e}")
+    paginator = s3.get_paginator("list_objects_v2")
+    pages = paginator.paginate(Bucket=bucket, Prefix=prefix)
+
+    # Iterate through each object found under the prefix
+    for page in pages:
+        for obj in page.get("Contents", []):
+            key = obj["Key"]
+            # Expecting a structure like "snapshots/{unique_key}/{timestamp}.json"
+            parts = key.split("/")
+            if len(parts) < 3:
+                continue  # Skip if key doesn't match the expected pattern
+            unique_key = parts[1]  # Group by the folder name after "snapshots/"
+            try:
+                response = s3.get_object(Bucket=bucket, Key=key)
+                content = response["Body"].read().decode("utf-8")
+                snapshot = json.loads(content)
+            except Exception as e:
+                st.error(f"Error processing snapshot {key}: {e}")
+                continue
+
+            # Optionally add the S3 LastModified timestamp to the snapshot
+            snapshot["timestamp"] = obj["LastModified"].isoformat()
+            history.setdefault(unique_key, []).append(snapshot)
     return history
 
 @st.cache_data(ttl=60)
@@ -712,9 +715,8 @@ def show_ev_page():
         merged_ev = merged_ev[merged_ev["Market"] == selected_market]
     
     # Load history records (if needed in later interactions).
-    ev_keys = set(df_full["unique_key"].tolist())
-    ev_key_tails = {key.split("_", 1)[-1].lower() for key in ev_keys}
-    history_records = {}
+    history_records = load_history_odds_from_s3()
+
 
     def fetch_history():
         nonlocal history_records
