@@ -202,9 +202,9 @@ def load_nhl_skater_stats_2025():
 # Define the function to get AWS credentials when needed.
 def get_aws_credentials():
     # This function is only called during runtime, so st.secrets will be available.
-    aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID") or st.secrets.get("AWS_ACCESS_KEY_ID")
-    aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY") or st.secrets.get("AWS_SECRET_ACCESS_KEY")
-    aws_default_region = os.getenv("AWS_DEFAULT_REGION") or st.secrets.get("AWS_DEFAULT_REGION", "us-east-1")
+    aws_access_key_id = os.getenv("AWS_ACCESS_KEY_ID") or st.secrets["general"].get("AWS_ACCESS_KEY_ID")
+    aws_secret_access_key = os.getenv("AWS_SECRET_ACCESS_KEY") or st.secrets["general"].get("AWS_SECRET_ACCESS_KEY")
+    aws_default_region = os.getenv("AWS_DEFAULT_REGION") or st.secrets["general"].get("AWS_DEFAULT_REGION", "us-east-1")
     return aws_access_key_id, aws_secret_access_key, aws_default_region
 
 def get_s3_client():
