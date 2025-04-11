@@ -761,7 +761,7 @@ def show_ev_page():
         gridOptions=grid_options,
         update_mode=GridUpdateMode.SELECTION_CHANGED,
         theme="blue",
-        fit_columns_on_grid_load=True
+        fit_columns_on_grid_load=False
     )
     
     # Retrieve the selected row (if any)
