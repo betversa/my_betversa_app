@@ -131,7 +131,7 @@ def determine_fair_prob_and_width(event, market_key, team, point, description, o
                         fair_prob = fair_prob2
                     market_width = calculate_market_width(valid_outcomes)
             # For player-specific markets:
-            elif market_key.startswith(("player", "batter", "pitcher")):
+            elif market_key.startswith(("player", "batter", "pitcher", "team")):
                 valid_outcomes = [o for o in pin_outcomes if o.get("point") == point and o.get("description") == description]
                 if len(valid_outcomes) == 2:
                     fair_prob1, fair_prob2, _ = calculate_no_vig_probabilities(valid_outcomes)
