@@ -158,7 +158,7 @@ INPUT_FILE = "data/all_odds.json"
 OUTPUT_FILE = "data/positive_ev_plays.json"
 
 def process_all_odds(data):
-    ev_plays = []
+    ev_plays = {}
     current_time = datetime.now(timezone.utc)
     
     for event in data:
@@ -177,7 +177,7 @@ def process_all_odds(data):
         sport = event.get("sport_label")
         home_team = event.get("home_team")
         away_team = event.get("away_team")
-        
+
         for bookmaker in event.get("odds", {}).get("bookmakers", []):
             book_key = bookmaker.get("key")
             if book_key in {"lowvig", "pinnacle"}:
@@ -206,33 +206,50 @@ def process_all_odds(data):
                     
                     # Only process the outcome if EV is positive and market width is acceptable.
                     if 0.5 < ev < 10 and (market_width is None or market_width <= 25):
-                        outcome_name = outcome.get("name", "")
-                        outcome_desc = description or ""
-                        outcome_point_str = str(point) if point is not None else "NA"
-                        unique_id = f"{event_id}_{market_key.upper()}_{outcome_name}_{outcome_desc}_{outcome_point_str}"
+                        unique_id = f"{event_id}_{market_key.upper()}_{team}_{description or ''}_{point or 'NA'}"
                         
-                        fair_american_odds = no_vig_american_odds(fair_prob)
-                        aggregated_odds = aggregate_odds_for_play(event, market_key, team, point, description)
-                        
-                        ev_plays.append({
-                            "unique_id": unique_id,
-                            "event_id": event_id,
-                            "sport": sport,
-                            "home_team": home_team,
-                            "away_team": away_team,
-                            "market": market_key,
-                            "bookmaker": book_key,
-                            "team": team,
-                            "point": point,
-                            "description": description,
-                            "sportsbook_odds": price,
-                            "fair_prob": round(fair_prob, 4),
-                            "fair_american_odds": fair_american_odds,
-                            "ev": round(ev, 2),
-                            "market_width": market_width,
-                            "aggregated_odds": aggregated_odds
-                        })
-    return ev_plays
+                        # If this play already exists, only keep the one with the highest EV.
+                        if unique_id in ev_plays:
+                            if ev > ev_plays[unique_id]["ev"]:
+                                ev_plays[unique_id] = {
+                                    "unique_id": unique_id,
+                                    "event_id": event_id,
+                                    "sport": sport,
+                                    "home_team": home_team,
+                                    "away_team": away_team,
+                                    "market": market_key,
+                                    "bookmaker": book_key,
+                                    "team": team,
+                                    "point": point,
+                                    "description": description,
+                                    "sportsbook_odds": price,
+                                    "fair_prob": round(fair_prob, 4),
+                                    "fair_american_odds": no_vig_american_odds(fair_prob),
+                                    "ev": round(ev, 2),
+                                    "market_width": market_width,
+                                    "aggregated_odds": aggregate_odds_for_play(event, market_key, team, point, description)
+                                }
+                        else:
+                            ev_plays[unique_id] = {
+                                "unique_id": unique_id,
+                                "event_id": event_id,
+                                "sport": sport,
+                                "home_team": home_team,
+                                "away_team": away_team,
+                                "market": market_key,
+                                "bookmaker": book_key,
+                                "team": team,
+                                "point": point,
+                                "description": description,
+                                "sportsbook_odds": price,
+                                "fair_prob": round(fair_prob, 4),
+                                "fair_american_odds": no_vig_american_odds(fair_prob),
+                                "ev": round(ev, 2),
+                                "market_width": market_width,
+                                "aggregated_odds": aggregate_odds_for_play(event, market_key, team, point, description)
+                            }
+    # Return only the highest EV plays
+    return list(ev_plays.values())
 
 def main():
     with open(INPUT_FILE, "r") as f:
