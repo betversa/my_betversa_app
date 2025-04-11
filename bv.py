@@ -266,7 +266,7 @@ df_full = load_data()
 df_unique = df_full.drop_duplicates(subset=["unique_key"])
 merged_ev = pd.merge(df_full, df_unique[["unique_key", "NV Odds", "EV"]], on="unique_key", how="left")
 
-def compute_kelly_amount(nv_odds, fair_prob, bankroll, multiplier):
+def compute_kelly_amount(odds, fair_prob, bankroll, multiplier):
     """
     Compute the Kelly amount using the formula: (B * P - (1-P)) / B,
     where:
@@ -278,7 +278,7 @@ def compute_kelly_amount(nv_odds, fair_prob, bankroll, multiplier):
     If the Kelly fraction is negative, return 0.
     """
     # Convert American odds to decimal odds
-    d = american_to_decimal(nv_odds)
+    d = american_to_decimal(odds)
     if d is None or (d - 1) == 0:
         return 0.0
     b = d - 1
