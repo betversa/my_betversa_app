@@ -17,7 +17,7 @@ SPORTS_CONFIG = {
     },
     "MLB": {
         "sport_key": "baseball_mlb",
-        "player_prop_markets": {"batter_hits", "batter_total_bases", "pitcher_strikeouts"}
+        "player_prop_markets": {"batter_hits", "batter_total_bases", "pitcher_strikeouts", "batter_home_runs", "batter_hits_runs_rbis", "pitcher_hits_allowed", "pitcher_earned_runs", "pitcher_outs"}
     },
     "NHL": {
         "sport_key": "icehockey_nhl",
