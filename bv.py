@@ -285,7 +285,8 @@ def compute_kelly_amount(sportsbook_odds, fair_prob, bankroll, multiplier):
     kelly_fraction = (b * fair_prob - (1 - fair_prob)) / b
     if kelly_fraction < 0:
         kelly_fraction = 0
-    return bankroll * kelly_fraction * multiplier
+    kelly_dollar = bankroll * multiplier * kelly_fraction
+    return f"${kelly_dollar:,.2f}"
 
 
 ###############################################################################
