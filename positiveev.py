@@ -68,10 +68,10 @@ def aggregate_odds_for_play(event, market_key, team, point, description):
             for outcome in market.get("outcomes", []):
                 if outcome.get("name") != team:
                     continue
-                if market_key in {"spreads", "alternate_spreads", "totals", "alternate_totals"}:
+                if market_key.startswith(("spreads", "alternate_spreads", "totals", "alternate_totals")):
                     if outcome.get("point") != point:
                         continue
-                if market_key.startswith(("player", "batter", "pitcher")):
+                if market_key.startswith(("player", "batter", "pitcher", "team")):
                     if outcome.get("description") != description or outcome.get("point") != point:
                         continue
                 aggregated.append({
@@ -117,7 +117,7 @@ def determine_fair_prob_and_width(event, market_key, team, point, description, o
                 fair_prob = fair_prob1 if valid_outcomes[0].get("name") == team else fair_prob2
                 market_width = calculate_market_width(valid_outcomes)
         # For totals or alternate totals
-        elif market_key in {"totals", "alternate_totals"}:
+        elif market_key.startswith(("totals", "alternate_totals")):
             valid_outcomes = [o for o in pinnacle_outcomes if o.get("point") == point]
             if len(valid_outcomes) == 2:
                 fair_prob1, fair_prob2, _ = calculate_no_vig_probabilities(valid_outcomes)
