@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 import base64
 import os
-import matplotlib.pyplotas plt
+import matplotlib.pyplot as plt
 from functools import reduce
 from operator import mul
 from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode
