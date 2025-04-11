@@ -62,8 +62,6 @@ def aggregate_odds_for_play(event, market_key, team, point, description):
     aggregated = []
     for bookmaker in event.get("odds", {}).get("bookmakers", []):
         bk = bookmaker.get("key")
-        if bk in {"lowvig", "pinnacle"}:
-            continue
         for market in bookmaker.get("markets", []):
             if market.get("key") != market_key:
                 continue
@@ -182,6 +180,8 @@ def process_all_odds(data):
         
         for bookmaker in event.get("odds", {}).get("bookmakers", []):
             book_key = bookmaker.get("key")
+            if bk in {"lowvig", "pinnacle"}:
+                continue
             for market in bookmaker.get("markets", []):
                 market_key = market.get("key")
                 for outcome in market.get("outcomes", []):
