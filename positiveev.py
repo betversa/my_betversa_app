@@ -1,9 +1,10 @@
 import json
+import pandas as pd
+import os
+from datetime import datetime, timezone
+import math
 
-INPUT_FILE = "data/all_odds.json"
-OUTPUT_FILE = "data/positive_ev_plays.json"
-
-# Convert American odds to implied probability
+# ----- Odds Conversion Helpers -----
 def american_to_implied_prob(odds):
     odds = float(odds)
     if odds > 0:
@@ -11,7 +12,6 @@ def american_to_implied_prob(odds):
     else:
         return abs(odds) / (abs(odds) + 100)
 
-# Convert American odds to profit on a $100 stake
 def american_to_profit(odds):
     odds = float(odds)
     if odds > 0:
@@ -19,7 +19,6 @@ def american_to_profit(odds):
     else:
         return 10000 / abs(odds)
 
-# Convert decimal probability to no-vig American odds
 def no_vig_american_odds(prob):
     if prob == 0:
         return None
@@ -29,8 +28,8 @@ def no_vig_american_odds(prob):
     else:
         return int(-100 / (dec - 1))
 
-# Calculate fair no-vig probabilities from Pinnacle odds
 def calculate_no_vig_probabilities(outcomes):
+    # Requires exactly 2 outcomes to proceed.
     if len(outcomes) != 2:
         return None, None, None
     try:
@@ -45,7 +44,6 @@ def calculate_no_vig_probabilities(outcomes):
     except Exception:
         return None, None, None
 
-# Calculate market width (difference between the two Pinnacle odds)
 def calculate_market_width(pinnacle_outcomes):
     if len(pinnacle_outcomes) != 2:
         return None
@@ -56,29 +54,23 @@ def calculate_market_width(pinnacle_outcomes):
     except Exception:
         return None
 
-# EV calculation using no-vig probability from Pinnacle against the sportsbook odds
 def calculate_ev(fair_prob, sportsbook_odds):
     profit_if_win = american_to_profit(sportsbook_odds)
     return round((fair_prob * profit_if_win) - (1 - fair_prob) * 100, 4)
 
-# Aggregate odds from all sportsbooks for a given play within an event.
 def aggregate_odds_for_play(event, market_key, team, point, description):
     aggregated = []
-    # Loop over all bookmakers for the event
     for bookmaker in event.get("odds", {}).get("bookmakers", []):
         bk = bookmaker.get("key")
         for market in bookmaker.get("markets", []):
             if market.get("key") != market_key:
                 continue
             for outcome in market.get("outcomes", []):
-                # Basic matching on team name
                 if outcome.get("name") != team:
                     continue
-                # For spreads or totals, check that the point matches
                 if market_key in {"spreads", "alternate_spreads", "totals", "alternate_totals"}:
                     if outcome.get("point") != point:
                         continue
-                # For player-specific markets, also verify the description and point
                 if market_key.startswith(("player", "batter", "pitcher")):
                     if outcome.get("description") != description or outcome.get("point") != point:
                         continue
@@ -90,38 +82,97 @@ def aggregate_odds_for_play(event, market_key, team, point, description):
                 })
     return aggregated
 
-# Main processing function for all odds
-from datetime import datetime, timezone
+# ----- Helper: Determine Fair Probability & Market Width from Pinnacle -----
+def determine_fair_prob_and_width(event, market_key, team, point, description, outcome_name):
+    """
+    Loop through the event's bookmakers to find the Pinnacle odds for the given market.
+    Returns a tuple (fair_prob, market_width) if successfully determined, or (None, None) otherwise.
+    """
+    fair_prob = None
+    market_width = None
+
+    # Look for the Pinnacle bookmaker.
+    for pin_book in event.get("odds", {}).get("bookmakers", []):
+        if pin_book.get("key") != "pinnacle":
+            continue
+        for pin_market in pin_book.get("markets", []):
+            if pin_market.get("key") != market_key:
+                continue
+
+            pin_outcomes = pin_market.get("outcomes", [])
+            # For head-to-head markets:
+            if market_key.startswith("h2h"):
+                if len(pin_outcomes) == 2:
+                    fair_prob1, fair_prob2, _ = calculate_no_vig_probabilities(pin_outcomes)
+                    # Choose fair probability based on matching team name.
+                    if pin_outcomes[0].get("name") == team:
+                        fair_prob = fair_prob1
+                    else:
+                        fair_prob = fair_prob2
+                    market_width = calculate_market_width(pin_outcomes)
+            # For spreads or alternate spreads:
+            elif market_key in {"spreads", "alternate_spreads"}:
+                valid_outcomes = [o for o in pin_outcomes if o.get("point") == point]
+                if len(valid_outcomes) == 2:
+                    fair_prob1, fair_prob2, _ = calculate_no_vig_probabilities(valid_outcomes)
+                    if valid_outcomes[0].get("name") == team:
+                        fair_prob = fair_prob1
+                    else:
+                        fair_prob = fair_prob2
+                    market_width = calculate_market_width(valid_outcomes)
+            # For totals or alternate totals:
+            elif market_key in {"totals", "alternate_totals"}:
+                valid_outcomes = [o for o in pin_outcomes if o.get("point") == point]
+                if len(valid_outcomes) == 2:
+                    fair_prob1, fair_prob2, _ = calculate_no_vig_probabilities(valid_outcomes)
+                    if valid_outcomes[0].get("name") == outcome_name:
+                        fair_prob = fair_prob1
+                    else:
+                        fair_prob = fair_prob2
+                    market_width = calculate_market_width(valid_outcomes)
+            # For player-specific markets:
+            elif market_key.startswith(("player", "batter", "pitcher")):
+                valid_outcomes = [o for o in pin_outcomes if o.get("point") == point and o.get("description") == description]
+                if len(valid_outcomes) == 2:
+                    fair_prob1, fair_prob2, _ = calculate_no_vig_probabilities(valid_outcomes)
+                    if valid_outcomes[0].get("name") == outcome_name:
+                        fair_prob = fair_prob1
+                    else:
+                        fair_prob = fair_prob2
+                    market_width = calculate_market_width(valid_outcomes)
+            if fair_prob is not None:
+                # If we successfully computed fair_prob, break out.
+                break
+        if fair_prob is not None:
+            break
+
+    return fair_prob, market_width
+
+# ----- Main Processing Function for All Odds -----
+INPUT_FILE = "data/all_odds.json"
+OUTPUT_FILE = "data/positive_ev_plays.json"
 
 def process_all_odds(data):
     ev_plays = []
-    # Get current time in UTC. Make sure your event times are also in UTC.
     current_time = datetime.now(timezone.utc)
     
     for event in data:
-        # Skip events if they have already started.
-        # Assumes that the event dictionary has a "commence_time" key with an ISO 8601 string.
+        # Skip events that have already started.
         commence_time_str = event.get("commence_time")
         if commence_time_str:
             try:
-                # Convert the commence_time to a datetime object.
-                # If your time string ends with "Z" indicating UTC, replace it with "+00:00".
                 event_start_time = datetime.fromisoformat(commence_time_str.replace("Z", "+00:00"))
                 if event_start_time <= current_time:
-                    # Skip this event because it has already started.
                     continue
             except Exception as e:
-                # Optionally log this exception if the time format is unexpected.
                 print(f"Error parsing commence_time for event {event.get('id')}: {e}")
                 continue
 
-        # Proceed with processing the event if it hasn't started yet.
         event_id = event.get("id")
         sport = event.get("sport_label")
         home_team = event.get("home_team")
         away_team = event.get("away_team")
         
-        # Iterate over each bookmaker and its markets
         for bookmaker in event.get("odds", {}).get("bookmakers", []):
             book_key = bookmaker.get("key")
             for market in bookmaker.get("markets", []):
@@ -131,14 +182,22 @@ def process_all_odds(data):
                     price = outcome.get("price")
                     point = outcome.get("point")
                     description = outcome.get("description")
-
                     if price is None:
                         continue
 
-                    # Fetch corresponding Pinnacle odds for fair probability calculation...
-                    # (your existing logic here)
+                    # Determine fair probability and market width from Pinnacle data.
+                    fair_prob, market_width = determine_fair_prob_and_width(
+                        event, market_key, team, point, description, outcome.get("name")
+                    )
 
-                    # If fair probability and market width are satisfactory, construct the play:
+                    # If fair_prob could not be determined, skip this outcome.
+                    if fair_prob is None:
+                        continue
+
+                    # Now calculate EV using the calculated fair_prob and sportsbook odds (price).
+                    ev = calculate_ev(fair_prob, price)
+                    
+                    # Only process the outcome if EV is positive and market width is acceptable.
                     if ev > 0 and (market_width is None or market_width <= 25):
                         outcome_name = outcome.get("name", "")
                         outcome_desc = description or ""
@@ -146,7 +205,6 @@ def process_all_odds(data):
                         unique_id = f"{event_id}_{market_key.upper()}_{outcome_name}_{outcome_desc}_{outcome_point_str}"
                         
                         fair_american_odds = no_vig_american_odds(fair_prob)
-                        
                         aggregated_odds = aggregate_odds_for_play(event, market_key, team, point, description)
                         
                         ev_plays.append({
@@ -169,7 +227,6 @@ def process_all_odds(data):
                         })
     return ev_plays
 
-
 def main():
     with open(INPUT_FILE, "r") as f:
         data = json.load(f)
@@ -180,4 +237,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
