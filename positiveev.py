@@ -180,7 +180,7 @@ def process_all_odds(data):
         
         for bookmaker in event.get("odds", {}).get("bookmakers", []):
             book_key = bookmaker.get("key")
-            if bk in {"lowvig", "pinnacle"}:
+            if book_key in {"lowvig", "pinnacle"}:
                 continue
             for market in bookmaker.get("markets", []):
                 market_key = market.get("key")
