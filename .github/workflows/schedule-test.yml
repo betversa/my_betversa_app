@@ -26,19 +26,11 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Export AWS credentials for boto3
-        run: |
-          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> $GITHUB_ENV
-          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> $GITHUB_ENV
-
       - name: Run odds.py
         run: python odds.py
 
       - name: Run positiveev.py
         run: python positiveev.py
-
-      - name: Run line_movement.py
-        run: python line_movement.py
 
       - name: Commit updated JSON files to GitHub
         run: |
