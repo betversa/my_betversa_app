@@ -3,7 +3,7 @@ import pandas as pd
 import streamlit as st
 import base64
 import os
-import matplotlib.pyplot as plt
+import matplotlib.pyplotas plt
 from functools import reduce
 from operator import mul
 from st_aggrid import AgGrid, GridOptionsBuilder, GridUpdateMode
@@ -285,7 +285,7 @@ def compute_kelly_amount(sportsbook_odds, fair_prob, bankroll, multiplier):
     kelly_fraction = (b * fair_prob - (1 - fair_prob)) / b
     if kelly_fraction < 0:
         kelly_fraction = 0
-    return (bankroll * kelly_fraction) * kelly_multiplier
+    return bankroll * kelly_fraction * kelly_multiplier
 
 
 ###############################################################################
