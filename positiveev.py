@@ -205,7 +205,7 @@ def process_all_odds(data):
                     ev = calculate_ev(fair_prob, price)
                     
                     # Only process the outcome if EV is positive and market width is acceptable.
-                    if ev > 0 and (market_width is None or market_width <= 25):
+                    if 0 < ev < 10 and (market_width is None or market_width <= 25):
                         outcome_name = outcome.get("name", "")
                         outcome_desc = description or ""
                         outcome_point_str = str(point) if point is not None else "NA"
