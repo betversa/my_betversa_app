@@ -715,12 +715,12 @@ def show_ev_page():
     
     # Compute Kelly Amount using fair_prob.
     merged_ev["Kelly Amount"] = merged_ev.apply(
-        lambda row: compute_kelly_amount(row["NV Odds"], row["fair_prob"], bankroll, kelly_multiplier),
+        lambda row: compute_kelly_amount(row["Odds"], row["fair_prob"], bankroll, kelly_multiplier),
         axis=1
     )
     merged_ev["Kelly Amount"] = merged_ev.apply(
         lambda row: compute_kelly_amount(
-            row["NV Odds"],
+            row["Odds"],
             row.get("fair_prob", american_to_implied_prob(row["NV Odds"])),
             bankroll,
             kelly_multiplier
