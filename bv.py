@@ -669,19 +669,51 @@ def show_ev_page():
         </p>
     """, unsafe_allow_html=True)
     
+    # Initialize session state variables for bookmaker selection, if not already set.
+    if "selected_bookmaker" not in st.session_state:
+        st.session_state.selected_bookmaker = "All"
+    if "show_book_modal" not in st.session_state:
+        st.session_state.show_book_modal = False
+
     # Work with a copy of the full data.
     merged_ev = df_full.copy()
     
     # Create three columns for the filters.
-    filter_cols = st.columns(3)
+    filter_cols = st.columns(2)
+
+    # Instead of a dropdown, use a custom button to open the bookmaker selection modal.
+    if st.button(f"Select Bookmaker: {st.session_state.selected_bookmaker}"):
+        st.session_state.show_book_modal = True
+
+    # If the user has clicked the button, display the "modal" with choices.
+    if st.session_state.show_book_modal:
+        with st.container():
+            st.markdown("<hr>", unsafe_allow_html=True)
+            st.write("### Choose a Bookmaker:")
+            # Get the list of bookmaker options from your data.
+            book_options = sorted(merged_ev["Book"].dropna().unique().tolist())
+            # Insert the "All" option at the beginning if it is not present.
+            if "All" not in book_options:
+                book_options.insert(0, "All")
+            # Display options in a grid (using 4 columns; change the number if needed).
+            columns = st.columns(4)
+            for i, book in enumerate(book_options):
+                with columns[i % 4]:
+                    # Display the logo if available.
+                    # Customize the image path as needed (here it assumes files like "assets/draftkings.png")
+                    logo_path = f"assets/{book.lower()}.png"
+                    logo_img = get_base64_image(logo_path)
+                    if logo_img:
+                        st.image(f"data:image/png;base64,{logo_img}", width=50)
+                    # Use a button with the bookmaker's name.
+                    if st.button(book, key=f"book_{book}"):
+                        st.session_state.selected_bookmaker = book
+                        st.session_state.show_book_modal = False
+            st.markdown("<hr>", unsafe_allow_html=True)
 
     with filter_cols[0]:
         sports_options = ["All"] + sorted(merged_ev["Sport"].dropna().unique().tolist())
         selected_sport = st.selectbox("Select Sport:", options=sports_options, index=0)
-
-    with filter_cols[1]:
-        books_options = ["All"] + sorted(merged_ev["Book"].dropna().unique().tolist())
-        selected_book = st.selectbox("Select Bookmaker:", options=books_options, index=0)
 
     with filter_cols[2]:
         markets_options = ["All"] + sorted(merged_ev["Market"].dropna().unique().tolist())
@@ -699,8 +731,8 @@ def show_ev_page():
     # Filter the DataFrame based on the drop-down selections.
     if selected_sport != "All":
         merged_ev = merged_ev[merged_ev["Sport"] == selected_sport]
-    if selected_book != "All":
-        merged_ev = merged_ev[merged_ev["Book"] == selected_book]
+    if st.session_state.selected_bookmaker != "All":
+        merged_ev = merged_ev[merged_ev["Book"] == st.session_state.selected_bookmaker]
     if selected_market != "All":
         merged_ev = merged_ev[merged_ev["Market"] == selected_market]
     
