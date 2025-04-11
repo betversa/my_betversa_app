@@ -86,65 +86,70 @@ def aggregate_odds_for_play(event, market_key, team, point, description):
 def determine_fair_prob_and_width(event, market_key, team, point, description, outcome_name):
     """
     Loop through the event's bookmakers to find the Pinnacle odds for the given market.
+    If Pinnacle is unavailable, calculate the fair probability and market width using the aggregated odds.
     Returns a tuple (fair_prob, market_width) if successfully determined, or (None, None) otherwise.
     """
     fair_prob = None
     market_width = None
+    pinnacle_outcomes = None
+    aggregated_outcomes = []
 
-    # Look for the Pinnacle bookmaker.
+    # Look for the Pinnacle bookmaker
     for pin_book in event.get("odds", {}).get("bookmakers", []):
-        if pin_book.get("key") != "pinnacle":
-            continue
-        for pin_market in pin_book.get("markets", []):
-            if pin_market.get("key") != market_key:
-                continue
+        if pin_book.get("key") == "pinnacle":
+            for pin_market in pin_book.get("markets", []):
+                if pin_market.get("key") == market_key:
+                    pinnacle_outcomes = pin_market.get("outcomes", [])
+                    break
 
-            pin_outcomes = pin_market.get("outcomes", [])
-            # For head-to-head markets:
-            if market_key.startswith("h2h"):
-                if len(pin_outcomes) == 2:
-                    fair_prob1, fair_prob2, _ = calculate_no_vig_probabilities(pin_outcomes)
-                    # Choose fair probability based on matching team name.
-                    if pin_outcomes[0].get("name") == team:
-                        fair_prob = fair_prob1
-                    else:
-                        fair_prob = fair_prob2
-                    market_width = calculate_market_width(pin_outcomes)
-            # For spreads or alternate spreads:
-            elif market_key in {"spreads", "alternate_spreads"}:
-                valid_outcomes = [o for o in pin_outcomes if o.get("point") == point]
-                if len(valid_outcomes) == 2:
-                    fair_prob1, fair_prob2, _ = calculate_no_vig_probabilities(valid_outcomes)
-                    if valid_outcomes[0].get("name") == team:
-                        fair_prob = fair_prob1
-                    else:
-                        fair_prob = fair_prob2
-                    market_width = calculate_market_width(valid_outcomes)
-            # For totals or alternate totals:
-            elif market_key in {"totals", "alternate_totals"}:
-                valid_outcomes = [o for o in pin_outcomes if o.get("point") == point]
-                if len(valid_outcomes) == 2:
-                    fair_prob1, fair_prob2, _ = calculate_no_vig_probabilities(valid_outcomes)
-                    if valid_outcomes[0].get("name") == outcome_name:
-                        fair_prob = fair_prob1
-                    else:
-                        fair_prob = fair_prob2
-                    market_width = calculate_market_width(valid_outcomes)
-            # For player-specific markets:
-            elif market_key.startswith(("player", "batter", "pitcher", "team")):
-                valid_outcomes = [o for o in pin_outcomes if o.get("point") == point and o.get("description") == description]
-                if len(valid_outcomes) == 2:
-                    fair_prob1, fair_prob2, _ = calculate_no_vig_probabilities(valid_outcomes)
-                    if valid_outcomes[0].get("name") == outcome_name:
-                        fair_prob = fair_prob1
-                    else:
-                        fair_prob = fair_prob2
-                    market_width = calculate_market_width(valid_outcomes)
-            if fair_prob is not None:
-                # If we successfully computed fair_prob, break out.
-                break
-        if fair_prob is not None:
-            break
+    # If Pinnacle is available, use its odds
+    if pinnacle_outcomes:
+        # For head-to-head markets
+        if market_key.startswith("h2h") and len(pinnacle_outcomes) == 2:
+            fair_prob1, fair_prob2, _ = calculate_no_vig_probabilities(pinnacle_outcomes)
+            fair_prob = fair_prob1 if pinnacle_outcomes[0].get("name") == team else fair_prob2
+            market_width = calculate_market_width(pinnacle_outcomes)
+        # For spreads or alternate spreads
+        elif market_key in {"spreads", "alternate_spreads"}:
+            valid_outcomes = [o for o in pinnacle_outcomes if o.get("point") == point]
+            if len(valid_outcomes) == 2:
+                fair_prob1, fair_prob2, _ = calculate_no_vig_probabilities(valid_outcomes)
+                fair_prob = fair_prob1 if valid_outcomes[0].get("name") == team else fair_prob2
+                market_width = calculate_market_width(valid_outcomes)
+        # For totals or alternate totals
+        elif market_key in {"totals", "alternate_totals"}:
+            valid_outcomes = [o for o in pinnacle_outcomes if o.get("point") == point]
+            if len(valid_outcomes) == 2:
+                fair_prob1, fair_prob2, _ = calculate_no_vig_probabilities(valid_outcomes)
+                fair_prob = fair_prob1 if valid_outcomes[0].get("name") == outcome_name else fair_prob2
+                market_width = calculate_market_width(valid_outcomes)
+        # For player-specific markets
+        elif market_key.startswith(("player", "batter", "pitcher", "team")):
+            valid_outcomes = [o for o in pinnacle_outcomes if o.get("point") == point and o.get("description") == description]
+            if len(valid_outcomes) == 2:
+                fair_prob1, fair_prob2, _ = calculate_no_vig_probabilities(valid_outcomes)
+                fair_prob = fair_prob1 if valid_outcomes[0].get("name") == outcome_name else fair_prob2
+                market_width = calculate_market_width(valid_outcomes)
+
+    # If Pinnacle is not available, calculate using average odds
+    if fair_prob is None:
+        for bookmaker in event.get("odds", {}).get("bookmakers", []):
+            for market in bookmaker.get("markets", []):
+                if market.get("key") != market_key:
+                    continue
+                for outcome in market.get("outcomes", []):
+                    if outcome.get("name") == team:
+                        aggregated_outcomes.append(outcome)
+
+        # Calculate fair probability and market width from aggregated outcomes
+        if aggregated_outcomes:
+            total_prob = sum(american_to_implied_prob(outcome.get("price")) for outcome in aggregated_outcomes)
+            fair_prob = total_prob / len(aggregated_outcomes)
+
+            # Calculate market width as the difference between the highest and lowest odds
+            prices = [abs(outcome.get("price")) for outcome in aggregated_outcomes if outcome.get("price") is not None]
+            if prices:
+                market_width = round(max(prices) - min(prices), 2)
 
     return fair_prob, market_width
 
