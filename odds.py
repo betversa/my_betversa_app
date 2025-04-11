@@ -26,7 +26,7 @@ SPORTS_CONFIG = {
 }
 
 STANDARD_MARKETS = {"h2h", "spreads", "totals", "alternate_spreads", "alternate_totals",
-                    "h2h_h1", "h2h_q1", "h2h_p1", "h2h_1st_3_innings", "team_totals"}
+                    "h2h_h1", "h2h_q1", "h2h_p1", "h2h_1st_5_innings", "team_totals"}
 ODDS_FORMAT = "american"  # Options: "american" or "decimal"
 DATE_FORMAT = "iso"
 BOOKMAKERS = "pinnacle,fanduel,draftkings,betmgm,espnbet,williamhill_us,betonlinag,lowvig,betrivers,hardrockbet"
