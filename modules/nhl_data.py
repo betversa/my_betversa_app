@@ -56,7 +56,7 @@ class get_hockey_data:
                 pass
         
         # Select only the columns of interest.
-        cols_to_keep = ["Player", "GP", "G", "A", "PTS", "SOG", "ATOI"]
+        cols_to_keep = ["Player", "Team", "GP", "G", "A", "PTS", "SOG", "ATOI"]
         available_cols = [col for col in cols_to_keep if col in df.columns]
         df = df[available_cols]
         
