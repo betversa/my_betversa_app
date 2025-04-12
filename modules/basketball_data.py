@@ -190,7 +190,7 @@ class get_data:
             df = df.loc[:, ~df.columns.duplicated()]
         
         # Keep only the desired columns.
-        cols_to_keep = ['Player', 'MP', 'FG', 'FGA', 'FG%', '3P', '3PA', '3P%', 'TRB', 'AST', 'PTS']
+        cols_to_keep = ['Player', 'Team', 'MP', 'FG', 'FGA', 'FG%', '3P', '3PA', '3P%', 'TRB', 'AST', 'PTS']
         df = df[cols_to_keep]
         return df
 
