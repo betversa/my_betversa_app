@@ -48,11 +48,14 @@ jobs:
           python scripts/nhlskatestats.py
 
       - name: Commit updated JSON files
-        run: |
-          git config --global user.email "github-actions@github.com"
-          git config --global user.name "GitHub Actions"
-          git add data/mlb_batter_stats_2025_pretty.json data/mlb_pitcher_stats_2025_pretty.json data/nba_stats_2025_pretty.json data/nhl_skater_stats_2025_pretty.json
-          git commit -m "Daily update: Update player stats JSON files"
-          git push origin main
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          run: |
+            git config --global user.email "github-actions@github.com"
+            git config --global user.name "GitHub Actions"
+            git add data/mlb_batter_stats_2025_pretty.json data/mlb_pitcher_stats_2025_pretty.json data/nba_stats_2025_pretty.json data/nhl_skater_stats_2025_pretty.json
+            git commit -m "Daily update: Update player stats JSON files"
+            # Update the remote URL to use the token for authentication.
+            git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/betversa/my_betversa_app.git
+            git push origin main
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
