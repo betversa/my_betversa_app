@@ -1,3 +1,9 @@
+import sys
+import os
+
+# Insert the project's root directory into sys.path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from modules.nhl_data import get_hockey_data
 import pandas as pd
 import json
