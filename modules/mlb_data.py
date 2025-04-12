@@ -44,7 +44,7 @@ class get_baseball_data:
                 pass
         
         # Select only the columns of interest
-        cols_to_keep = ["Player", "G", "AB", "R", "H", "2B", "3B", "HR", "RBI", "SB", "CS", "BA", "OBP", "SLG", "OPS"]
+        cols_to_keep = ["Player", "Team", "G", "AB", "R", "H", "2B", "3B", "HR", "RBI", "SB", "CS", "BA", "OBP", "SLG", "OPS"]
         available_cols = [col for col in cols_to_keep if col in df.columns]
         df = df[available_cols]
         
@@ -86,7 +86,7 @@ class get_baseball_data:
                 pass
         
         # Select only the columns of interest
-        cols_to_keep = ["Player", "W", "L", "ERA", "G", "GS", "SV", "IP", "H", "ER", "BB", "SO", "WHIP"]
+        cols_to_keep = ["Player", "Team", "W", "L", "ERA", "G", "GS", "SV", "IP", "H", "ER", "BB", "SO", "WHIP"]
         available_cols = [col for col in cols_to_keep if col in df.columns]
         df = df[available_cols]
         
