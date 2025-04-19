@@ -366,7 +366,7 @@
             },
             {
                 "bookmaker": "williamhill_us",
-                "price": -106,
+                "price": -103,
                 "point": 12.5,
                 "description": "Ivica Zubac"
             },
@@ -500,7 +500,7 @@
             },
             {
                 "bookmaker": "williamhill_us",
-                "price": -113,
+                "price": -106,
                 "point": 3.5,
                 "description": "Kawhi Leonard"
             },
@@ -1842,7 +1842,7 @@
             },
             {
                 "bookmaker": "williamhill_us",
-                "price": -125,
+                "price": -121,
                 "point": 4.5,
                 "description": "Derrick White"
             }
@@ -2967,7 +2967,7 @@
             },
             {
                 "bookmaker": "williamhill_us",
-                "price": 100,
+                "price": -106,
                 "point": 2.5,
                 "description": "Jalen Green"
             }
@@ -3327,7 +3327,7 @@
             },
             {
                 "bookmaker": "williamhill_us",
-                "price": -117,
+                "price": -121,
                 "point": 9.5,
                 "description": "Moses Moody"
             }
@@ -4215,19 +4215,25 @@
         "home_team": "Chicago Cubs",
         "away_team": "Arizona Diamondbacks",
         "market": "h2h_1st_5_innings",
-        "bookmaker": "fanduel",
+        "bookmaker": "draftkings",
         "team": "Arizona Diamondbacks",
         "point": null,
         "description": null,
-        "sportsbook_odds": -110,
-        "fair_prob": 0.5354,
-        "fair_american_odds": -115,
-        "ev": 2.21,
-        "market_width": 11,
+        "sportsbook_odds": -105,
+        "fair_prob": 0.5296,
+        "fair_american_odds": -112,
+        "ev": 3.4,
+        "market_width": 16,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
                 "price": -110,
+                "point": null,
+                "description": null
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": -105,
                 "point": null,
                 "description": null
             },
@@ -4330,14 +4336,20 @@
         "point": null,
         "description": null,
         "sportsbook_odds": -103,
-        "fair_prob": 0.525,
-        "fair_american_odds": -110,
-        "ev": 3.47,
-        "market_width": 12,
+        "fair_prob": 0.5326,
+        "fair_american_odds": -113,
+        "ev": 4.98,
+        "market_width": 22,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
                 "price": -114,
+                "point": null,
+                "description": null
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": -125,
                 "point": null,
                 "description": null
             },
@@ -4352,6 +4364,61 @@
                 "price": -115,
                 "point": null,
                 "description": null
+            }
+        ]
+    },
+    {
+        "unique_id": "c65612ed00f844c3629b715233555de2_TEAM_TOTALS_Over_Chicago Cubs_3.5",
+        "event_id": "c65612ed00f844c3629b715233555de2",
+        "sport": "MLB",
+        "home_team": "Chicago Cubs",
+        "away_team": "Arizona Diamondbacks",
+        "market": "team_totals",
+        "bookmaker": "williamhill_us",
+        "team": "Over",
+        "point": 3.5,
+        "description": "Chicago Cubs",
+        "sportsbook_odds": 100,
+        "fair_prob": 0.5089,
+        "fair_american_odds": -103,
+        "ev": 1.78,
+        "market_width": 8.0,
+        "aggregated_odds": [
+            {
+                "bookmaker": "fanduel",
+                "price": -118,
+                "point": 3.5,
+                "description": "Chicago Cubs"
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": -115,
+                "point": 3.5,
+                "description": "Chicago Cubs"
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": -112,
+                "point": 3.5,
+                "description": "Chicago Cubs"
+            },
+            {
+                "bookmaker": "williamhill_us",
+                "price": 100,
+                "point": 3.5,
+                "description": "Chicago Cubs"
+            },
+            {
+                "bookmaker": "hardrockbet",
+                "price": -110,
+                "point": 3.5,
+                "description": "Chicago Cubs"
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": -112,
+                "point": 3.5,
+                "description": "Chicago Cubs"
             }
         ]
     },
@@ -4494,15 +4561,21 @@
         "team": "Over",
         "point": 8.5,
         "description": null,
-        "sportsbook_odds": 105,
-        "fair_prob": 0.5243,
-        "fair_american_odds": -110,
-        "ev": 7.49,
+        "sportsbook_odds": 100,
+        "fair_prob": 0.5216,
+        "fair_american_odds": -109,
+        "ev": 4.33,
         "market_width": 20,
         "aggregated_odds": [
             {
                 "bookmaker": "espnbet",
-                "price": 105,
+                "price": 100,
+                "point": 8.5,
+                "description": null
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": -102,
                 "point": 8.5,
                 "description": null
             },
@@ -5040,6 +5113,226 @@
         ]
     },
     {
+        "unique_id": "f71d48e390a5f124828d621473949bc0_ALTERNATE_TOTALS_Over__7.5",
+        "event_id": "f71d48e390a5f124828d621473949bc0",
+        "sport": "MLB",
+        "home_team": "Baltimore Orioles",
+        "away_team": "Cincinnati Reds",
+        "market": "alternate_totals",
+        "bookmaker": "williamhill_us",
+        "team": "Over",
+        "point": 7.5,
+        "description": null,
+        "sportsbook_odds": -170,
+        "fair_prob": 0.6354,
+        "fair_american_odds": -174,
+        "ev": 0.92,
+        "market_width": 24.0,
+        "aggregated_odds": [
+            {
+                "bookmaker": "fanduel",
+                "price": -200,
+                "point": 7.5,
+                "description": null
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": -195,
+                "point": 7.5,
+                "description": null
+            },
+            {
+                "bookmaker": "betmgm",
+                "price": -220,
+                "point": 7.5,
+                "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": -200,
+                "point": 7.5,
+                "description": null
+            },
+            {
+                "bookmaker": "williamhill_us",
+                "price": -170,
+                "point": 7.5,
+                "description": null
+            },
+            {
+                "bookmaker": "hardrockbet",
+                "price": -185,
+                "point": 7.5,
+                "description": null
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": -190,
+                "point": 7.5,
+                "description": null
+            }
+        ]
+    },
+    {
+        "unique_id": "f71d48e390a5f124828d621473949bc0_ALTERNATE_TOTALS_Over__9.5",
+        "event_id": "f71d48e390a5f124828d621473949bc0",
+        "sport": "MLB",
+        "home_team": "Baltimore Orioles",
+        "away_team": "Cincinnati Reds",
+        "market": "alternate_totals",
+        "bookmaker": "williamhill_us",
+        "team": "Over",
+        "point": 9.5,
+        "description": null,
+        "sportsbook_odds": 120,
+        "fair_prob": 0.4604,
+        "fair_american_odds": 117,
+        "ev": 1.28,
+        "market_width": 14.0,
+        "aggregated_odds": [
+            {
+                "bookmaker": "fanduel",
+                "price": 114,
+                "point": 9.5,
+                "description": null
+            },
+            {
+                "bookmaker": "espnbet",
+                "price": 115,
+                "point": 9.5,
+                "description": null
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": 106,
+                "point": 9.5,
+                "description": null
+            },
+            {
+                "bookmaker": "betmgm",
+                "price": 110,
+                "point": 9.5,
+                "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": 114,
+                "point": 9.5,
+                "description": null
+            },
+            {
+                "bookmaker": "williamhill_us",
+                "price": 120,
+                "point": 9.5,
+                "description": null
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": 111,
+                "point": 9.5,
+                "description": null
+            }
+        ]
+    },
+    {
+        "unique_id": "f71d48e390a5f124828d621473949bc0_ALTERNATE_TOTALS_Over__10.0",
+        "event_id": "f71d48e390a5f124828d621473949bc0",
+        "sport": "MLB",
+        "home_team": "Baltimore Orioles",
+        "away_team": "Cincinnati Reds",
+        "market": "alternate_totals",
+        "bookmaker": "williamhill_us",
+        "team": "Over",
+        "point": 10.0,
+        "description": null,
+        "sportsbook_odds": 145,
+        "fair_prob": 0.4181,
+        "fair_american_odds": 139,
+        "ev": 2.42,
+        "market_width": 18.0,
+        "aggregated_odds": [
+            {
+                "bookmaker": "draftkings",
+                "price": 126,
+                "point": 10.0,
+                "description": null
+            },
+            {
+                "bookmaker": "betmgm",
+                "price": 135,
+                "point": 10.0,
+                "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": 133,
+                "point": 10.0,
+                "description": null
+            },
+            {
+                "bookmaker": "williamhill_us",
+                "price": 145,
+                "point": 10.0,
+                "description": null
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": 132,
+                "point": 10.0,
+                "description": null
+            }
+        ]
+    },
+    {
+        "unique_id": "f71d48e390a5f124828d621473949bc0_TEAM_TOTALS_Over_Baltimore Orioles_4.5",
+        "event_id": "f71d48e390a5f124828d621473949bc0",
+        "sport": "MLB",
+        "home_team": "Baltimore Orioles",
+        "away_team": "Cincinnati Reds",
+        "market": "team_totals",
+        "bookmaker": "williamhill_us",
+        "team": "Over",
+        "point": 4.5,
+        "description": "Baltimore Orioles",
+        "sportsbook_odds": 130,
+        "fair_prob": 0.4501,
+        "fair_american_odds": 122,
+        "ev": 3.53,
+        "market_width": 19.0,
+        "aggregated_odds": [
+            {
+                "bookmaker": "fanduel",
+                "price": 114,
+                "point": 4.5,
+                "description": "Baltimore Orioles"
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": 114,
+                "point": 4.5,
+                "description": "Baltimore Orioles"
+            },
+            {
+                "bookmaker": "williamhill_us",
+                "price": 130,
+                "point": 4.5,
+                "description": "Baltimore Orioles"
+            },
+            {
+                "bookmaker": "hardrockbet",
+                "price": 115,
+                "point": 4.5,
+                "description": "Baltimore Orioles"
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": 114,
+                "point": 4.5,
+                "description": "Baltimore Orioles"
+            }
+        ]
+    },
+    {
         "unique_id": "f67d943333717d13841f2718271c76b1_SPREADS_Cleveland Guardians__1.5",
         "event_id": "f67d943333717d13841f2718271c76b1",
         "sport": "MLB",
@@ -5509,10 +5802,10 @@
         "point": null,
         "description": null,
         "sportsbook_odds": -110,
-        "fair_prob": 0.5371,
-        "fair_american_odds": -116,
-        "ev": 2.55,
-        "market_width": 15,
+        "fair_prob": 0.5337,
+        "fair_american_odds": -114,
+        "ev": 1.89,
+        "market_width": 10,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
@@ -5546,7 +5839,7 @@
             },
             {
                 "bookmaker": "hardrockbet",
-                "price": -125,
+                "price": -115,
                 "point": null,
                 "description": null
             }
@@ -5595,9 +5888,9 @@
         "point": null,
         "description": null,
         "sportsbook_odds": -105,
-        "fair_prob": 0.5244,
-        "fair_american_odds": -110,
-        "ev": 2.38,
+        "fair_prob": 0.5282,
+        "fair_american_odds": -111,
+        "ev": 3.12,
         "market_width": 10,
         "aggregated_odds": [
             {
@@ -5632,7 +5925,7 @@
             },
             {
                 "bookmaker": "hardrockbet",
-                "price": -105,
+                "price": -115,
                 "point": null,
                 "description": null
             }
@@ -6488,7 +6781,7 @@
             },
             {
                 "bookmaker": "williamhill_us",
-                "price": 133,
+                "price": 139,
                 "point": 7.5,
                 "description": null
             },
@@ -6873,79 +7166,6 @@
         ]
     },
     {
-        "unique_id": "6e9bdbbfdd998c0026a7913d7ca5dd2c_SPREADS_Washington Nationals__-1.5",
-        "event_id": "6e9bdbbfdd998c0026a7913d7ca5dd2c",
-        "sport": "MLB",
-        "home_team": "Colorado Rockies",
-        "away_team": "Washington Nationals",
-        "market": "spreads",
-        "bookmaker": "fanduel",
-        "team": "Washington Nationals",
-        "point": -1.5,
-        "description": null,
-        "sportsbook_odds": 125,
-        "fair_prob": 0.454,
-        "fair_american_odds": 120,
-        "ev": 2.15,
-        "market_width": 10,
-        "aggregated_odds": [
-            {
-                "bookmaker": "fanduel",
-                "price": 125,
-                "point": -1.5,
-                "description": null
-            },
-            {
-                "bookmaker": "espnbet",
-                "price": 125,
-                "point": -1.5,
-                "description": null
-            },
-            {
-                "bookmaker": "williamhill_us",
-                "price": 118,
-                "point": -1.5,
-                "description": null
-            },
-            {
-                "bookmaker": "hardrockbet",
-                "price": 115,
-                "point": -1.5,
-                "description": null
-            },
-            {
-                "bookmaker": "draftkings",
-                "price": 120,
-                "point": -1.5,
-                "description": null
-            },
-            {
-                "bookmaker": "betrivers",
-                "price": 123,
-                "point": -1.5,
-                "description": null
-            },
-            {
-                "bookmaker": "pinnacle",
-                "price": 115,
-                "point": -1.5,
-                "description": null
-            },
-            {
-                "bookmaker": "lowvig",
-                "price": 122,
-                "point": -1.5,
-                "description": null
-            },
-            {
-                "bookmaker": "betmgm",
-                "price": 120,
-                "point": -1.5,
-                "description": null
-            }
-        ]
-    },
-    {
         "unique_id": "6e9bdbbfdd998c0026a7913d7ca5dd2c_TOTALS_Over__9.0",
         "event_id": "6e9bdbbfdd998c0026a7913d7ca5dd2c",
         "sport": "MLB",
@@ -7011,15 +7231,15 @@
         "team": "Over",
         "point": 9.5,
         "description": null,
-        "sportsbook_odds": 116,
+        "sportsbook_odds": 118,
         "fair_prob": 0.4675,
         "fair_american_odds": 113,
-        "ev": 0.99,
+        "ev": 1.93,
         "market_width": 13.0,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": 116,
+                "price": 118,
                 "point": 9.5,
                 "description": null
             },
@@ -7031,7 +7251,7 @@
             },
             {
                 "bookmaker": "draftkings",
-                "price": 103,
+                "price": 100,
                 "point": 9.5,
                 "description": null
             },
@@ -7056,25 +7276,25 @@
         "home_team": "Colorado Rockies",
         "away_team": "Washington Nationals",
         "market": "alternate_totals",
-        "bookmaker": "fanduel",
+        "bookmaker": "williamhill_us",
         "team": "Over",
         "point": 10.5,
         "description": null,
-        "sportsbook_odds": 158,
+        "sportsbook_odds": 162,
         "fair_prob": 0.3996,
         "fair_american_odds": 150,
-        "ev": 3.1,
+        "ev": 4.69,
         "market_width": 19.0,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": 158,
+                "price": 162,
                 "point": 10.5,
                 "description": null
             },
             {
                 "bookmaker": "williamhill_us",
-                "price": 139,
+                "price": 162,
                 "point": 10.5,
                 "description": null
             },
@@ -7158,15 +7378,15 @@
         "team": "Over",
         "point": 0.5,
         "description": null,
-        "sportsbook_odds": -104,
-        "fair_prob": 0.525,
-        "fair_american_odds": -110,
-        "ev": 2.98,
-        "market_width": 16,
+        "sportsbook_odds": 100,
+        "fair_prob": 0.5225,
+        "fair_american_odds": -109,
+        "ev": 4.51,
+        "market_width": 20,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": -104,
+                "price": 100,
                 "point": 0.5,
                 "description": null
             },
@@ -7186,6 +7406,79 @@
                 "bookmaker": "betrivers",
                 "price": -104,
                 "point": 0.5,
+                "description": null
+            }
+        ]
+    },
+    {
+        "unique_id": "6e9bdbbfdd998c0026a7913d7ca5dd2c_SPREADS_Washington Nationals__-1.5",
+        "event_id": "6e9bdbbfdd998c0026a7913d7ca5dd2c",
+        "sport": "MLB",
+        "home_team": "Colorado Rockies",
+        "away_team": "Washington Nationals",
+        "market": "spreads",
+        "bookmaker": "espnbet",
+        "team": "Washington Nationals",
+        "point": -1.5,
+        "description": null,
+        "sportsbook_odds": 125,
+        "fair_prob": 0.4565,
+        "fair_american_odds": 119,
+        "ev": 2.72,
+        "market_width": 11,
+        "aggregated_odds": [
+            {
+                "bookmaker": "fanduel",
+                "price": 120,
+                "point": -1.5,
+                "description": null
+            },
+            {
+                "bookmaker": "espnbet",
+                "price": 125,
+                "point": -1.5,
+                "description": null
+            },
+            {
+                "bookmaker": "williamhill_us",
+                "price": 118,
+                "point": -1.5,
+                "description": null
+            },
+            {
+                "bookmaker": "hardrockbet",
+                "price": 115,
+                "point": -1.5,
+                "description": null
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": 114,
+                "point": -1.5,
+                "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": 123,
+                "point": -1.5,
+                "description": null
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": 115,
+                "point": -1.5,
+                "description": null
+            },
+            {
+                "bookmaker": "lowvig",
+                "price": 122,
+                "point": -1.5,
+                "description": null
+            },
+            {
+                "bookmaker": "betmgm",
+                "price": 120,
+                "point": -1.5,
                 "description": null
             }
         ]
@@ -7239,14 +7532,14 @@
         "point": 0.5,
         "description": null,
         "sportsbook_odds": -110,
-        "fair_prob": 0.5384,
-        "fair_american_odds": -116,
-        "ev": 2.79,
-        "market_width": 12,
+        "fair_prob": 0.5414,
+        "fair_american_odds": -118,
+        "ev": 3.36,
+        "market_width": 18,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": -122,
+                "price": -128,
                 "point": 0.5,
                 "description": null
             },
@@ -7271,25 +7564,221 @@
         ]
     },
     {
+        "unique_id": "6e9bdbbfdd998c0026a7913d7ca5dd2c_ALTERNATE_TOTALS_Over__7.5",
+        "event_id": "6e9bdbbfdd998c0026a7913d7ca5dd2c",
+        "sport": "MLB",
+        "home_team": "Colorado Rockies",
+        "away_team": "Washington Nationals",
+        "market": "alternate_totals",
+        "bookmaker": "williamhill_us",
+        "team": "Over",
+        "point": 7.5,
+        "description": null,
+        "sportsbook_odds": -170,
+        "fair_prob": 0.6409,
+        "fair_american_odds": -178,
+        "ev": 1.79,
+        "market_width": 25.0,
+        "aggregated_odds": [
+            {
+                "bookmaker": "fanduel",
+                "price": -194,
+                "point": 7.5,
+                "description": null
+            },
+            {
+                "bookmaker": "williamhill_us",
+                "price": -170,
+                "point": 7.5,
+                "description": null
+            },
+            {
+                "bookmaker": "hardrockbet",
+                "price": -210,
+                "point": 7.5,
+                "description": null
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": -200,
+                "point": 7.5,
+                "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": -200,
+                "point": 7.5,
+                "description": null
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": -195,
+                "point": 7.5,
+                "description": null
+            }
+        ]
+    },
+    {
+        "unique_id": "6e9bdbbfdd998c0026a7913d7ca5dd2c_ALTERNATE_TOTALS_Over__8.0",
+        "event_id": "6e9bdbbfdd998c0026a7913d7ca5dd2c",
+        "sport": "MLB",
+        "home_team": "Colorado Rockies",
+        "away_team": "Washington Nationals",
+        "market": "alternate_totals",
+        "bookmaker": "williamhill_us",
+        "team": "Over",
+        "point": 8.0,
+        "description": null,
+        "sportsbook_odds": -152,
+        "fair_prob": 0.6135,
+        "fair_american_odds": -158,
+        "ev": 1.71,
+        "market_width": 21.0,
+        "aggregated_odds": [
+            {
+                "bookmaker": "williamhill_us",
+                "price": -152,
+                "point": 8.0,
+                "description": null
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": -180,
+                "point": 8.0,
+                "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": -167,
+                "point": 8.0,
+                "description": null
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": -172,
+                "point": 8.0,
+                "description": null
+            }
+        ]
+    },
+    {
+        "unique_id": "6e9bdbbfdd998c0026a7913d7ca5dd2c_ALTERNATE_TOTALS_Over__10.0",
+        "event_id": "6e9bdbbfdd998c0026a7913d7ca5dd2c",
+        "sport": "MLB",
+        "home_team": "Colorado Rockies",
+        "away_team": "Washington Nationals",
+        "market": "alternate_totals",
+        "bookmaker": "williamhill_us",
+        "team": "Over",
+        "point": 10.0,
+        "description": null,
+        "sportsbook_odds": 145,
+        "fair_prob": 0.4281,
+        "fair_american_odds": 133,
+        "ev": 4.89,
+        "market_width": 16.0,
+        "aggregated_odds": [
+            {
+                "bookmaker": "williamhill_us",
+                "price": 145,
+                "point": 10.0,
+                "description": null
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": 118,
+                "point": 10.0,
+                "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": 133,
+                "point": 10.0,
+                "description": null
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": 127,
+                "point": 10.0,
+                "description": null
+            }
+        ]
+    },
+    {
+        "unique_id": "6e9bdbbfdd998c0026a7913d7ca5dd2c_TEAM_TOTALS_Over_Washington Nationals_4.5",
+        "event_id": "6e9bdbbfdd998c0026a7913d7ca5dd2c",
+        "sport": "MLB",
+        "home_team": "Colorado Rockies",
+        "away_team": "Washington Nationals",
+        "market": "team_totals",
+        "bookmaker": "williamhill_us",
+        "team": "Over",
+        "point": 4.5,
+        "description": "Washington Nationals",
+        "sportsbook_odds": -105,
+        "fair_prob": 0.5439,
+        "fair_american_odds": -119,
+        "ev": 6.19,
+        "market_width": 19.0,
+        "aggregated_odds": [
+            {
+                "bookmaker": "fanduel",
+                "price": -120,
+                "point": 4.5,
+                "description": "Washington Nationals"
+            },
+            {
+                "bookmaker": "williamhill_us",
+                "price": -105,
+                "point": 4.5,
+                "description": "Washington Nationals"
+            },
+            {
+                "bookmaker": "hardrockbet",
+                "price": -125,
+                "point": 4.5,
+                "description": "Washington Nationals"
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": -130,
+                "point": 4.5,
+                "description": "Washington Nationals"
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": -121,
+                "point": 4.5,
+                "description": "Washington Nationals"
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": -130,
+                "point": 4.5,
+                "description": "Washington Nationals"
+            }
+        ]
+    },
+    {
         "unique_id": "6e9bdbbfdd998c0026a7913d7ca5dd2c_SPREADS_Colorado Rockies__1.5",
         "event_id": "6e9bdbbfdd998c0026a7913d7ca5dd2c",
         "sport": "MLB",
         "home_team": "Colorado Rockies",
         "away_team": "Washington Nationals",
         "market": "spreads",
-        "bookmaker": "williamhill_us",
+        "bookmaker": "draftkings",
         "team": "Colorado Rockies",
         "point": 1.5,
         "description": null,
-        "sportsbook_odds": -140,
-        "fair_prob": 0.588,
-        "fair_american_odds": -142,
-        "ev": 0.79,
+        "sportsbook_odds": -135,
+        "fair_prob": 0.5855,
+        "fair_american_odds": -141,
+        "ev": 1.92,
         "market_width": 20,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": -150,
+                "price": -144,
                 "point": 1.5,
                 "description": null
             },
@@ -7313,7 +7802,7 @@
             },
             {
                 "bookmaker": "draftkings",
-                "price": -142,
+                "price": -135,
                 "point": 1.5,
                 "description": null
             },
@@ -7772,7 +8261,7 @@
             },
             {
                 "bookmaker": "williamhill_us",
-                "price": 115,
+                "price": 120,
                 "point": 7.0,
                 "description": null
             },
@@ -8177,19 +8666,19 @@
         "home_team": "Los Angeles Angels",
         "away_team": "San Francisco Giants",
         "market": "spreads",
-        "bookmaker": "betmgm",
+        "bookmaker": "fanduel",
         "team": "San Francisco Giants",
         "point": -1.5,
         "description": null,
-        "sportsbook_odds": 125,
-        "fair_prob": 0.447,
+        "sportsbook_odds": 126,
+        "fair_prob": 0.4468,
         "fair_american_odds": 123,
-        "ev": 0.57,
+        "ev": 0.97,
         "market_width": 14,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": 125,
+                "price": 126,
                 "point": -1.5,
                 "description": null
             },
@@ -8250,19 +8739,19 @@
         "home_team": "Los Angeles Angels",
         "away_team": "San Francisco Giants",
         "market": "h2h_1st_5_innings",
-        "bookmaker": "fanduel",
+        "bookmaker": "hardrockbet",
         "team": "Los Angeles Angels",
         "point": null,
         "description": null,
         "sportsbook_odds": 110,
-        "fair_prob": 0.4856,
+        "fair_prob": 0.4863,
         "fair_american_odds": 105,
-        "ev": 1.97,
+        "ev": 2.13,
         "market_width": 10,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": 110,
+                "price": 108,
                 "point": null,
                 "description": null
             },
@@ -8310,14 +8799,14 @@
         "point": null,
         "description": null,
         "sportsbook_odds": -130,
-        "fair_prob": 0.5744,
+        "fair_prob": 0.5735,
         "fair_american_odds": -134,
-        "ev": 1.62,
+        "ev": 1.46,
         "market_width": 10,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": -138,
+                "price": -135,
                 "point": null,
                 "description": null
             },
@@ -8421,7 +8910,7 @@
             },
             {
                 "bookmaker": "williamhill_us",
-                "price": 111,
+                "price": 115,
                 "point": 7.5,
                 "description": null
             },
@@ -8586,14 +9075,14 @@
         "point": 1.5,
         "description": null,
         "sportsbook_odds": -145,
-        "fair_prob": 0.5957,
+        "fair_prob": 0.5961,
         "fair_american_odds": -147,
-        "ev": 0.66,
+        "ev": 0.72,
         "market_width": 15,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": -150,
+                "price": -152,
                 "point": 1.5,
                 "description": null
             },
