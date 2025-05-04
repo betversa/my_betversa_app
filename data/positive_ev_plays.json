@@ -440,7 +440,7 @@
             },
             {
                 "bookmaker": "williamhill_us",
-                "price": -141,
+                "price": -133,
                 "point": -1.5,
                 "description": null
             }
@@ -831,7 +831,7 @@
             },
             {
                 "bookmaker": "williamhill_us",
-                "price": 120,
+                "price": 115,
                 "point": -1.5,
                 "description": null
             }
@@ -1038,7 +1038,7 @@
             },
             {
                 "bookmaker": "williamhill_us",
-                "price": -137,
+                "price": -141,
                 "point": 203.5,
                 "description": null
             }
@@ -2918,51 +2918,64 @@
         ]
     },
     {
-        "unique_id": "e5861d94de2cf29cb946aa2e3a56ba45_BATTER_TOTAL_BASES_Under_Alex Bregman_1.5",
+        "unique_id": "e5861d94de2cf29cb946aa2e3a56ba45_PITCHER_HITS_ALLOWED_Under_Chris Paddack_5.5",
         "event_id": "e5861d94de2cf29cb946aa2e3a56ba45",
         "sport": "MLB",
         "home_team": "Boston Red Sox",
         "away_team": "Minnesota Twins",
-        "market": "batter_total_bases",
-        "bookmaker": "espnbet",
+        "market": "pitcher_hits_allowed",
+        "bookmaker": "draftkings",
         "team": "Under",
-        "point": 1.5,
-        "description": "Alex Bregman",
-        "sportsbook_odds": 100,
-        "fair_prob": 0.509,
-        "fair_american_odds": -103,
-        "ev": 1.81,
-        "market_width": 9.0,
+        "point": 5.5,
+        "description": "Chris Paddack",
+        "sportsbook_odds": 120,
+        "fair_prob": 0.4851,
+        "fair_american_odds": 106,
+        "ev": 6.72,
+        "market_width": 17,
         "aggregated_odds": [
             {
-                "bookmaker": "espnbet",
-                "price": 100,
-                "point": 1.5,
-                "description": "Alex Bregman"
-            },
-            {
                 "bookmaker": "draftkings",
-                "price": -110,
-                "point": 1.5,
-                "description": "Alex Bregman"
+                "price": 120,
+                "point": 5.5,
+                "description": "Chris Paddack"
             },
             {
                 "bookmaker": "hardrockbet",
-                "price": -105,
-                "point": 1.5,
-                "description": "Alex Bregman"
+                "price": 120,
+                "point": 5.5,
+                "description": "Chris Paddack"
+            }
+        ]
+    },
+    {
+        "unique_id": "e5861d94de2cf29cb946aa2e3a56ba45_PITCHER_OUTS_Over_Chris Paddack_14.5",
+        "event_id": "e5861d94de2cf29cb946aa2e3a56ba45",
+        "sport": "MLB",
+        "home_team": "Boston Red Sox",
+        "away_team": "Minnesota Twins",
+        "market": "pitcher_outs",
+        "bookmaker": "draftkings",
+        "team": "Over",
+        "point": 14.5,
+        "description": "Chris Paddack",
+        "sportsbook_odds": -155,
+        "fair_prob": 0.6133,
+        "fair_american_odds": -158,
+        "ev": 0.9,
+        "market_width": 20,
+        "aggregated_odds": [
+            {
+                "bookmaker": "draftkings",
+                "price": -155,
+                "point": 14.5,
+                "description": "Chris Paddack"
             },
             {
-                "bookmaker": "williamhill_us",
-                "price": -113,
-                "point": 1.5,
-                "description": "Alex Bregman"
-            },
-            {
-                "bookmaker": "pinnacle",
-                "price": -120,
-                "point": 1.5,
-                "description": "Alex Bregman"
+                "bookmaker": "hardrockbet",
+                "price": -155,
+                "point": 14.5,
+                "description": "Chris Paddack"
             }
         ]
     },
@@ -3266,7 +3279,7 @@
             },
             {
                 "bookmaker": "espnbet",
-                "price": -105,
+                "price": -110,
                 "point": 8.5,
                 "description": null
             },
@@ -3339,7 +3352,7 @@
             },
             {
                 "bookmaker": "espnbet",
-                "price": -105,
+                "price": -110,
                 "point": 8.5,
                 "description": null
             },
@@ -3462,49 +3475,6 @@
         ]
     },
     {
-        "unique_id": "d66a645d8363629a1187eb29167651bf_PITCHER_STRIKEOUTS_Under_Stephen Kolek_3.5",
-        "event_id": "d66a645d8363629a1187eb29167651bf",
-        "sport": "MLB",
-        "home_team": "Pittsburgh Pirates",
-        "away_team": "San Diego Padres",
-        "market": "pitcher_strikeouts",
-        "bookmaker": "fanduel",
-        "team": "Under",
-        "point": 3.5,
-        "description": "Stephen Kolek",
-        "sportsbook_odds": -104,
-        "fair_prob": 0.5221,
-        "fair_american_odds": -109,
-        "ev": 2.4,
-        "market_width": 22.0,
-        "aggregated_odds": [
-            {
-                "bookmaker": "fanduel",
-                "price": -104,
-                "point": 3.5,
-                "description": "Stephen Kolek"
-            },
-            {
-                "bookmaker": "espnbet",
-                "price": -135,
-                "point": 3.5,
-                "description": "Stephen Kolek"
-            },
-            {
-                "bookmaker": "hardrockbet",
-                "price": -140,
-                "point": 3.5,
-                "description": "Stephen Kolek"
-            },
-            {
-                "bookmaker": "pinnacle",
-                "price": -127,
-                "point": 3.5,
-                "description": "Stephen Kolek"
-            }
-        ]
-    },
-    {
         "unique_id": "d66a645d8363629a1187eb29167651bf_H2H_1ST_5_INNINGS_Pittsburgh Pirates__NA",
         "event_id": "d66a645d8363629a1187eb29167651bf",
         "sport": "MLB",
@@ -3548,68 +3518,6 @@
         ]
     },
     {
-        "unique_id": "d66a645d8363629a1187eb29167651bf_PITCHER_EARNED_RUNS_Over_Andrew Heaney_2.5",
-        "event_id": "d66a645d8363629a1187eb29167651bf",
-        "sport": "MLB",
-        "home_team": "Pittsburgh Pirates",
-        "away_team": "San Diego Padres",
-        "market": "pitcher_earned_runs",
-        "bookmaker": "draftkings",
-        "team": "Over",
-        "point": 2.5,
-        "description": "Andrew Heaney",
-        "sportsbook_odds": 110,
-        "fair_prob": 0.4802,
-        "fair_american_odds": 108,
-        "ev": 0.85,
-        "market_width": 5,
-        "aggregated_odds": [
-            {
-                "bookmaker": "draftkings",
-                "price": 110,
-                "point": 2.5,
-                "description": "Andrew Heaney"
-            },
-            {
-                "bookmaker": "hardrockbet",
-                "price": 105,
-                "point": 2.5,
-                "description": "Andrew Heaney"
-            }
-        ]
-    },
-    {
-        "unique_id": "d66a645d8363629a1187eb29167651bf_PITCHER_EARNED_RUNS_Under_Andrew Heaney_2.5",
-        "event_id": "d66a645d8363629a1187eb29167651bf",
-        "sport": "MLB",
-        "home_team": "Pittsburgh Pirates",
-        "away_team": "San Diego Padres",
-        "market": "pitcher_earned_runs",
-        "bookmaker": "draftkings",
-        "team": "Under",
-        "point": 2.5,
-        "description": "Andrew Heaney",
-        "sportsbook_odds": -145,
-        "fair_prob": 0.5975,
-        "fair_american_odds": -148,
-        "ev": 0.95,
-        "market_width": 11,
-        "aggregated_odds": [
-            {
-                "bookmaker": "draftkings",
-                "price": -145,
-                "point": 2.5,
-                "description": "Andrew Heaney"
-            },
-            {
-                "bookmaker": "hardrockbet",
-                "price": -150,
-                "point": 2.5,
-                "description": "Andrew Heaney"
-            }
-        ]
-    },
-    {
         "unique_id": "d66a645d8363629a1187eb29167651bf_ALTERNATE_SPREADS_Pittsburgh Pirates__-1.0",
         "event_id": "d66a645d8363629a1187eb29167651bf",
         "sport": "MLB",
@@ -3642,61 +3550,6 @@
                 "bookmaker": "pinnacle",
                 "price": 134,
                 "point": -1.0,
-                "description": null
-            }
-        ]
-    },
-    {
-        "unique_id": "5ab936ada2e4c3e74ab88901221f0d7c_ALTERNATE_TOTALS_Under__6.5",
-        "event_id": "5ab936ada2e4c3e74ab88901221f0d7c",
-        "sport": "MLB",
-        "home_team": "Toronto Blue Jays",
-        "away_team": "Cleveland Guardians",
-        "market": "alternate_totals",
-        "bookmaker": "fanduel",
-        "team": "Under",
-        "point": 6.5,
-        "description": null,
-        "sportsbook_odds": 182,
-        "fair_prob": 0.3591,
-        "fair_american_odds": 178,
-        "ev": 1.27,
-        "market_width": 25.0,
-        "aggregated_odds": [
-            {
-                "bookmaker": "fanduel",
-                "price": 182,
-                "point": 6.5,
-                "description": null
-            },
-            {
-                "bookmaker": "draftkings",
-                "price": 165,
-                "point": 6.5,
-                "description": null
-            },
-            {
-                "bookmaker": "hardrockbet",
-                "price": 160,
-                "point": 6.5,
-                "description": null
-            },
-            {
-                "bookmaker": "betmgm",
-                "price": 175,
-                "point": 6.5,
-                "description": null
-            },
-            {
-                "bookmaker": "williamhill_us",
-                "price": 151,
-                "point": 6.5,
-                "description": null
-            },
-            {
-                "bookmaker": "pinnacle",
-                "price": 170,
-                "point": 6.5,
                 "description": null
             }
         ]
@@ -3755,15 +3608,15 @@
         "team": "Over",
         "point": 4.5,
         "description": "Tanner Bibee",
-        "sportsbook_odds": 110,
+        "sportsbook_odds": 100,
         "fair_prob": 0.5171,
         "fair_american_odds": -107,
-        "ev": 8.6,
+        "ev": 3.42,
         "market_width": 17.0,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": 110,
+                "price": 100,
                 "point": 4.5,
                 "description": "Tanner Bibee"
             },
@@ -3873,10 +3726,10 @@
         "point": -1.0,
         "description": null,
         "sportsbook_odds": 115,
-        "fair_prob": 0.5,
+        "fair_prob": 0.4989,
         "fair_american_odds": 100,
-        "ev": 7.5,
-        "market_width": 0.0,
+        "ev": 7.27,
+        "market_width": 1.0,
         "aggregated_odds": [
             {
                 "bookmaker": "draftkings",
@@ -4258,9 +4111,9 @@
         "point": 8.5,
         "description": null,
         "sportsbook_odds": 110,
-        "fair_prob": 0.5119,
-        "fair_american_odds": -104,
-        "ev": 7.49,
+        "fair_prob": 0.5124,
+        "fair_american_odds": -105,
+        "ev": 7.6,
         "market_width": 10,
         "aggregated_odds": [
             {
