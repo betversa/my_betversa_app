@@ -68,12 +68,18 @@
         "sportsbook_odds": -110,
         "fair_prob": 0.5341,
         "fair_american_odds": -114,
-        "ev": 1.96,
+        "ev": 1.97,
         "market_width": 25,
         "aggregated_odds": [
             {
                 "bookmaker": "draftkings",
                 "price": -110,
+                "point": 12.5,
+                "description": "T.J. McConnell"
+            },
+            {
+                "bookmaker": "fanduel",
+                "price": -118,
                 "point": 12.5,
                 "description": "T.J. McConnell"
             },
@@ -209,7 +215,7 @@
         "sportsbook_odds": -105,
         "fair_prob": 0.5341,
         "fair_american_odds": -114,
-        "ev": 4.27,
+        "ev": 4.28,
         "market_width": 25,
         "aggregated_odds": [
             {
@@ -240,7 +246,7 @@
         "sportsbook_odds": -110,
         "fair_prob": 0.5341,
         "fair_american_odds": -114,
-        "ev": 1.96,
+        "ev": 1.97,
         "market_width": 25,
         "aggregated_odds": [
             {
@@ -300,9 +306,9 @@
         "point": 116.5,
         "description": "Cleveland Cavaliers",
         "sportsbook_odds": -107,
-        "fair_prob": 0.5249,
-        "fair_american_odds": -110,
-        "ev": 1.56,
+        "fair_prob": 0.5269,
+        "fair_american_odds": -111,
+        "ev": 1.93,
         "market_width": 16,
         "aggregated_odds": [
             {
@@ -1026,114 +1032,76 @@
         ]
     },
     {
-        "unique_id": "a72d8efa957a31155a3d4aa1dd2a6b13_PLAYER_POINTS_REBOUNDS_ASSISTS_Over_Anthony Edwards_39.5",
+        "unique_id": "a72d8efa957a31155a3d4aa1dd2a6b13_PLAYER_ASSISTS_Over_Jimmy Butler_6.5",
         "event_id": "a72d8efa957a31155a3d4aa1dd2a6b13",
         "sport": "NBA",
         "home_team": "Golden State Warriors",
         "away_team": "Minnesota Timberwolves",
-        "market": "player_points_rebounds_assists",
+        "market": "player_assists",
         "bookmaker": "fanduel",
         "team": "Over",
-        "point": 39.5,
-        "description": "Anthony Edwards",
-        "sportsbook_odds": -108,
-        "fair_prob": 0.5321,
-        "fair_american_odds": -113,
-        "ev": 2.48,
-        "market_width": 25,
-        "aggregated_odds": [
-            {
-                "bookmaker": "draftkings",
-                "price": -110,
-                "point": 39.5,
-                "description": "Anthony Edwards"
-            },
-            {
-                "bookmaker": "fanduel",
-                "price": -108,
-                "point": 39.5,
-                "description": "Anthony Edwards"
-            }
-        ]
-    },
-    {
-        "unique_id": "a72d8efa957a31155a3d4aa1dd2a6b13_PLAYER_POINTS_REBOUNDS_ASSISTS_Over_Jimmy Butler_36.5",
-        "event_id": "a72d8efa957a31155a3d4aa1dd2a6b13",
-        "sport": "NBA",
-        "home_team": "Golden State Warriors",
-        "away_team": "Minnesota Timberwolves",
-        "market": "player_points_rebounds_assists",
-        "bookmaker": "draftkings",
-        "team": "Over",
-        "point": 36.5,
+        "point": 6.5,
         "description": "Jimmy Butler",
-        "sportsbook_odds": -105,
-        "fair_prob": 0.5321,
-        "fair_american_odds": -113,
-        "ev": 3.89,
-        "market_width": 25,
+        "sportsbook_odds": 104,
+        "fair_prob": 0.5045,
+        "fair_american_odds": -101,
+        "ev": 2.91,
+        "market_width": 4.0,
         "aggregated_odds": [
             {
                 "bookmaker": "draftkings",
-                "price": -105,
-                "point": 36.5,
+                "price": 100,
+                "point": 6.5,
                 "description": "Jimmy Butler"
             },
             {
                 "bookmaker": "fanduel",
-                "price": -118,
-                "point": 36.5,
+                "price": 104,
+                "point": 6.5,
+                "description": "Jimmy Butler"
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": -110,
+                "point": 6.5,
                 "description": "Jimmy Butler"
             }
         ]
     },
     {
-        "unique_id": "a72d8efa957a31155a3d4aa1dd2a6b13_PLAYER_POINTS_REBOUNDS_ASSISTS_Under_Julius Randle_30.5",
+        "unique_id": "a72d8efa957a31155a3d4aa1dd2a6b13_PLAYER_POINTS_Under_Naz Reid_12.5",
         "event_id": "a72d8efa957a31155a3d4aa1dd2a6b13",
         "sport": "NBA",
         "home_team": "Golden State Warriors",
         "away_team": "Minnesota Timberwolves",
-        "market": "player_points_rebounds_assists",
-        "bookmaker": "draftkings",
+        "market": "player_points",
+        "bookmaker": "fanduel",
         "team": "Under",
-        "point": 30.5,
-        "description": "Julius Randle",
-        "sportsbook_odds": -110,
-        "fair_prob": 0.5363,
-        "fair_american_odds": -115,
-        "ev": 2.39,
-        "market_width": 25,
-        "aggregated_odds": [
-            {
-                "bookmaker": "draftkings",
-                "price": -110,
-                "point": 30.5,
-                "description": "Julius Randle"
-            }
-        ]
-    },
-    {
-        "unique_id": "a72d8efa957a31155a3d4aa1dd2a6b13_PLAYER_POINTS_REBOUNDS_ASSISTS_Over_Buddy Hield_21.5",
-        "event_id": "a72d8efa957a31155a3d4aa1dd2a6b13",
-        "sport": "NBA",
-        "home_team": "Golden State Warriors",
-        "away_team": "Minnesota Timberwolves",
-        "market": "player_points_rebounds_assists",
-        "bookmaker": "draftkings",
-        "team": "Over",
-        "point": 21.5,
-        "description": "Buddy Hield",
-        "sportsbook_odds": -105,
-        "fair_prob": 0.5321,
-        "fair_american_odds": -113,
-        "ev": 3.89,
-        "market_width": 25,
+        "point": 12.5,
+        "description": "Naz Reid",
+        "sportsbook_odds": -102,
+        "fair_prob": 0.5253,
+        "fair_american_odds": -110,
+        "ev": 4.02,
+        "market_width": 25.0,
         "aggregated_odds": [
             {
                 "bookmaker": "draftkings",
                 "price": -105,
-                "point": 21.5,
-                "description": "Buddy Hield"
+                "point": 12.5,
+                "description": "Naz Reid"
+            },
+            {
+                "bookmaker": "fanduel",
+                "price": -102,
+                "point": 12.5,
+                "description": "Naz Reid"
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": -128,
+                "point": 12.5,
+                "description": "Naz Reid"
             }
         ]
     },
@@ -1148,15 +1116,15 @@
         "team": "Over",
         "point": 21.5,
         "description": "Draymond Green",
-        "sportsbook_odds": -105,
-        "fair_prob": 0.5321,
-        "fair_american_odds": -113,
-        "ev": 3.89,
-        "market_width": 25,
+        "sportsbook_odds": 100,
+        "fair_prob": 0.5131,
+        "fair_american_odds": -105,
+        "ev": 2.62,
+        "market_width": 13.0,
         "aggregated_odds": [
             {
                 "bookmaker": "draftkings",
-                "price": -105,
+                "price": 100,
                 "point": 21.5,
                 "description": "Draymond Green"
             },
@@ -1165,112 +1133,49 @@
                 "price": -108,
                 "point": 21.5,
                 "description": "Draymond Green"
-            }
-        ]
-    },
-    {
-        "unique_id": "a72d8efa957a31155a3d4aa1dd2a6b13_PLAYER_POINTS_REBOUNDS_ASSISTS_Under_Rudy Gobert_20.5",
-        "event_id": "a72d8efa957a31155a3d4aa1dd2a6b13",
-        "sport": "NBA",
-        "home_team": "Golden State Warriors",
-        "away_team": "Minnesota Timberwolves",
-        "market": "player_points_rebounds_assists",
-        "bookmaker": "draftkings",
-        "team": "Under",
-        "point": 20.5,
-        "description": "Rudy Gobert",
-        "sportsbook_odds": 100,
-        "fair_prob": 0.5363,
-        "fair_american_odds": -115,
-        "ev": 7.27,
-        "market_width": 25,
-        "aggregated_odds": [
+            },
             {
-                "bookmaker": "draftkings",
-                "price": 100,
-                "point": 20.5,
-                "description": "Rudy Gobert"
+                "bookmaker": "pinnacle",
+                "price": -122,
+                "point": 21.5,
+                "description": "Draymond Green"
             }
         ]
     },
     {
-        "unique_id": "a72d8efa957a31155a3d4aa1dd2a6b13_PLAYER_POINTS_REBOUNDS_ASSISTS_Under_Naz Reid_19.5",
+        "unique_id": "a72d8efa957a31155a3d4aa1dd2a6b13_PLAYER_REBOUNDS_Over_Brandin Podziemski_5.5",
         "event_id": "a72d8efa957a31155a3d4aa1dd2a6b13",
         "sport": "NBA",
         "home_team": "Golden State Warriors",
         "away_team": "Minnesota Timberwolves",
-        "market": "player_points_rebounds_assists",
-        "bookmaker": "draftkings",
-        "team": "Under",
-        "point": 19.5,
-        "description": "Naz Reid",
-        "sportsbook_odds": -105,
-        "fair_prob": 0.5363,
-        "fair_american_odds": -115,
-        "ev": 4.72,
-        "market_width": 25,
-        "aggregated_odds": [
-            {
-                "bookmaker": "draftkings",
-                "price": -105,
-                "point": 19.5,
-                "description": "Naz Reid"
-            }
-        ]
-    },
-    {
-        "unique_id": "a72d8efa957a31155a3d4aa1dd2a6b13_PLAYER_POINTS_REBOUNDS_ASSISTS_Over_Donte DiVincenzo_17.5",
-        "event_id": "a72d8efa957a31155a3d4aa1dd2a6b13",
-        "sport": "NBA",
-        "home_team": "Golden State Warriors",
-        "away_team": "Minnesota Timberwolves",
-        "market": "player_points_rebounds_assists",
+        "market": "player_rebounds",
         "bookmaker": "draftkings",
         "team": "Over",
-        "point": 17.5,
-        "description": "Donte DiVincenzo",
-        "sportsbook_odds": -105,
-        "fair_prob": 0.5321,
-        "fair_american_odds": -113,
-        "ev": 3.89,
-        "market_width": 25,
+        "point": 5.5,
+        "description": "Brandin Podziemski",
+        "sportsbook_odds": 110,
+        "fair_prob": 0.4869,
+        "fair_american_odds": 105,
+        "ev": 2.25,
+        "market_width": 13.0,
         "aggregated_odds": [
             {
                 "bookmaker": "draftkings",
-                "price": -105,
-                "point": 17.5,
-                "description": "Donte DiVincenzo"
+                "price": 110,
+                "point": 5.5,
+                "description": "Brandin Podziemski"
             },
             {
                 "bookmaker": "fanduel",
-                "price": -130,
-                "point": 17.5,
-                "description": "Donte DiVincenzo"
-            }
-        ]
-    },
-    {
-        "unique_id": "a72d8efa957a31155a3d4aa1dd2a6b13_PLAYER_POINTS_REBOUNDS_ASSISTS_Under_Mike Conley_11.5",
-        "event_id": "a72d8efa957a31155a3d4aa1dd2a6b13",
-        "sport": "NBA",
-        "home_team": "Golden State Warriors",
-        "away_team": "Minnesota Timberwolves",
-        "market": "player_points_rebounds_assists",
-        "bookmaker": "draftkings",
-        "team": "Under",
-        "point": 11.5,
-        "description": "Mike Conley",
-        "sportsbook_odds": -110,
-        "fair_prob": 0.5363,
-        "fair_american_odds": -115,
-        "ev": 2.39,
-        "market_width": 25,
-        "aggregated_odds": [
+                "price": 102,
+                "point": 5.5,
+                "description": "Brandin Podziemski"
+            },
             {
-                "bookmaker": "draftkings",
-                "price": -110,
-                "point": 11.5,
-                "description": "Mike Conley"
+                "bookmaker": "pinnacle",
+                "price": -109,
+                "point": 5.5,
+                "description": "Brandin Podziemski"
             }
         ]
     },
@@ -1330,120 +1235,76 @@
         ]
     },
     {
-        "unique_id": "a72d8efa957a31155a3d4aa1dd2a6b13_PLAYER_POINTS_REBOUNDS_ASSISTS_Under_Jimmy Butler_36.5",
+        "unique_id": "a72d8efa957a31155a3d4aa1dd2a6b13_PLAYER_REBOUNDS_Under_Julius Randle_6.5",
         "event_id": "a72d8efa957a31155a3d4aa1dd2a6b13",
         "sport": "NBA",
         "home_team": "Golden State Warriors",
         "away_team": "Minnesota Timberwolves",
-        "market": "player_points_rebounds_assists",
+        "market": "player_rebounds",
         "bookmaker": "fanduel",
         "team": "Under",
-        "point": 36.5,
-        "description": "Jimmy Butler",
-        "sportsbook_odds": -112,
-        "fair_prob": 0.5363,
-        "fair_american_odds": -115,
-        "ev": 1.52,
-        "market_width": 25,
+        "point": 6.5,
+        "description": "Julius Randle",
+        "sportsbook_odds": 100,
+        "fair_prob": 0.5142,
+        "fair_american_odds": -105,
+        "ev": 2.84,
+        "market_width": 14.0,
         "aggregated_odds": [
             {
                 "bookmaker": "draftkings",
-                "price": -125,
-                "point": 36.5,
-                "description": "Jimmy Butler"
+                "price": -110,
+                "point": 6.5,
+                "description": "Julius Randle"
             },
             {
                 "bookmaker": "fanduel",
-                "price": -112,
-                "point": 36.5,
-                "description": "Jimmy Butler"
-            }
-        ]
-    },
-    {
-        "unique_id": "a72d8efa957a31155a3d4aa1dd2a6b13_PLAYER_POINTS_REBOUNDS_ASSISTS_Under_Julius Randle_31.5",
-        "event_id": "a72d8efa957a31155a3d4aa1dd2a6b13",
-        "sport": "NBA",
-        "home_team": "Golden State Warriors",
-        "away_team": "Minnesota Timberwolves",
-        "market": "player_points_rebounds_assists",
-        "bookmaker": "fanduel",
-        "team": "Under",
-        "point": 31.5,
-        "description": "Julius Randle",
-        "sportsbook_odds": -114,
-        "fair_prob": 0.5363,
-        "fair_american_odds": -115,
-        "ev": 0.68,
-        "market_width": 25,
-        "aggregated_odds": [
+                "price": 100,
+                "point": 6.5,
+                "description": "Julius Randle"
+            },
             {
-                "bookmaker": "fanduel",
-                "price": -114,
-                "point": 31.5,
+                "bookmaker": "pinnacle",
+                "price": -122,
+                "point": 6.5,
                 "description": "Julius Randle"
             }
         ]
     },
     {
-        "unique_id": "a72d8efa957a31155a3d4aa1dd2a6b13_PLAYER_POINTS_REBOUNDS_ASSISTS_Under_Donte DiVincenzo_17.5",
+        "unique_id": "a72d8efa957a31155a3d4aa1dd2a6b13_PLAYER_REBOUNDS_Under_Jimmy Butler_6.5",
         "event_id": "a72d8efa957a31155a3d4aa1dd2a6b13",
         "sport": "NBA",
         "home_team": "Golden State Warriors",
         "away_team": "Minnesota Timberwolves",
-        "market": "player_points_rebounds_assists",
+        "market": "player_rebounds",
         "bookmaker": "fanduel",
         "team": "Under",
-        "point": 17.5,
-        "description": "Donte DiVincenzo",
-        "sportsbook_odds": -102,
-        "fair_prob": 0.5363,
-        "fair_american_odds": -115,
-        "ev": 6.22,
-        "market_width": 25,
+        "point": 6.5,
+        "description": "Jimmy Butler",
+        "sportsbook_odds": 102,
+        "fair_prob": 0.5081,
+        "fair_american_odds": -103,
+        "ev": 2.63,
+        "market_width": 8.0,
         "aggregated_odds": [
             {
                 "bookmaker": "draftkings",
-                "price": -125,
-                "point": 17.5,
-                "description": "Donte DiVincenzo"
+                "price": -110,
+                "point": 6.5,
+                "description": "Jimmy Butler"
             },
             {
                 "bookmaker": "fanduel",
-                "price": -102,
-                "point": 17.5,
-                "description": "Donte DiVincenzo"
-            }
-        ]
-    },
-    {
-        "unique_id": "a72d8efa957a31155a3d4aa1dd2a6b13_PLAYER_POINTS_REBOUNDS_ASSISTS_Over_Brandin Podziemski_22.5",
-        "event_id": "a72d8efa957a31155a3d4aa1dd2a6b13",
-        "sport": "NBA",
-        "home_team": "Golden State Warriors",
-        "away_team": "Minnesota Timberwolves",
-        "market": "player_points_rebounds_assists",
-        "bookmaker": "fanduel",
-        "team": "Over",
-        "point": 22.5,
-        "description": "Brandin Podziemski",
-        "sportsbook_odds": -106,
-        "fair_prob": 0.5321,
-        "fair_american_odds": -113,
-        "ev": 3.41,
-        "market_width": 25,
-        "aggregated_odds": [
-            {
-                "bookmaker": "draftkings",
-                "price": -115,
-                "point": 22.5,
-                "description": "Brandin Podziemski"
+                "price": 102,
+                "point": 6.5,
+                "description": "Jimmy Butler"
             },
             {
-                "bookmaker": "fanduel",
-                "price": -106,
-                "point": 22.5,
-                "description": "Brandin Podziemski"
+                "bookmaker": "pinnacle",
+                "price": -119,
+                "point": 6.5,
+                "description": "Jimmy Butler"
             }
         ]
     },
@@ -2585,15 +2446,15 @@
         "team": "Under",
         "point": 5.5,
         "description": "Gavin Williams",
-        "sportsbook_odds": 104,
-        "fair_prob": 0.5194,
+        "sportsbook_odds": 102,
+        "fair_prob": 0.5195,
         "fair_american_odds": -108,
-        "ev": 5.96,
+        "ev": 4.94,
         "market_width": 17,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": 104,
+                "price": 102,
                 "point": 5.5,
                 "description": "Gavin Williams"
             },
@@ -3670,9 +3531,9 @@
         "point": null,
         "description": null,
         "sportsbook_odds": -112,
-        "fair_prob": 0.5428,
-        "fair_american_odds": -118,
-        "ev": 2.74,
+        "fair_prob": 0.5448,
+        "fair_american_odds": -119,
+        "ev": 3.12,
         "market_width": 13,
         "aggregated_odds": [
             {
@@ -3695,7 +3556,7 @@
             },
             {
                 "bookmaker": "hardrockbet",
-                "price": -120,
+                "price": -125,
                 "point": null,
                 "description": null
             },
@@ -3719,9 +3580,9 @@
         "point": null,
         "description": null,
         "sportsbook_odds": 100,
-        "fair_prob": 0.5186,
-        "fair_american_odds": -107,
-        "ev": 3.71,
+        "fair_prob": 0.5162,
+        "fair_american_odds": -106,
+        "ev": 3.25,
         "market_width": 12,
         "aggregated_odds": [
             {
@@ -3744,7 +3605,7 @@
             },
             {
                 "bookmaker": "hardrockbet",
-                "price": -110,
+                "price": -105,
                 "point": null,
                 "description": null
             },
@@ -3941,45 +3802,51 @@
         ]
     },
     {
-        "unique_id": "21c587c14d3b51c2f727fadd08806c01_TOTALS_1ST_1_INNINGS_Under__0.5",
+        "unique_id": "21c587c14d3b51c2f727fadd08806c01_TEAM_TOTALS_Over_San Diego Padres_6.5",
         "event_id": "21c587c14d3b51c2f727fadd08806c01",
         "sport": "MLB",
         "home_team": "Colorado Rockies",
         "away_team": "San Diego Padres",
-        "market": "totals_1st_1_innings",
-        "bookmaker": "betrivers",
-        "team": "Under",
-        "point": 0.5,
-        "description": null,
-        "sportsbook_odds": 140,
-        "fair_prob": 0.4513,
-        "fair_american_odds": 121,
-        "ev": 8.31,
-        "market_width": 20.0,
+        "market": "team_totals",
+        "bookmaker": "fanduel",
+        "team": "Over",
+        "point": 6.5,
+        "description": "San Diego Padres",
+        "sportsbook_odds": 110,
+        "fair_prob": 0.4812,
+        "fair_american_odds": 107,
+        "ev": 1.04,
+        "market_width": 17.0,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": 128,
-                "point": 0.5,
-                "description": null
+                "price": 110,
+                "point": 6.5,
+                "description": "San Diego Padres"
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": 100,
+                "point": 6.5,
+                "description": "San Diego Padres"
+            },
+            {
+                "bookmaker": "hardrockbet",
+                "price": -105,
+                "point": 6.5,
+                "description": "San Diego Padres"
             },
             {
                 "bookmaker": "pinnacle",
-                "price": 113,
-                "point": 0.5,
-                "description": null
-            },
-            {
-                "bookmaker": "williamhill_us",
-                "price": 120,
-                "point": 0.5,
-                "description": null
+                "price": 100,
+                "point": 6.5,
+                "description": "San Diego Padres"
             },
             {
                 "bookmaker": "betrivers",
-                "price": 140,
-                "point": 0.5,
-                "description": null
+                "price": 105,
+                "point": 6.5,
+                "description": "San Diego Padres"
             }
         ]
     },
@@ -4044,10 +3911,10 @@
         "point": 2.5,
         "description": "Antonio Senzatela",
         "sportsbook_odds": 105,
-        "fair_prob": 0.5232,
-        "fair_american_odds": -109,
-        "ev": 7.26,
-        "market_width": 23.0,
+        "fair_prob": 0.5212,
+        "fair_american_odds": -108,
+        "ev": 6.84,
+        "market_width": 21.0,
         "aggregated_odds": [
             {
                 "bookmaker": "draftkings",
@@ -4057,7 +3924,7 @@
             },
             {
                 "bookmaker": "pinnacle",
-                "price": -127,
+                "price": -126,
                 "point": 2.5,
                 "description": "Antonio Senzatela"
             }
@@ -4082,7 +3949,7 @@
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": 104,
+                "price": 102,
                 "point": 11.5,
                 "description": null
             },
@@ -4168,7 +4035,7 @@
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": -146,
+                "price": -142,
                 "point": 10.5,
                 "description": null
             },
@@ -4272,7 +4139,7 @@
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": 138,
+                "price": 136,
                 "point": 12.5,
                 "description": null
             },
@@ -4359,6 +4226,49 @@
                 "bookmaker": "betrivers",
                 "price": 180,
                 "point": 13.0,
+                "description": null
+            }
+        ]
+    },
+    {
+        "unique_id": "21c587c14d3b51c2f727fadd08806c01_TOTALS_1ST_1_INNINGS_Under__0.5",
+        "event_id": "21c587c14d3b51c2f727fadd08806c01",
+        "sport": "MLB",
+        "home_team": "Colorado Rockies",
+        "away_team": "San Diego Padres",
+        "market": "totals_1st_1_innings",
+        "bookmaker": "betrivers",
+        "team": "Under",
+        "point": 0.5,
+        "description": null,
+        "sportsbook_odds": 140,
+        "fair_prob": 0.4311,
+        "fair_american_odds": 131,
+        "ev": 3.46,
+        "market_width": 22.0,
+        "aggregated_odds": [
+            {
+                "bookmaker": "fanduel",
+                "price": 124,
+                "point": 0.5,
+                "description": null
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": 123,
+                "point": 0.5,
+                "description": null
+            },
+            {
+                "bookmaker": "williamhill_us",
+                "price": 120,
+                "point": 0.5,
+                "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": 140,
+                "point": 0.5,
                 "description": null
             }
         ]
@@ -4668,15 +4578,15 @@
         "team": "Arizona Diamondbacks",
         "point": 1.5,
         "description": null,
-        "sportsbook_odds": -137,
-        "fair_prob": 0.585,
+        "sportsbook_odds": -134,
+        "fair_prob": 0.5843,
         "fair_american_odds": -140,
-        "ev": 1.19,
-        "market_width": 12,
+        "ev": 2.03,
+        "market_width": 14,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": -137,
+                "price": -134,
                 "point": 1.5,
                 "description": null
             },
@@ -4736,14 +4646,14 @@
         "point": -1.5,
         "description": null,
         "sportsbook_odds": 120,
-        "fair_prob": 0.4583,
-        "fair_american_odds": 118,
-        "ev": 0.82,
-        "market_width": 10,
+        "fair_prob": 0.4588,
+        "fair_american_odds": 117,
+        "ev": 0.94,
+        "market_width": 12,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": 114,
+                "price": 112,
                 "point": -1.5,
                 "description": null
             },
@@ -5043,6 +4953,49 @@
         ]
     },
     {
+        "unique_id": "587fd22b4f9a6c8b00296d009e5f8a92_H2H_1ST_5_INNINGS_Seattle Mariners__NA",
+        "event_id": "587fd22b4f9a6c8b00296d009e5f8a92",
+        "sport": "MLB",
+        "home_team": "Seattle Mariners",
+        "away_team": "Toronto Blue Jays",
+        "market": "h2h_1st_5_innings",
+        "bookmaker": "fanduel",
+        "team": "Seattle Mariners",
+        "point": null,
+        "description": null,
+        "sportsbook_odds": -130,
+        "fair_prob": 0.5785,
+        "fair_american_odds": -137,
+        "ev": 2.36,
+        "market_width": 20,
+        "aggregated_odds": [
+            {
+                "bookmaker": "fanduel",
+                "price": -130,
+                "point": null,
+                "description": null
+            },
+            {
+                "bookmaker": "hardrockbet",
+                "price": -150,
+                "point": null,
+                "description": null
+            },
+            {
+                "bookmaker": "betmgm",
+                "price": -135,
+                "point": null,
+                "description": null
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": -135,
+                "point": null,
+                "description": null
+            }
+        ]
+    },
+    {
         "unique_id": "587fd22b4f9a6c8b00296d009e5f8a92_TOTALS_1ST_1_INNINGS_Over__0.5",
         "event_id": "587fd22b4f9a6c8b00296d009e5f8a92",
         "sport": "MLB",
@@ -5091,9 +5044,9 @@
         "point": null,
         "description": null,
         "sportsbook_odds": 115,
-        "fair_prob": 0.4917,
-        "fair_american_odds": 103,
-        "ev": 5.72,
+        "fair_prob": 0.4827,
+        "fair_american_odds": 107,
+        "ev": 3.79,
         "market_width": 11,
         "aggregated_odds": [
             {
@@ -5116,7 +5069,7 @@
             },
             {
                 "bookmaker": "draftkings",
-                "price": -110,
+                "price": 105,
                 "point": null,
                 "description": null
             }
@@ -5185,37 +5138,6 @@
                 "bookmaker": "pinnacle",
                 "price": 160,
                 "point": -1.5,
-                "description": null
-            }
-        ]
-    },
-    {
-        "unique_id": "587fd22b4f9a6c8b00296d009e5f8a92_TOTALS_Under__7.0",
-        "event_id": "587fd22b4f9a6c8b00296d009e5f8a92",
-        "sport": "MLB",
-        "home_team": "Seattle Mariners",
-        "away_team": "Toronto Blue Jays",
-        "market": "totals",
-        "bookmaker": "draftkings",
-        "team": "Under",
-        "point": 7.0,
-        "description": null,
-        "sportsbook_odds": 105,
-        "fair_prob": 0.5279,
-        "fair_american_odds": -111,
-        "ev": 8.21,
-        "market_width": 15,
-        "aggregated_odds": [
-            {
-                "bookmaker": "lowvig",
-                "price": 105,
-                "point": 7.0,
-                "description": null
-            },
-            {
-                "bookmaker": "draftkings",
-                "price": 105,
-                "point": 7.0,
                 "description": null
             }
         ]
