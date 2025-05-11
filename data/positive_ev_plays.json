@@ -11,9 +11,9 @@
         "point": 6.0,
         "description": null,
         "sportsbook_odds": -105,
-        "fair_prob": 0.5206,
+        "fair_prob": 0.5204,
         "fair_american_odds": -108,
-        "ev": 1.64,
+        "ev": 1.59,
         "market_width": 12,
         "aggregated_odds": [
             {
@@ -36,9 +36,9 @@
         "point": -6.5,
         "description": null,
         "sportsbook_odds": -106,
-        "fair_prob": 0.5225,
+        "fair_prob": 0.5227,
         "fair_american_odds": -109,
-        "ev": 1.54,
+        "ev": 1.59,
         "market_width": 9,
         "aggregated_odds": [
             {
@@ -61,7 +61,7 @@
             },
             {
                 "bookmaker": "betrivers",
-                "price": -108,
+                "price": -109,
                 "point": -6.5,
                 "description": null
             },
@@ -128,7 +128,7 @@
             },
             {
                 "bookmaker": "betrivers",
-                "price": -115,
+                "price": -118,
                 "point": 31.5,
                 "description": "Jamal Murray"
             },
@@ -153,51 +153,185 @@
         ]
     },
     {
-        "unique_id": "5e3b869b9c20aeb27c069111f69bb825_PLAYER_POINTS_Over_Jamal Murray_21.5",
+        "unique_id": "5e3b869b9c20aeb27c069111f69bb825_PLAYER_REBOUNDS_Over_Christian Braun_5.5",
         "event_id": "5e3b869b9c20aeb27c069111f69bb825",
         "sport": "NBA",
         "home_team": "Denver Nuggets",
         "away_team": "Oklahoma City Thunder",
-        "market": "player_points",
-        "bookmaker": "betrivers",
+        "market": "player_rebounds",
+        "bookmaker": "fanduel",
         "team": "Over",
-        "point": 21.5,
-        "description": "Jamal Murray",
-        "sportsbook_odds": 102,
-        "fair_prob": 0.498,
-        "fair_american_odds": 100,
-        "ev": 0.59,
-        "market_width": 2.0,
+        "point": 5.5,
+        "description": "Christian Braun",
+        "sportsbook_odds": 110,
+        "fair_prob": 0.4858,
+        "fair_american_odds": 105,
+        "ev": 2.02,
+        "market_width": 14.0,
         "aggregated_odds": [
             {
+                "bookmaker": "draftkings",
+                "price": 100,
+                "point": 5.5,
+                "description": "Christian Braun"
+            },
+            {
+                "bookmaker": "fanduel",
+                "price": 110,
+                "point": 5.5,
+                "description": "Christian Braun"
+            },
+            {
                 "bookmaker": "espnbet",
-                "price": -115,
-                "point": 21.5,
-                "description": "Jamal Murray"
+                "price": 100,
+                "point": 5.5,
+                "description": "Christian Braun"
             },
             {
                 "bookmaker": "betrivers",
-                "price": 102,
-                "point": 21.5,
-                "description": "Jamal Murray"
+                "price": -113,
+                "point": 5.5,
+                "description": "Christian Braun"
             },
             {
                 "bookmaker": "betmgm",
-                "price": -115,
-                "point": 21.5,
-                "description": "Jamal Murray"
+                "price": -105,
+                "point": 5.5,
+                "description": "Christian Braun"
             },
             {
                 "bookmaker": "pinnacle",
-                "price": -114,
-                "point": 21.5,
-                "description": "Jamal Murray"
+                "price": -108,
+                "point": 5.5,
+                "description": "Christian Braun"
             },
             {
                 "bookmaker": "hardrockbet",
+                "price": -110,
+                "point": 5.5,
+                "description": "Christian Braun"
+            },
+            {
+                "bookmaker": "williamhill_us",
+                "price": 100,
+                "point": 5.5,
+                "description": "Christian Braun"
+            }
+        ]
+    },
+    {
+        "unique_id": "5e3b869b9c20aeb27c069111f69bb825_PLAYER_ASSISTS_Under_Alex Caruso_2.5",
+        "event_id": "5e3b869b9c20aeb27c069111f69bb825",
+        "sport": "NBA",
+        "home_team": "Denver Nuggets",
+        "away_team": "Oklahoma City Thunder",
+        "market": "player_assists",
+        "bookmaker": "betrivers",
+        "team": "Under",
+        "point": 2.5,
+        "description": "Alex Caruso",
+        "sportsbook_odds": 100,
+        "fair_prob": 0.5081,
+        "fair_american_odds": -103,
+        "ev": 1.62,
+        "market_width": 8.0,
+        "aggregated_odds": [
+            {
+                "bookmaker": "draftkings",
+                "price": -105,
+                "point": 2.5,
+                "description": "Alex Caruso"
+            },
+            {
+                "bookmaker": "fanduel",
+                "price": -130,
+                "point": 2.5,
+                "description": "Alex Caruso"
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": 100,
+                "point": 2.5,
+                "description": "Alex Caruso"
+            },
+            {
+                "bookmaker": "betmgm",
+                "price": -118,
+                "point": 2.5,
+                "description": "Alex Caruso"
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": -119,
+                "point": 2.5,
+                "description": "Alex Caruso"
+            },
+            {
+                "bookmaker": "hardrockbet",
+                "price": -120,
+                "point": 2.5,
+                "description": "Alex Caruso"
+            }
+        ]
+    },
+    {
+        "unique_id": "5e3b869b9c20aeb27c069111f69bb825_PLAYER_POINTS_REBOUNDS_ASSISTS_Under_Shai Gilgeous-Alexander_45.5",
+        "event_id": "5e3b869b9c20aeb27c069111f69bb825",
+        "sport": "NBA",
+        "home_team": "Denver Nuggets",
+        "away_team": "Oklahoma City Thunder",
+        "market": "player_points_rebounds_assists",
+        "bookmaker": "betrivers",
+        "team": "Under",
+        "point": 45.5,
+        "description": "Shai Gilgeous-Alexander",
+        "sportsbook_odds": 107,
+        "fair_prob": 0.4919,
+        "fair_american_odds": 103,
+        "ev": 1.82,
+        "market_width": 8.0,
+        "aggregated_odds": [
+            {
+                "bookmaker": "draftkings",
                 "price": -115,
-                "point": 21.5,
-                "description": "Jamal Murray"
+                "point": 45.5,
+                "description": "Shai Gilgeous-Alexander"
+            },
+            {
+                "bookmaker": "fanduel",
+                "price": -110,
+                "point": 45.5,
+                "description": "Shai Gilgeous-Alexander"
+            },
+            {
+                "bookmaker": "espnbet",
+                "price": -110,
+                "point": 45.5,
+                "description": "Shai Gilgeous-Alexander"
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": 107,
+                "point": 45.5,
+                "description": "Shai Gilgeous-Alexander"
+            },
+            {
+                "bookmaker": "betmgm",
+                "price": -110,
+                "point": 45.5,
+                "description": "Shai Gilgeous-Alexander"
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": -111,
+                "point": 45.5,
+                "description": "Shai Gilgeous-Alexander"
+            },
+            {
+                "bookmaker": "hardrockbet",
+                "price": -110,
+                "point": 45.5,
+                "description": "Shai Gilgeous-Alexander"
             }
         ]
     },
@@ -213,9 +347,9 @@
         "point": 227.0,
         "description": null,
         "sportsbook_odds": -105,
-        "fair_prob": 0.5217,
+        "fair_prob": 0.522,
         "fair_american_odds": -109,
-        "ev": 1.86,
+        "ev": 1.91,
         "market_width": 10,
         "aggregated_odds": [
             {
@@ -814,6 +948,61 @@
         ]
     },
     {
+        "unique_id": "16cb0525e908d238a3407ade6a978c6b_PLAYER_REBOUNDS_Over_Josh Hart_9.5",
+        "event_id": "16cb0525e908d238a3407ade6a978c6b",
+        "sport": "NBA",
+        "home_team": "New York Knicks",
+        "away_team": "Boston Celtics",
+        "market": "player_rebounds",
+        "bookmaker": "fanduel",
+        "team": "Over",
+        "point": 9.5,
+        "description": "Josh Hart",
+        "sportsbook_odds": 110,
+        "fair_prob": 0.498,
+        "fair_american_odds": 100,
+        "ev": 4.58,
+        "market_width": 2.0,
+        "aggregated_odds": [
+            {
+                "bookmaker": "draftkings",
+                "price": -110,
+                "point": 9.5,
+                "description": "Josh Hart"
+            },
+            {
+                "bookmaker": "betmgm",
+                "price": -115,
+                "point": 9.5,
+                "description": "Josh Hart"
+            },
+            {
+                "bookmaker": "fanduel",
+                "price": 110,
+                "point": 9.5,
+                "description": "Josh Hart"
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": -114,
+                "point": 9.5,
+                "description": "Josh Hart"
+            },
+            {
+                "bookmaker": "espnbet",
+                "price": -105,
+                "point": 9.5,
+                "description": "Josh Hart"
+            },
+            {
+                "bookmaker": "williamhill_us",
+                "price": -105,
+                "point": 9.5,
+                "description": "Josh Hart"
+            }
+        ]
+    },
+    {
         "unique_id": "16cb0525e908d238a3407ade6a978c6b_TEAM_TOTALS_Over_New York Knicks_101.5",
         "event_id": "16cb0525e908d238a3407ade6a978c6b",
         "sport": "NBA",
@@ -1219,14 +1408,14 @@
         "home_team": "New York Mets",
         "away_team": "Chicago Cubs",
         "market": "totals",
-        "bookmaker": "williamhill_us",
+        "bookmaker": "fanduel",
         "team": "Over",
         "point": 8.5,
         "description": null,
         "sportsbook_odds": 100,
-        "fair_prob": 0.5073,
-        "fair_american_odds": -102,
-        "ev": 1.46,
+        "fair_prob": 0.5076,
+        "fair_american_odds": -103,
+        "ev": 1.52,
         "market_width": 15,
         "aggregated_odds": [
             {
@@ -1267,7 +1456,7 @@
             },
             {
                 "bookmaker": "betrivers",
-                "price": -103,
+                "price": -104,
                 "point": 8.5,
                 "description": null
             }
@@ -1285,9 +1474,9 @@
         "point": null,
         "description": null,
         "sportsbook_odds": -110,
-        "fair_prob": 0.5472,
+        "fair_prob": 0.5456,
         "fair_american_odds": -120,
-        "ev": 4.46,
+        "ev": 4.16,
         "market_width": 25,
         "aggregated_odds": [
             {
@@ -1313,6 +1502,12 @@
                 "price": -125,
                 "point": null,
                 "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": -117,
+                "point": null,
+                "description": null
             }
         ]
     },
@@ -1328,9 +1523,9 @@
         "point": null,
         "description": null,
         "sportsbook_odds": 105,
-        "fair_prob": 0.5138,
+        "fair_prob": 0.5145,
         "fair_american_odds": -105,
-        "ev": 5.34,
+        "ev": 5.46,
         "market_width": 15,
         "aggregated_odds": [
             {
@@ -1354,6 +1549,12 @@
             {
                 "bookmaker": "betmgm",
                 "price": 100,
+                "point": null,
+                "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": -107,
                 "point": null,
                 "description": null
             }
@@ -1420,7 +1621,7 @@
             },
             {
                 "bookmaker": "betrivers",
-                "price": 105,
+                "price": 112,
                 "point": null,
                 "description": null
             },
@@ -1433,21 +1634,70 @@
         ]
     },
     {
+        "unique_id": "8fa785d16eca369fe914615e9c26f690_TOTALS_1ST_1_INNINGS_Under__0.5",
+        "event_id": "8fa785d16eca369fe914615e9c26f690",
+        "sport": "MLB",
+        "home_team": "New York Mets",
+        "away_team": "Chicago Cubs",
+        "market": "totals_1st_1_innings",
+        "bookmaker": "betrivers",
+        "team": "Under",
+        "point": 0.5,
+        "description": null,
+        "sportsbook_odds": 105,
+        "fair_prob": 0.5077,
+        "fair_american_odds": -103,
+        "ev": 4.09,
+        "market_width": 7.0,
+        "aggregated_odds": [
+            {
+                "bookmaker": "fanduel",
+                "price": -113,
+                "point": 0.5,
+                "description": null
+            },
+            {
+                "bookmaker": "espnbet",
+                "price": -120,
+                "point": 0.5,
+                "description": null
+            },
+            {
+                "bookmaker": "williamhill_us",
+                "price": -120,
+                "point": 0.5,
+                "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": 105,
+                "point": 0.5,
+                "description": null
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": -112,
+                "point": 0.5,
+                "description": null
+            }
+        ]
+    },
+    {
         "unique_id": "1cd938a2dab0aa5538d174d09db22109_SPREADS_Atlanta Braves__-1.5",
         "event_id": "1cd938a2dab0aa5538d174d09db22109",
         "sport": "MLB",
         "home_team": "Pittsburgh Pirates",
         "away_team": "Atlanta Braves",
         "market": "spreads",
-        "bookmaker": "fanduel",
+        "bookmaker": "betrivers",
         "team": "Atlanta Braves",
         "point": -1.5,
         "description": null,
-        "sportsbook_odds": -118,
-        "fair_prob": 0.5497,
-        "fair_american_odds": -122,
-        "ev": 1.55,
-        "market_width": 12,
+        "sportsbook_odds": -117,
+        "fair_prob": 0.547,
+        "fair_american_odds": -120,
+        "ev": 1.45,
+        "market_width": 8,
         "aggregated_odds": [
             {
                 "bookmaker": "lowvig",
@@ -1493,7 +1743,7 @@
             },
             {
                 "bookmaker": "betrivers",
-                "price": -129,
+                "price": -117,
                 "point": -1.5,
                 "description": null
             },
@@ -1512,20 +1762,75 @@
         "home_team": "Pittsburgh Pirates",
         "away_team": "Atlanta Braves",
         "market": "totals",
-        "bookmaker": "fanduel",
+        "bookmaker": "betrivers",
         "team": "Under",
         "point": 8.0,
         "description": null,
-        "sportsbook_odds": -106,
-        "fair_prob": 0.5376,
-        "fair_american_odds": -116,
-        "ev": 4.47,
-        "market_width": 14,
+        "sportsbook_odds": -104,
+        "fair_prob": 0.5348,
+        "fair_american_odds": -114,
+        "ev": 4.9,
+        "market_width": 16,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
                 "price": -106,
                 "point": 8.0,
+                "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": -104,
+                "point": 8.0,
+                "description": null
+            }
+        ]
+    },
+    {
+        "unique_id": "1cd938a2dab0aa5538d174d09db22109_H2H_1ST_5_INNINGS_Pittsburgh Pirates__NA",
+        "event_id": "1cd938a2dab0aa5538d174d09db22109",
+        "sport": "MLB",
+        "home_team": "Pittsburgh Pirates",
+        "away_team": "Atlanta Braves",
+        "market": "h2h_1st_5_innings",
+        "bookmaker": "hardrockbet",
+        "team": "Pittsburgh Pirates",
+        "point": null,
+        "description": null,
+        "sportsbook_odds": 165,
+        "fair_prob": 0.3965,
+        "fair_american_odds": 152,
+        "ev": 5.07,
+        "market_width": 20,
+        "aggregated_odds": [
+            {
+                "bookmaker": "fanduel",
+                "price": 154,
+                "point": null,
+                "description": null
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": 145,
+                "point": null,
+                "description": null
+            },
+            {
+                "bookmaker": "hardrockbet",
+                "price": 165,
+                "point": null,
+                "description": null
+            },
+            {
+                "bookmaker": "betmgm",
+                "price": 150,
+                "point": null,
+                "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": 148,
+                "point": null,
                 "description": null
             }
         ]
@@ -1542,9 +1847,9 @@
         "point": 3.5,
         "description": "Carmen Mlodzinski",
         "sportsbook_odds": 104,
-        "fair_prob": 0.5245,
-        "fair_american_odds": -110,
-        "ev": 7.0,
+        "fair_prob": 0.5274,
+        "fair_american_odds": -111,
+        "ev": 7.6,
         "market_width": 24,
         "aggregated_odds": [
             {
@@ -1591,6 +1896,12 @@
                 "description": null
             },
             {
+                "bookmaker": "betrivers",
+                "price": -106,
+                "point": 0.5,
+                "description": null
+            },
+            {
                 "bookmaker": "pinnacle",
                 "price": 101,
                 "point": 0.5,
@@ -1605,14 +1916,14 @@
         "home_team": "Pittsburgh Pirates",
         "away_team": "Atlanta Braves",
         "market": "spreads",
-        "bookmaker": "betrivers",
+        "bookmaker": "betmgm",
         "team": "Pittsburgh Pirates",
         "point": 1.5,
         "description": null,
-        "sportsbook_odds": 106,
-        "fair_prob": 0.4925,
-        "fair_american_odds": 103,
-        "ev": 1.45,
+        "sportsbook_odds": 105,
+        "fair_prob": 0.4954,
+        "fair_american_odds": 101,
+        "ev": 1.56,
         "market_width": 9,
         "aggregated_odds": [
             {
@@ -1659,7 +1970,7 @@
             },
             {
                 "bookmaker": "betrivers",
-                "price": 106,
+                "price": -105,
                 "point": 1.5,
                 "description": null
             },
@@ -1672,117 +1983,74 @@
         ]
     },
     {
-        "unique_id": "1cd938a2dab0aa5538d174d09db22109_H2H_1ST_5_INNINGS_Pittsburgh Pirates__NA",
-        "event_id": "1cd938a2dab0aa5538d174d09db22109",
+        "unique_id": "1a03d296d820c6ad30bb670447a52737_SPREADS_St. Louis Cardinals__1.5",
+        "event_id": "1a03d296d820c6ad30bb670447a52737",
         "sport": "MLB",
-        "home_team": "Pittsburgh Pirates",
-        "away_team": "Atlanta Braves",
-        "market": "h2h_1st_5_innings",
-        "bookmaker": "hardrockbet",
-        "team": "Pittsburgh Pirates",
-        "point": null,
+        "home_team": "Washington Nationals",
+        "away_team": "St. Louis Cardinals",
+        "market": "spreads",
+        "bookmaker": "fanduel",
+        "team": "St. Louis Cardinals",
+        "point": 1.5,
         "description": null,
-        "sportsbook_odds": 165,
-        "fair_prob": 0.3948,
-        "fair_american_odds": 153,
-        "ev": 4.62,
-        "market_width": 20,
-        "aggregated_odds": [
-            {
-                "bookmaker": "fanduel",
-                "price": 154,
-                "point": null,
-                "description": null
-            },
-            {
-                "bookmaker": "draftkings",
-                "price": 145,
-                "point": null,
-                "description": null
-            },
-            {
-                "bookmaker": "hardrockbet",
-                "price": 165,
-                "point": null,
-                "description": null
-            },
-            {
-                "bookmaker": "betmgm",
-                "price": 150,
-                "point": null,
-                "description": null
-            }
-        ]
-    },
-    {
-        "unique_id": "1cd938a2dab0aa5538d174d09db22109_H2H_Pittsburgh Pirates__NA",
-        "event_id": "1cd938a2dab0aa5538d174d09db22109",
-        "sport": "MLB",
-        "home_team": "Pittsburgh Pirates",
-        "away_team": "Atlanta Braves",
-        "market": "h2h",
-        "bookmaker": "betrivers",
-        "team": "Pittsburgh Pirates",
-        "point": null,
-        "description": null,
-        "sportsbook_odds": 188,
-        "fair_prob": 0.3517,
-        "fair_american_odds": 184,
-        "ev": 1.28,
-        "market_width": 22.0,
+        "sportsbook_odds": -184,
+        "fair_prob": 0.6514,
+        "fair_american_odds": -186,
+        "ev": 0.54,
+        "market_width": 21,
         "aggregated_odds": [
             {
                 "bookmaker": "lowvig",
-                "price": 175,
-                "point": null,
+                "price": -180,
+                "point": 1.5,
                 "description": null
             },
             {
                 "bookmaker": "fanduel",
-                "price": 176,
-                "point": null,
+                "price": -184,
+                "point": 1.5,
                 "description": null
             },
             {
                 "bookmaker": "draftkings",
-                "price": 170,
-                "point": null,
+                "price": -185,
+                "point": 1.5,
                 "description": null
             },
             {
                 "bookmaker": "espnbet",
-                "price": 165,
-                "point": null,
+                "price": -190,
+                "point": 1.5,
                 "description": null
             },
             {
                 "bookmaker": "hardrockbet",
-                "price": 165,
-                "point": null,
+                "price": -185,
+                "point": 1.5,
                 "description": null
             },
             {
                 "bookmaker": "betmgm",
-                "price": 165,
-                "point": null,
+                "price": -190,
+                "point": 1.5,
                 "description": null
             },
             {
                 "bookmaker": "williamhill_us",
-                "price": 170,
-                "point": null,
+                "price": -190,
+                "point": 1.5,
                 "description": null
             },
             {
                 "bookmaker": "betrivers",
-                "price": 188,
-                "point": null,
+                "price": -200,
+                "point": 1.5,
                 "description": null
             },
             {
                 "bookmaker": "pinnacle",
-                "price": 177,
-                "point": null,
+                "price": -179,
+                "point": 1.5,
                 "description": null
             }
         ]
@@ -1799,9 +2067,9 @@
         "point": null,
         "description": null,
         "sportsbook_odds": 126,
-        "fair_prob": 0.465,
-        "fair_american_odds": 115,
-        "ev": 5.09,
+        "fair_prob": 0.4609,
+        "fair_american_odds": 116,
+        "ev": 4.16,
         "market_width": 16,
         "aggregated_odds": [
             {
@@ -1827,6 +2095,12 @@
                 "price": 115,
                 "point": null,
                 "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": 125,
+                "point": null,
+                "description": null
             }
         ]
     },
@@ -1837,14 +2111,14 @@
         "home_team": "Washington Nationals",
         "away_team": "St. Louis Cardinals",
         "market": "h2h_1st_5_innings",
-        "bookmaker": "hardrockbet",
+        "bookmaker": "draftkings",
         "team": "Washington Nationals",
         "point": null,
         "description": null,
         "sportsbook_odds": -140,
-        "fair_prob": 0.5927,
-        "fair_american_odds": -145,
-        "ev": 1.61,
+        "fair_prob": 0.5957,
+        "fair_american_odds": -147,
+        "ev": 2.13,
         "market_width": 18,
         "aggregated_odds": [
             {
@@ -1870,78 +2144,84 @@
                 "price": -145,
                 "point": null,
                 "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": -155,
+                "point": null,
+                "description": null
             }
         ]
     },
     {
-        "unique_id": "1a03d296d820c6ad30bb670447a52737_H2H_Washington Nationals__NA",
+        "unique_id": "1a03d296d820c6ad30bb670447a52737_SPREADS_Washington Nationals__-1.5",
         "event_id": "1a03d296d820c6ad30bb670447a52737",
         "sport": "MLB",
         "home_team": "Washington Nationals",
         "away_team": "St. Louis Cardinals",
-        "market": "h2h",
+        "market": "spreads",
         "bookmaker": "betrivers",
         "team": "Washington Nationals",
-        "point": null,
+        "point": -1.5,
         "description": null,
-        "sportsbook_odds": -120,
-        "fair_prob": 0.552,
-        "fair_american_odds": -123,
-        "ev": 1.2,
-        "market_width": 12.0,
+        "sportsbook_odds": 160,
+        "fair_prob": 0.3925,
+        "fair_american_odds": 154,
+        "ev": 2.06,
+        "market_width": 20,
         "aggregated_odds": [
             {
                 "bookmaker": "lowvig",
-                "price": -130,
-                "point": null,
+                "price": 158,
+                "point": -1.5,
                 "description": null
             },
             {
                 "bookmaker": "fanduel",
-                "price": -130,
-                "point": null,
+                "price": 152,
+                "point": -1.5,
                 "description": null
             },
             {
                 "bookmaker": "draftkings",
-                "price": -135,
-                "point": null,
+                "price": 154,
+                "point": -1.5,
                 "description": null
             },
             {
                 "bookmaker": "espnbet",
-                "price": -130,
-                "point": null,
+                "price": 160,
+                "point": -1.5,
                 "description": null
             },
             {
                 "bookmaker": "hardrockbet",
-                "price": -135,
-                "point": null,
+                "price": 140,
+                "point": -1.5,
                 "description": null
             },
             {
                 "bookmaker": "betmgm",
-                "price": -135,
-                "point": null,
+                "price": 155,
+                "point": -1.5,
                 "description": null
             },
             {
                 "bookmaker": "williamhill_us",
-                "price": -135,
-                "point": null,
+                "price": 158,
+                "point": -1.5,
                 "description": null
             },
             {
                 "bookmaker": "betrivers",
-                "price": -120,
-                "point": null,
+                "price": 160,
+                "point": -1.5,
                 "description": null
             },
             {
                 "bookmaker": "pinnacle",
-                "price": -130,
-                "point": null,
+                "price": 157,
+                "point": -1.5,
                 "description": null
             }
         ]
@@ -1953,15 +2233,15 @@
         "home_team": "Detroit Tigers",
         "away_team": "Texas Rangers",
         "market": "h2h_1st_5_innings",
-        "bookmaker": "fanduel",
+        "bookmaker": "betrivers",
         "team": "Detroit Tigers",
         "point": null,
         "description": null,
-        "sportsbook_odds": -116,
-        "fair_prob": 0.5448,
-        "fair_american_odds": -119,
-        "ev": 1.45,
-        "market_width": 9,
+        "sportsbook_odds": -114,
+        "fair_prob": 0.5424,
+        "fair_american_odds": -118,
+        "ev": 1.82,
+        "market_width": 11,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
@@ -1986,6 +2266,12 @@
                 "price": -118,
                 "point": null,
                 "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": -114,
+                "point": null,
+                "description": null
             }
         ]
     },
@@ -2001,9 +2287,9 @@
         "point": null,
         "description": null,
         "sportsbook_odds": -105,
-        "fair_prob": 0.5169,
-        "fair_american_odds": -106,
-        "ev": 0.91,
+        "fair_prob": 0.5178,
+        "fair_american_odds": -107,
+        "ev": 1.09,
         "market_width": 5,
         "aggregated_odds": [
             {
@@ -2029,6 +2315,12 @@
                 "price": -105,
                 "point": null,
                 "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": -109,
+                "point": null,
+                "description": null
             }
         ]
     },
@@ -2044,10 +2336,10 @@
         "point": null,
         "description": null,
         "sportsbook_odds": 132,
-        "fair_prob": 0.4497,
-        "fair_american_odds": 122,
-        "ev": 4.33,
-        "market_width": 14,
+        "fair_prob": 0.4524,
+        "fair_american_odds": 121,
+        "ev": 4.95,
+        "market_width": 17,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
@@ -2063,7 +2355,7 @@
             },
             {
                 "bookmaker": "hardrockbet",
-                "price": 120,
+                "price": 115,
                 "point": null,
                 "description": null
             },
@@ -2072,55 +2364,6 @@
                 "price": 118,
                 "point": null,
                 "description": null
-            }
-        ]
-    },
-    {
-        "unique_id": "b8714a225e6c67f97d2568030d64ac1a_PITCHER_STRIKEOUTS_Under_Drew Rasmussen_4.5",
-        "event_id": "b8714a225e6c67f97d2568030d64ac1a",
-        "sport": "MLB",
-        "home_team": "Tampa Bay Rays",
-        "away_team": "Milwaukee Brewers",
-        "market": "pitcher_strikeouts",
-        "bookmaker": "fanduel",
-        "team": "Under",
-        "point": 4.5,
-        "description": "Drew Rasmussen",
-        "sportsbook_odds": 104,
-        "fair_prob": 0.496,
-        "fair_american_odds": 101,
-        "ev": 1.17,
-        "market_width": 4.0,
-        "aggregated_odds": [
-            {
-                "bookmaker": "fanduel",
-                "price": 104,
-                "point": 4.5,
-                "description": "Drew Rasmussen"
-            },
-            {
-                "bookmaker": "draftkings",
-                "price": 100,
-                "point": 4.5,
-                "description": "Drew Rasmussen"
-            },
-            {
-                "bookmaker": "espnbet",
-                "price": 100,
-                "point": 4.5,
-                "description": "Drew Rasmussen"
-            },
-            {
-                "bookmaker": "hardrockbet",
-                "price": 100,
-                "point": 4.5,
-                "description": "Drew Rasmussen"
-            },
-            {
-                "bookmaker": "pinnacle",
-                "price": -113,
-                "point": 4.5,
-                "description": "Drew Rasmussen"
             }
         ]
     },
@@ -2136,9 +2379,9 @@
         "point": -1.5,
         "description": null,
         "sportsbook_odds": 155,
-        "fair_prob": 0.4145,
+        "fair_prob": 0.4137,
         "fair_american_odds": 141,
-        "ev": 5.7,
+        "ev": 5.5,
         "market_width": 25,
         "aggregated_odds": [
             {
@@ -2149,7 +2392,7 @@
             },
             {
                 "bookmaker": "fanduel",
-                "price": 132,
+                "price": 136,
                 "point": -1.5,
                 "description": null
             },
@@ -2209,9 +2452,9 @@
         "point": null,
         "description": null,
         "sportsbook_odds": -150,
-        "fair_prob": 0.6096,
-        "fair_american_odds": -156,
-        "ev": 1.59,
+        "fair_prob": 0.6076,
+        "fair_american_odds": -154,
+        "ev": 1.26,
         "market_width": 16,
         "aggregated_odds": [
             {
@@ -2228,7 +2471,7 @@
             },
             {
                 "bookmaker": "hardrockbet",
-                "price": -155,
+                "price": -150,
                 "point": null,
                 "description": null
             },
@@ -2443,101 +2686,21 @@
         ]
     },
     {
-        "unique_id": "43448eaef259d9a7b1d581ea06c12c12_PITCHER_OUTS_Over_Lucas Giolito_15.5",
-        "event_id": "43448eaef259d9a7b1d581ea06c12c12",
-        "sport": "MLB",
-        "home_team": "Kansas City Royals",
-        "away_team": "Boston Red Sox",
-        "market": "pitcher_outs",
-        "bookmaker": "hardrockbet",
-        "team": "Over",
-        "point": 15.5,
-        "description": "Lucas Giolito",
-        "sportsbook_odds": 100,
-        "fair_prob": 0.504,
-        "fair_american_odds": -101,
-        "ev": 0.81,
-        "market_width": 4.0,
-        "aggregated_odds": [
-            {
-                "bookmaker": "draftkings",
-                "price": -105,
-                "point": 15.5,
-                "description": "Lucas Giolito"
-            },
-            {
-                "bookmaker": "hardrockbet",
-                "price": 100,
-                "point": 15.5,
-                "description": "Lucas Giolito"
-            },
-            {
-                "bookmaker": "pinnacle",
-                "price": -117,
-                "point": 15.5,
-                "description": "Lucas Giolito"
-            }
-        ]
-    },
-    {
-        "unique_id": "464274b75946cd945d3d046364b77bf8_H2H_1ST_5_INNINGS_Chicago White Sox__NA",
-        "event_id": "464274b75946cd945d3d046364b77bf8",
-        "sport": "MLB",
-        "home_team": "Chicago White Sox",
-        "away_team": "Miami Marlins",
-        "market": "h2h_1st_5_innings",
-        "bookmaker": "fanduel",
-        "team": "Chicago White Sox",
-        "point": null,
-        "description": null,
-        "sportsbook_odds": 116,
-        "fair_prob": 0.4679,
-        "fair_american_odds": 113,
-        "ev": 1.06,
-        "market_width": 6,
-        "aggregated_odds": [
-            {
-                "bookmaker": "fanduel",
-                "price": 116,
-                "point": null,
-                "description": null
-            },
-            {
-                "bookmaker": "draftkings",
-                "price": 114,
-                "point": null,
-                "description": null
-            },
-            {
-                "bookmaker": "hardrockbet",
-                "price": 110,
-                "point": null,
-                "description": null
-            },
-            {
-                "bookmaker": "betmgm",
-                "price": 115,
-                "point": null,
-                "description": null
-            }
-        ]
-    },
-    {
         "unique_id": "464274b75946cd945d3d046364b77bf8_PITCHER_HITS_ALLOWED_Over_Sean Burke_4.5",
         "event_id": "464274b75946cd945d3d046364b77bf8",
         "sport": "MLB",
         "home_team": "Chicago White Sox",
         "away_team": "Miami Marlins",
         "market": "pitcher_hits_allowed",
-        "bookmaker": "draftkings",
+        "bookmaker": "hardrockbet",
         "team": "Over",
         "point": 4.5,
         "description": "Sean Burke",
         "sportsbook_odds": 105,
-        "fair_prob": 0.5,
-        "fair_american_odds": 100,
-        "ev": 2.5,
-        "market_width": 0.0,
+        "fair_prob": 0.5212,
+        "fair_american_odds": -108,
+        "ev": 6.84,
+        "market_width": 21.0,
         "aggregated_odds": [
             {
                 "bookmaker": "draftkings",
@@ -2553,7 +2716,7 @@
             },
             {
                 "bookmaker": "pinnacle",
-                "price": -115,
+                "price": -126,
                 "point": 4.5,
                 "description": "Sean Burke"
             }
@@ -2571,9 +2734,9 @@
         "point": -1.5,
         "description": null,
         "sportsbook_odds": 135,
-        "fair_prob": 0.4459,
+        "fair_prob": 0.4461,
         "fair_american_odds": 124,
-        "ev": 4.78,
+        "ev": 4.83,
         "market_width": 20,
         "aggregated_odds": [
             {
@@ -2584,7 +2747,7 @@
             },
             {
                 "bookmaker": "fanduel",
-                "price": 116,
+                "price": 115,
                 "point": -1.5,
                 "description": null
             },
@@ -2633,6 +2796,37 @@
         ]
     },
     {
+        "unique_id": "464274b75946cd945d3d046364b77bf8_TOTALS_Under__7.5",
+        "event_id": "464274b75946cd945d3d046364b77bf8",
+        "sport": "MLB",
+        "home_team": "Chicago White Sox",
+        "away_team": "Miami Marlins",
+        "market": "totals",
+        "bookmaker": "espnbet",
+        "team": "Under",
+        "point": 7.5,
+        "description": null,
+        "sportsbook_odds": 110,
+        "fair_prob": 0.5079,
+        "fair_american_odds": -103,
+        "ev": 6.65,
+        "market_width": 24,
+        "aggregated_odds": [
+            {
+                "bookmaker": "espnbet",
+                "price": 110,
+                "point": 7.5,
+                "description": null
+            },
+            {
+                "bookmaker": "hardrockbet",
+                "price": 105,
+                "point": 7.5,
+                "description": null
+            }
+        ]
+    },
+    {
         "unique_id": "464274b75946cd945d3d046364b77bf8_H2H_1ST_5_INNINGS_Miami Marlins__NA",
         "event_id": "464274b75946cd945d3d046364b77bf8",
         "sport": "MLB",
@@ -2644,14 +2838,14 @@
         "point": null,
         "description": null,
         "sportsbook_odds": -140,
-        "fair_prob": 0.5897,
-        "fair_american_odds": -143,
-        "ev": 1.09,
+        "fair_prob": 0.5884,
+        "fair_american_odds": -142,
+        "ev": 0.88,
         "market_width": 5,
         "aggregated_odds": [
             {
                 "bookmaker": "fanduel",
-                "price": -145,
+                "price": -142,
                 "point": null,
                 "description": null
             },
@@ -2670,6 +2864,49 @@
             {
                 "bookmaker": "betmgm",
                 "price": -145,
+                "point": null,
+                "description": null
+            }
+        ]
+    },
+    {
+        "unique_id": "464274b75946cd945d3d046364b77bf8_H2H_1ST_5_INNINGS_Chicago White Sox__NA",
+        "event_id": "464274b75946cd945d3d046364b77bf8",
+        "sport": "MLB",
+        "home_team": "Chicago White Sox",
+        "away_team": "Miami Marlins",
+        "market": "h2h_1st_5_innings",
+        "bookmaker": "betmgm",
+        "team": "Chicago White Sox",
+        "point": null,
+        "description": null,
+        "sportsbook_odds": 115,
+        "fair_prob": 0.469,
+        "fair_american_odds": 113,
+        "ev": 0.83,
+        "market_width": 5,
+        "aggregated_odds": [
+            {
+                "bookmaker": "fanduel",
+                "price": 114,
+                "point": null,
+                "description": null
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": 114,
+                "point": null,
+                "description": null
+            },
+            {
+                "bookmaker": "hardrockbet",
+                "price": 110,
+                "point": null,
+                "description": null
+            },
+            {
+                "bookmaker": "betmgm",
+                "price": 115,
                 "point": null,
                 "description": null
             }
@@ -2847,31 +3084,6 @@
         ]
     },
     {
-        "unique_id": "7d9b0a89dfe9bb3a6371bd19e4a5a64f_PITCHER_STRIKEOUTS_Over_Ronel Blanco_5.5",
-        "event_id": "7d9b0a89dfe9bb3a6371bd19e4a5a64f",
-        "sport": "MLB",
-        "home_team": "Houston Astros",
-        "away_team": "Cincinnati Reds",
-        "market": "pitcher_strikeouts",
-        "bookmaker": "fanduel",
-        "team": "Over",
-        "point": 5.5,
-        "description": "Ronel Blanco",
-        "sportsbook_odds": -134,
-        "fair_prob": 0.5847,
-        "fair_american_odds": -140,
-        "ev": 2.11,
-        "market_width": 14,
-        "aggregated_odds": [
-            {
-                "bookmaker": "fanduel",
-                "price": -134,
-                "point": 5.5,
-                "description": "Ronel Blanco"
-            }
-        ]
-    },
-    {
         "unique_id": "7d9b0a89dfe9bb3a6371bd19e4a5a64f_PITCHER_STRIKEOUTS_Under_Chase Petty_3.5",
         "event_id": "7d9b0a89dfe9bb3a6371bd19e4a5a64f",
         "sport": "MLB",
@@ -2893,6 +3105,31 @@
                 "price": 112,
                 "point": 3.5,
                 "description": "Chase Petty"
+            }
+        ]
+    },
+    {
+        "unique_id": "7d9b0a89dfe9bb3a6371bd19e4a5a64f_PITCHER_STRIKEOUTS_Over_Ronel Blanco_5.5",
+        "event_id": "7d9b0a89dfe9bb3a6371bd19e4a5a64f",
+        "sport": "MLB",
+        "home_team": "Houston Astros",
+        "away_team": "Cincinnati Reds",
+        "market": "pitcher_strikeouts",
+        "bookmaker": "fanduel",
+        "team": "Over",
+        "point": 5.5,
+        "description": "Ronel Blanco",
+        "sportsbook_odds": -134,
+        "fair_prob": 0.5847,
+        "fair_american_odds": -140,
+        "ev": 2.11,
+        "market_width": 14,
+        "aggregated_odds": [
+            {
+                "bookmaker": "fanduel",
+                "price": -134,
+                "point": 5.5,
+                "description": "Ronel Blanco"
             }
         ]
     },
@@ -3145,11 +3382,11 @@
         "team": "San Francisco Giants",
         "point": 1.5,
         "description": null,
-        "sportsbook_odds": -160,
-        "fair_prob": 0.6329,
-        "fair_american_odds": -172,
-        "ev": 2.84,
-        "market_width": 25,
+        "sportsbook_odds": -162,
+        "fair_prob": 0.6303,
+        "fair_american_odds": -170,
+        "ev": 1.93,
+        "market_width": 14,
         "aggregated_odds": [
             {
                 "bookmaker": "lowvig",
@@ -3159,7 +3396,7 @@
             },
             {
                 "bookmaker": "fanduel",
-                "price": -160,
+                "price": -162,
                 "point": 1.5,
                 "description": null
             },
@@ -3177,7 +3414,7 @@
             },
             {
                 "bookmaker": "hardrockbet",
-                "price": -185,
+                "price": -165,
                 "point": 1.5,
                 "description": null
             },
@@ -3257,15 +3494,15 @@
         "home_team": "Minnesota Twins",
         "away_team": "San Francisco Giants",
         "market": "spreads",
-        "bookmaker": "betmgm",
+        "bookmaker": "draftkings",
         "team": "Minnesota Twins",
         "point": -1.5,
         "description": null,
         "sportsbook_odds": 145,
-        "fair_prob": 0.4107,
-        "fair_american_odds": 143,
-        "ev": 0.61,
-        "market_width": 23,
+        "fair_prob": 0.4124,
+        "fair_american_odds": 142,
+        "ev": 1.05,
+        "market_width": 24,
         "aggregated_odds": [
             {
                 "bookmaker": "lowvig",
@@ -3275,7 +3512,7 @@
             },
             {
                 "bookmaker": "fanduel",
-                "price": 132,
+                "price": 134,
                 "point": -1.5,
                 "description": null
             },
@@ -3293,7 +3530,7 @@
             },
             {
                 "bookmaker": "hardrockbet",
-                "price": 140,
+                "price": 130,
                 "point": -1.5,
                 "description": null
             },
@@ -3317,7 +3554,7 @@
             },
             {
                 "bookmaker": "pinnacle",
-                "price": 155,
+                "price": 154,
                 "point": -1.5,
                 "description": null
             }
@@ -3415,10 +3652,10 @@
         "point": null,
         "description": null,
         "sportsbook_odds": 128,
-        "fair_prob": 0.4422,
+        "fair_prob": 0.4414,
         "fair_american_odds": 126,
-        "ev": 0.82,
-        "market_width": 12.0,
+        "ev": 0.64,
+        "market_width": 13.0,
         "aggregated_odds": [
             {
                 "bookmaker": "lowvig",
@@ -3498,6 +3735,55 @@
                 "price": -110,
                 "point": 11.0,
                 "description": null
+            }
+        ]
+    },
+    {
+        "unique_id": "d21fde519abb0f18c80c4ad16290e1bd_PITCHER_STRIKEOUTS_Over_German Marquez_2.5",
+        "event_id": "d21fde519abb0f18c80c4ad16290e1bd",
+        "sport": "MLB",
+        "home_team": "Colorado Rockies",
+        "away_team": "San Diego Padres",
+        "market": "pitcher_strikeouts",
+        "bookmaker": "hardrockbet",
+        "team": "Over",
+        "point": 2.5,
+        "description": "German Marquez",
+        "sportsbook_odds": 110,
+        "fair_prob": 0.4858,
+        "fair_american_odds": 105,
+        "ev": 2.02,
+        "market_width": 14.0,
+        "aggregated_odds": [
+            {
+                "bookmaker": "fanduel",
+                "price": -110,
+                "point": 2.5,
+                "description": "German Marquez"
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": 110,
+                "point": 2.5,
+                "description": "German Marquez"
+            },
+            {
+                "bookmaker": "espnbet",
+                "price": -115,
+                "point": 2.5,
+                "description": "German Marquez"
+            },
+            {
+                "bookmaker": "hardrockbet",
+                "price": 110,
+                "point": 2.5,
+                "description": "German Marquez"
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": -108,
+                "point": 2.5,
+                "description": "German Marquez"
             }
         ]
     },
@@ -3762,14 +4048,14 @@
         "home_team": "Los Angeles Angels",
         "away_team": "Baltimore Orioles",
         "market": "spreads",
-        "bookmaker": "espnbet",
+        "bookmaker": "draftkings",
         "team": "Los Angeles Angels",
         "point": 1.5,
         "description": null,
         "sportsbook_odds": -135,
-        "fair_prob": 0.582,
+        "fair_prob": 0.5824,
         "fair_american_odds": -139,
-        "ev": 1.31,
+        "ev": 1.38,
         "market_width": 14,
         "aggregated_odds": [
             {
@@ -3792,7 +4078,7 @@
             },
             {
                 "bookmaker": "fanduel",
-                "price": -142,
+                "price": -144,
                 "point": 1.5,
                 "description": null
             },
@@ -3835,14 +4121,14 @@
         "home_team": "Los Angeles Angels",
         "away_team": "Baltimore Orioles",
         "market": "h2h_1st_5_innings",
-        "bookmaker": "betmgm",
+        "bookmaker": "draftkings",
         "team": "Baltimore Orioles",
         "point": null,
         "description": null,
         "sportsbook_odds": -140,
-        "fair_prob": 0.5909,
+        "fair_prob": 0.5917,
         "fair_american_odds": -144,
-        "ev": 1.29,
+        "ev": 1.43,
         "market_width": 10,
         "aggregated_odds": [
             {
@@ -3853,7 +4139,7 @@
             },
             {
                 "bookmaker": "fanduel",
-                "price": -148,
+                "price": -150,
                 "point": null,
                 "description": null
             },
@@ -3872,6 +4158,128 @@
         ]
     },
     {
+        "unique_id": "9af131f038ca501b86db1efe128429db_SPREADS_Baltimore Orioles__-1.5",
+        "event_id": "9af131f038ca501b86db1efe128429db",
+        "sport": "MLB",
+        "home_team": "Los Angeles Angels",
+        "away_team": "Baltimore Orioles",
+        "market": "spreads",
+        "bookmaker": "fanduel",
+        "team": "Baltimore Orioles",
+        "point": -1.5,
+        "description": null,
+        "sportsbook_odds": 120,
+        "fair_prob": 0.4602,
+        "fair_american_odds": 117,
+        "ev": 1.24,
+        "market_width": 8,
+        "aggregated_odds": [
+            {
+                "bookmaker": "lowvig",
+                "price": 122,
+                "point": -1.5,
+                "description": null
+            },
+            {
+                "bookmaker": "draftkings",
+                "price": 114,
+                "point": -1.5,
+                "description": null
+            },
+            {
+                "bookmaker": "espnbet",
+                "price": 115,
+                "point": -1.5,
+                "description": null
+            },
+            {
+                "bookmaker": "fanduel",
+                "price": 120,
+                "point": -1.5,
+                "description": null
+            },
+            {
+                "bookmaker": "hardrockbet",
+                "price": 115,
+                "point": -1.5,
+                "description": null
+            },
+            {
+                "bookmaker": "betmgm",
+                "price": 118,
+                "point": -1.5,
+                "description": null
+            },
+            {
+                "bookmaker": "williamhill_us",
+                "price": 118,
+                "point": -1.5,
+                "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": 118,
+                "point": -1.5,
+                "description": null
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": 116,
+                "point": -1.5,
+                "description": null
+            }
+        ]
+    },
+    {
+        "unique_id": "9af131f038ca501b86db1efe128429db_ALTERNATE_TOTALS_Under__8.5",
+        "event_id": "9af131f038ca501b86db1efe128429db",
+        "sport": "MLB",
+        "home_team": "Los Angeles Angels",
+        "away_team": "Baltimore Orioles",
+        "market": "alternate_totals",
+        "bookmaker": "fanduel",
+        "team": "Under",
+        "point": 8.5,
+        "description": null,
+        "sportsbook_odds": 120,
+        "fair_prob": 0.4574,
+        "fair_american_odds": 118,
+        "ev": 0.64,
+        "market_width": 15.0,
+        "aggregated_odds": [
+            {
+                "bookmaker": "draftkings",
+                "price": 108,
+                "point": 8.5,
+                "description": null
+            },
+            {
+                "bookmaker": "fanduel",
+                "price": 120,
+                "point": 8.5,
+                "description": null
+            },
+            {
+                "bookmaker": "betmgm",
+                "price": 110,
+                "point": 8.5,
+                "description": null
+            },
+            {
+                "bookmaker": "betrivers",
+                "price": 108,
+                "point": 8.5,
+                "description": null
+            },
+            {
+                "bookmaker": "pinnacle",
+                "price": 112,
+                "point": 8.5,
+                "description": null
+            }
+        ]
+    },
+    {
         "unique_id": "9af131f038ca501b86db1efe128429db_H2H_1ST_5_INNINGS_Los Angeles Angels__NA",
         "event_id": "9af131f038ca501b86db1efe128429db",
         "sport": "MLB",
@@ -3882,11 +4290,11 @@
         "team": "Los Angeles Angels",
         "point": null,
         "description": null,
-        "sportsbook_odds": 118,
-        "fair_prob": 0.4691,
+        "sportsbook_odds": 120,
+        "fair_prob": 0.468,
         "fair_american_odds": 113,
-        "ev": 2.25,
-        "market_width": 8,
+        "ev": 2.96,
+        "market_width": 10,
         "aggregated_odds": [
             {
                 "bookmaker": "draftkings",
@@ -3896,7 +4304,7 @@
             },
             {
                 "bookmaker": "fanduel",
-                "price": 118,
+                "price": 120,
                 "point": null,
                 "description": null
             },
@@ -4191,37 +4599,6 @@
         ]
     },
     {
-        "unique_id": "b2ee27dfa0f94c7a7aae280eb4bb0bb5_PITCHER_OUTS_Under_Jose Urena_14.5",
-        "event_id": "b2ee27dfa0f94c7a7aae280eb4bb0bb5",
-        "sport": "MLB",
-        "home_team": "Seattle Mariners",
-        "away_team": "Toronto Blue Jays",
-        "market": "pitcher_outs",
-        "bookmaker": "draftkings",
-        "team": "Under",
-        "point": 14.5,
-        "description": "Jose Urena",
-        "sportsbook_odds": -120,
-        "fair_prob": 0.5505,
-        "fair_american_odds": -122,
-        "ev": 0.93,
-        "market_width": 5,
-        "aggregated_odds": [
-            {
-                "bookmaker": "draftkings",
-                "price": -120,
-                "point": 14.5,
-                "description": "Jose Urena"
-            },
-            {
-                "bookmaker": "hardrockbet",
-                "price": -125,
-                "point": 14.5,
-                "description": "Jose Urena"
-            }
-        ]
-    },
-    {
         "unique_id": "b2ee27dfa0f94c7a7aae280eb4bb0bb5_SPREADS_Toronto Blue Jays__1.5",
         "event_id": "b2ee27dfa0f94c7a7aae280eb4bb0bb5",
         "sport": "MLB",
@@ -4291,37 +4668,6 @@
                 "price": -151,
                 "point": 1.5,
                 "description": null
-            }
-        ]
-    },
-    {
-        "unique_id": "b2ee27dfa0f94c7a7aae280eb4bb0bb5_PITCHER_HITS_ALLOWED_Over_Jose Urena_4.5",
-        "event_id": "b2ee27dfa0f94c7a7aae280eb4bb0bb5",
-        "sport": "MLB",
-        "home_team": "Seattle Mariners",
-        "away_team": "Toronto Blue Jays",
-        "market": "pitcher_hits_allowed",
-        "bookmaker": "hardrockbet",
-        "team": "Over",
-        "point": 4.5,
-        "description": "Jose Urena",
-        "sportsbook_odds": -130,
-        "fair_prob": 0.5698,
-        "fair_american_odds": -132,
-        "ev": 0.82,
-        "market_width": 5,
-        "aggregated_odds": [
-            {
-                "bookmaker": "draftkings",
-                "price": -135,
-                "point": 4.5,
-                "description": "Jose Urena"
-            },
-            {
-                "bookmaker": "hardrockbet",
-                "price": -130,
-                "point": 4.5,
-                "description": "Jose Urena"
             }
         ]
     },
@@ -4643,9 +4989,9 @@
         "point": 1.5,
         "description": null,
         "sportsbook_odds": -210,
-        "fair_prob": 0.6855,
+        "fair_prob": 0.6853,
         "fair_american_odds": -217,
-        "ev": 1.19,
+        "ev": 1.16,
         "market_width": 25,
         "aggregated_odds": [
             {
@@ -4692,7 +5038,7 @@
             },
             {
                 "bookmaker": "pinnacle",
-                "price": -215,
+                "price": -213,
                 "point": 1.5,
                 "description": null
             },
